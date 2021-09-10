@@ -1,0 +1,165 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    compileSdkVersion 30
+    buildToolsVersion "30.0.3"
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+    }
+    defaultConfig {
+        applicationId "com.example.poltekkes"
+        minSdkVersion 23
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    repositories {
+        mavenCentral()
+        google()
+        maven { url 'https://jitpack.io' }
+        maven {
+            url "https://oss.sonatype.org/content/repositories/snapshots/"
+        }
+    }
+}
+
+dependencies {
+
+
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+
+    //desain
+    implementation 'androidx.appcompat:appcompat:1.3.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+
+
+    //kamera_kit
+    implementation 'com.camerakit:camerakit:1.0.0-beta3.10'
+    implementation 'com.camerakit:jpegkit:0.1.0'
+    implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.3.0'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.0.0'
+
+
+
+    //retrofit
+    implementation 'com.squareup.retrofit2:converter-scalars:2.5.0'
+    implementation 'com.squareup.retrofit2:retrofit:2.1.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.1.0'
+    implementation "com.squareup.okhttp3:logging-interceptor:3.3.0"
+
+    //glide_toast
+    // implementation 'com.github.imjeevandeshmukh:GlideToast:1.0'
+
+    //butterknife
+    implementation 'androidx.viewpager2:viewpager2:1.0.0'
+
+    implementation 'com.jakewharton:butterknife:10.2.3'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.3'
+
+    //foto
+    implementation 'com.github.bumptech.glide:glide:4.9.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.9.0'
+
+    //sweetalert
+    implementation 'com.github.f0ris.sweetalert:library:1.5.6'
+    implementation 'com.afollestad.material-dialogs:core:0.9.4.5'
+    implementation 'com.github.imjeevandeshmukh:GlideToast:1.0'
+
+    //lokasi
+    //noinspection GradleCompatible
+    implementation 'com.google.android.gms:play-services-location:17.0.0'
+    implementation 'com.google.android.gms:play-services-maps:17.0.0'
+    //dexter
+
+
+    //foto bulat
+    implementation 'com.mikhaellopez:circularimageview:3.2.0'
+
+    //image_Slider
+    implementation 'com.github.smarteist:autoimageslider:1.3.5'
+
+
+    //validasi
+    implementation 'com.mobsandgeeks:android-saripaar:2.0.3'
+
+    //desain
+    implementation 'com.google.android.material:material:1.1.0-alpha10'
+
+
+    //guru
+    implementation 'com.github.squti:Guru:1.0.1'
+
+    //animation
+    implementation 'com.github.hajiyevelnur92:intentanimation:1.0'
+
+    //intro
+    implementation 'com.balysv:material-ripple:1.0.2'
+
+    //pagniition
+    //implementation 'com.github.softrunapp:Paginated-RecyclerView:1.1.0'
+    //smarttablaout
+    implementation 'com.ogaclejapan.smarttablayout:library:2.0.0@aar'
+
+    //Optional: see how to use the utility.
+    implementation 'com.ogaclejapan.smarttablayout:utils-v4:2.0.0@aar'
+
+
+//firbase auth
+    implementation 'com.google.android.gms:play-services-auth:17.0.0'
+
+    //download
+    implementation 'com.mindorks.android:prdownloader:0.6.0'
+
+
+    //firbase auth
+    implementation 'com.google.android.gms:play-services-auth:17.0.0'
+
+
+    //notif
+    implementation 'com.google.firebase:firebase-messaging:20.0.0'
+    implementation 'com.google.firebase:firebase-core:16.0.4'
+
+    //responsif
+    implementation 'com.intuit.ssp:ssp-android:1.0.6'
+    implementation 'com.intuit.sdp:sdp-android:1.0.6'
+    // implementation files('libs\\Android-ButterKnife-Injections.jar')
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+    implementation 'androidx.multidex:multidex:2.0.1'
+
+    //cek updte playstore
+    implementation 'com.github.javiersantos:AppUpdater:2.7'
+
+    //shimer
+    implementation 'com.facebook.shimmer:shimmer:0.1.0@aar'
+
+    //grafik
+    implementation 'com.github.AnyChart:AnyChart-Android:1.1.2'
+
+
+    //kurmi permision
+    implementation 'com.karumi:dexter:6.2.2'
+
+    //compres image
+    implementation 'id.zelory:compressor:2.1.1'
+}

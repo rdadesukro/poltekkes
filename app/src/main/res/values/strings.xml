@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">poltekkes</string>
+    <string name="password"><u>Lupa Password ???</u></string>
+    <string name="daftar"><u> Tidak punya akun ? Klik disni</u></string>
+</resources>
