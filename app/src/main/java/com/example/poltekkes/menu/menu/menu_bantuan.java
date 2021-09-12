@@ -1,4 +1,4 @@
-package com.example.poltekkes.menu;
+package com.example.poltekkes.menu.menu;
 
 import androidx.appcompat.app.AppCompatActivity;
 

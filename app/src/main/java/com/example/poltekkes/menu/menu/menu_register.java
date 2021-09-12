@@ -1,4 +1,4 @@
-package com.example.poltekkes.menu;
+package com.example.poltekkes.menu.menu;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,12 +6,11 @@ import android.os.Bundle;
 
 import com.example.poltekkes.R;
 
-public class menu_login extends AppCompatActivity {
+public class menu_register extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.menu_login);
-        getSupportActionBar().hide();
+        setContentView(R.layout.menu_register);
     }
 }

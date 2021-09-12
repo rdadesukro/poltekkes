@@ -12,14 +12,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat"
         android:usesCleartextTraffic="true">
-        <activity android:name=".menu.menu_register"></activity>
-        <activity android:name=".menu.menu_login" />
+        <activity android:name=".menu.menu.menu_register"></activity>
+        <activity android:name=".menu.menu.menu_login" />
         <activity
-            android:name=".menu.menu_utama"
+            android:name=".menu.menu.menu_utama"
             android:theme="@style/Theme.AppCompat.DayNight" />
-        <activity android:name=".menu.menu_materi" />
-        <activity android:name=".menu.menu_bantuan" />
-        <activity android:name=".menu.menu_pembuka">
+        <activity android:name=".menu.menu.menu_materi" />
+        <activity android:name=".menu.menu.menu_bantuan" />
+        <activity android:name=".menu.menu.menu_pembuka">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
