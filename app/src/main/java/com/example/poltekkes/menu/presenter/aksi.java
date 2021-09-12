@@ -58,6 +58,7 @@ public class aksi {
                 try {
                     //kode = response.body().getSuccess();
                     Log.i("isi_kode", "onResponse: "+kode);
+                    //adasdas
 
 
                     if (response.body().isSuccess()==true) {
