@@ -1,7 +1,7 @@
 package com.example.poltekkes.view;
 
 
-import com.example.poltekkes.menu.model.pertanyaan.DataItem_pertanyaan;
+import com.example.poltekkes.model.pertanyaan.DataItem_pertanyaan;
 
 import java.util.List;
 

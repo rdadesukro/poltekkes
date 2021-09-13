@@ -1,4 +1,4 @@
-package com.example.poltekkes.menu.menu;
+package com.example.poltekkes.menu;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -15,7 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.poltekkes.R;
-import com.example.poltekkes.menu.presenter.aksi;
+import com.example.poltekkes.presenter.aksi;
 import com.github.squti.guru.Guru;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.material.bottomsheet.BottomSheetDialog;

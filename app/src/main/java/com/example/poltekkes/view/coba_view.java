@@ -1,5 +1,4 @@
-package com.example.poltekkes.menu.view;
-
+package com.example.poltekkes.view;
 
 
 import java.util.List;

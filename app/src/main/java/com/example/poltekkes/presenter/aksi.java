@@ -1,24 +1,22 @@
-package com.example.poltekkes.menu.presenter;
+package com.example.poltekkes.presenter;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
 import android.util.Log;
 
-import com.example.poltekkes.menu.menu.menu_login;
-import com.example.poltekkes.menu.menu.menu_utama;
-import com.example.poltekkes.menu.model.login.Response_login;
-import com.example.poltekkes.menu.server.ApiRequest;
-import com.example.poltekkes.menu.server.Retroserver_server_AUTH;
-import com.example.poltekkes.menu.view.coba_view;
+import com.example.poltekkes.server.ApiRequest;
+import com.example.poltekkes.menu.menu_login;
+import com.example.poltekkes.menu.menu_utama;
+import com.example.poltekkes.model.login.Response_login;
+import com.example.poltekkes.server.Retroserver_server_AUTH;
+import com.example.poltekkes.view.coba_view;
 import com.github.squti.guru.Guru;
 import com.jeevandeshmukh.glidetoastlib.GlideToast;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
 import maes.tech.intentanim.CustomIntent;
-import okhttp3.MultipartBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;

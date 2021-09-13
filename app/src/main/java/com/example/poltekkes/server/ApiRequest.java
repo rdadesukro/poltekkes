@@ -1,9 +1,10 @@
-package com.example.poltekkes.menu.server;
+package com.example.poltekkes.server;
 
 
 
-import com.example.poltekkes.menu.model.action.Response_action;
-import com.example.poltekkes.menu.model.login.Response_login;
+import com.example.poltekkes.model.action.Response_action;
+import com.example.poltekkes.model.login.Response_login;
+import com.example.poltekkes.model.pertanyaan.Response_pertanyaan;
 
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
@@ -14,6 +15,8 @@ import retrofit2.http.GET;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.Part;
+import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 
 public interface ApiRequest {
@@ -136,6 +139,13 @@ public interface ApiRequest {
     Call<Response_login> login(
             @Field("username") String username,
             @Field("password") String password);
+
+
+
+
+    @GET("penilaian/{tgl_lahir}")
+    Call<Response_pertanyaan> get_pertanyaan(
+            @Path("tgl_lahir") String tgl_lahir);
 
 
 //    @POST("get_data_optik")

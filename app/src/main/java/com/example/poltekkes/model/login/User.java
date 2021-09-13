@@ -1,4 +1,4 @@
-package com.example.poltekkes.menu.model.login;
+package com.example.poltekkes.model.login;
 
 import com.google.gson.annotations.SerializedName;
 

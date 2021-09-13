@@ -3,34 +3,22 @@ package com.example.poltekkes.adapter;
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.content.Context;
-import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.CountDownTimer;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.DataSource;
-import com.bumptech.glide.load.engine.GlideException;
-import com.bumptech.glide.request.RequestListener;
-import com.bumptech.glide.request.target.Target;
 import com.example.poltekkes.R;
-import com.example.poltekkes.menu.model.pertanyaan.DataItem_pertanyaan;
-import com.github.squti.guru.Guru;
+import com.example.poltekkes.model.pertanyaan.DataItem_pertanyaan;
 
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import maes.tech.intentanim.CustomIntent;
 
 
 public class adapter_pertanyaan extends RecyclerView.Adapter<adapter_pertanyaan.HolderData> {
@@ -54,15 +42,7 @@ public class adapter_pertanyaan extends RecyclerView.Adapter<adapter_pertanyaan.
     public interface OnImageClickListener {
         void onImageClick(int id,
                           String nama,
-                          String alamat,
-                          String phone,
-                          String foto,
-                          double lat,
-                          double lng,
-                          String status,
-                          String status_bpsjs,
-                          String informasi,
-                          String jam);
+                          String alamat);
     }
 
 

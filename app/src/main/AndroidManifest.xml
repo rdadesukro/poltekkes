@@ -12,24 +12,26 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat"
         android:usesCleartextTraffic="true">
-        <activity android:name=".menu.menu.menu_input_data"
-            android:windowSoftInputMode="stateVisible|adjustResize"
+        <activity android:name=".menu.menu_pertanyaan"></activity>
+        <activity
+            android:name=".menu.menu_input_data"
             android:label="Inpu Data"
-            android:theme="@style/Theme.AppCompat.Light"></activity>
-        <activity
-            android:name=".menu.menu.menu_register"
             android:theme="@style/Theme.AppCompat.Light"
             android:windowSoftInputMode="stateVisible|adjustResize" />
         <activity
-            android:name=".menu.menu.menu_login"
+            android:name=".menu.menu_register"
             android:theme="@style/Theme.AppCompat.Light"
             android:windowSoftInputMode="stateVisible|adjustResize" />
         <activity
-            android:name=".menu.menu.menu_utama"
+            android:name=".menu.menu_login"
+            android:theme="@style/Theme.AppCompat.Light"
+            android:windowSoftInputMode="stateVisible|adjustResize" />
+        <activity
+            android:name=".menu.menu_utama"
             android:theme="@style/Theme.AppCompat.DayNight" />
-        <activity android:name=".menu.menu.menu_materi" />
-        <activity android:name=".menu.menu.menu_bantuan" />
-        <activity android:name=".menu.menu.menu_pembuka">
+        <activity android:name=".menu.menu_materi" />
+        <activity android:name=".menu.menu_bantuan" />
+        <activity android:name=".menu.menu_pembuka">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

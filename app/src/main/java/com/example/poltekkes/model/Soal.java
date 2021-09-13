@@ -1,4 +1,4 @@
-package com.example.poltekkes.menu.model;
+package com.example.poltekkes.model;
 
 public class Soal {
 	private String soal_id;

@@ -1,9 +1,8 @@
-package com.example.poltekkes.menu.menu;
+package com.example.poltekkes.menu;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -12,12 +11,11 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.poltekkes.R;
-import com.example.poltekkes.menu.presenter.aksi;
+import com.example.poltekkes.presenter.aksi;
 import com.github.squti.guru.Guru;
 import com.mobsandgeeks.saripaar.ValidationError;
 import com.mobsandgeeks.saripaar.Validator;
 import com.mobsandgeeks.saripaar.annotation.ConfirmPassword;
-import com.mobsandgeeks.saripaar.annotation.Email;
 import com.mobsandgeeks.saripaar.annotation.NotEmpty;
 import com.mobsandgeeks.saripaar.annotation.Password;
 
@@ -26,7 +24,6 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import cn.pedant.SweetAlert.SweetAlertDialog;
 
 public class menu_register  extends AppCompatActivity implements Validator.ValidationListener {
 

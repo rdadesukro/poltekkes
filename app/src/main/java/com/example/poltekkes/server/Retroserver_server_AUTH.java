@@ -1,4 +1,4 @@
-package com.example.poltekkes.menu.server;
+package com.example.poltekkes.server;
 
 
 import com.github.squti.guru.Guru;
@@ -14,9 +14,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class Retroserver_server_AUTH {
-    private  static  final String base_url = "https://lmproject.my.id/api/user/";
-
-    private static Retrofit retrofit;
+    private  static  final String base_url = "https://lmproject.my.id/api/";
 
 
     public static Retrofit getClient() {

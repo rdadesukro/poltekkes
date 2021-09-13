@@ -1,6 +1,8 @@
-package com.example.poltekkes.menu.menu;
+package com.example.poltekkes.menu;
 
+import android.app.Activity;
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -10,10 +12,13 @@ import android.widget.EditText;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.poltekkes.R;
+import com.github.squti.guru.Guru;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
+
+import maes.tech.intentanim.CustomIntent;
 
 public class menu_input_data extends AppCompatActivity {
 
@@ -53,6 +58,15 @@ public class menu_input_data extends AppCompatActivity {
                 new DatePickerDialog(menu_input_data.this, date, myCalendar
                         .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
                         myCalendar.get(Calendar.DAY_OF_MONTH)).show();
+            }
+        });
+        btnSimpan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Guru.putString("tgl_lahir", editTgl.getText().toString().trim());
+                Intent  goInput = new Intent(menu_input_data.this, menu_pertanyaan.class);
+                startActivity(goInput);
+                CustomIntent.customType(menu_input_data.this, "fadein-to-fadeout");
             }
         });
     }

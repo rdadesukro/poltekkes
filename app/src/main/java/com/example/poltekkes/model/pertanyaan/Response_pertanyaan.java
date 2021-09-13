@@ -1,4 +1,4 @@
-package com.example.poltekkes.menu.model.pertanyaan;
+package com.example.poltekkes.model.pertanyaan;
 
 import java.util.List;
 import com.google.gson.annotations.SerializedName;

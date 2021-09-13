@@ -1,4 +1,4 @@
-package com.example.poltekkes.menu.menu;
+package com.example.poltekkes.menu;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
@@ -12,7 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
 import com.example.poltekkes.R;
-import com.example.poltekkes.menu.presenter.aksi;
+import com.example.poltekkes.presenter.aksi;
 import com.github.squti.guru.Guru;
 import com.smarteist.autoimageslider.SliderView;
 
