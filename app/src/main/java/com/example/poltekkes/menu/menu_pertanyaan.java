@@ -32,10 +32,11 @@ public class menu_pertanyaan extends AppCompatActivity implements pertanyaan_vie
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menu_pertanyaan);
+        initView();
         pertanyaan = new pertanyaan(this,menu_pertanyaan.this);
         tgl_lahir =  Guru.getString("tgl_lahir", "false");
         pertanyaan.get_pertanyan(tgl_lahir);
-        initView();
+
     }
 
     private void initView() {
@@ -53,7 +54,7 @@ public class menu_pertanyaan extends AppCompatActivity implements pertanyaan_vie
     public void pertanyaan(List<DataItem_pertanyaan> pertanyaan) {
         try {
             //  progKes.setVisibility(View.VISIBLE);
-            Log.i("isi_event", "event: " + pertanyaan.size());
+            Log.i("cek_data_pertanyaan", "event: " + pertanyaan.size());
             adapter_pertanyaan = new adapter_pertanyaan(menu_pertanyaan.this, pertanyaan, 1, this::onImageClick);
             rvAku.setLayoutManager(new LinearLayoutManager(menu_pertanyaan.this, LinearLayoutManager.VERTICAL, false));
             rvAku.setAdapter(adapter_pertanyaan);

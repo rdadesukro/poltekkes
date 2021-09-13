@@ -70,10 +70,10 @@ public class pertanyaan {
                 Log.i("cek_error", "onFailure: " + t);
                 if (t instanceof IOException) {
 
-
+                    Log.i("cek_error", "onFailure: " + t);
                 } else {
 
-
+                    Log.i("cek_error", "onFailure: " + t);
                 }
             }
         });
