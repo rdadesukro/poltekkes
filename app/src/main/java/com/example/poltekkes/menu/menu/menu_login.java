@@ -140,4 +140,8 @@ public class menu_login extends AppCompatActivity implements Validator.Validatio
     public void onPointerCaptureChanged(boolean hasCapture) {
 
     }
+    @Override
+    public void onBackPressed() {
+        finishAffinity();
+    }
 }

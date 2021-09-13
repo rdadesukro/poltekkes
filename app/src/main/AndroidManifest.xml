@@ -12,8 +12,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat"
         android:usesCleartextTraffic="true">
-        <activity android:name=".menu.menu.menu_register"></activity>
-        <activity android:name=".menu.menu.menu_login" />
+        <activity android:name=".menu.menu.menu_input_data"
+            android:windowSoftInputMode="stateVisible|adjustResize"
+            android:label="Inpu Data"
+            android:theme="@style/Theme.AppCompat.Light"></activity>
+        <activity
+            android:name=".menu.menu.menu_register"
+            android:theme="@style/Theme.AppCompat.Light"
+            android:windowSoftInputMode="stateVisible|adjustResize" />
+        <activity
+            android:name=".menu.menu.menu_login"
+            android:theme="@style/Theme.AppCompat.Light"
+            android:windowSoftInputMode="stateVisible|adjustResize" />
         <activity
             android:name=".menu.menu.menu_utama"
             android:theme="@style/Theme.AppCompat.DayNight" />

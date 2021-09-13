@@ -1,9 +1,12 @@
 package com.example.poltekkes.menu.menu;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
@@ -17,6 +20,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import cn.pedant.SweetAlert.SweetAlertDialog;
+import maes.tech.intentanim.CustomIntent;
 
 public class menu_utama extends AppCompatActivity {
 
@@ -30,6 +34,9 @@ public class menu_utama extends AppCompatActivity {
     SliderView bener;
 
     ProgressDialog progressDialog;
+    String nama, nim;
+    private TextView txtNama;
+    private TextView txtNis;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,12 +44,23 @@ public class menu_utama extends AppCompatActivity {
         setContentView(R.layout.menu_utama);
         ButterKnife.bind(this);
         getSupportActionBar().hide();
+        nama = Guru.getString("nama", "false");
+        nim = Guru.getString("nim", "false");
+        initView();
+        txtNama.setText(nama);
+        txtNis.setText("NIM : "+nim);
     }
 
-    @OnClick({R.id.card_petujuk, R.id.card_history, R.id.card_materi, R.id.card_keluar})
+    @OnClick({R.id.card_petujuk, R.id.card_history, R.id.card_materi, R.id.card_keluar, R.id.card_spk})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.card_petujuk:
+                break;
+            case R.id.card_spk:
+
+                CustomIntent.customType(this, "fadein-to-fadeout");
+                Intent intent = new Intent((Activity) this, menu_input_data.class);
+                startActivity(intent);
                 break;
             case R.id.card_history:
                 break;
@@ -57,10 +75,10 @@ public class menu_utama extends AppCompatActivity {
                     @Override
                     public void onClick(SweetAlertDialog sweetAlertDialog) {
                         sweetAlertDialog.dismissWithAnimation();
-                        aksi countryPresenter = new aksi(null,menu_utama.this);
+                        aksi countryPresenter = new aksi(null, menu_utama.this);
                         countryPresenter.logout(progressDialog);
                         Guru.putString("role", "1");
-                        Log.i("isi_token", "onViewClicked: "+Guru.getString("token_login", "false"));
+                        Log.i("isi_token", "onViewClicked: " + Guru.getString("token_login", "false"));
 //                        countryPresenter.hapus_token(Guru.getString("token_login", "false"));
 
 
@@ -77,5 +95,14 @@ public class menu_utama extends AppCompatActivity {
 
                 break;
         }
+    }
+
+    private void initView() {
+        txtNama = findViewById(R.id.txt_nama);
+        txtNis = findViewById(R.id.txt_nis);
+    }
+    @Override
+    public void onBackPressed() {
+        finishAffinity();
     }
 }

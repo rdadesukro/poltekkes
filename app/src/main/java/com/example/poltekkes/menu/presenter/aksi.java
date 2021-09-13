@@ -61,7 +61,7 @@ public class aksi {
                     //adasdas
 
 
-                    if (response.body().isSuccess()==true) {
+                    if (response.isSuccessful()) {
                         finalPDialog.dismiss();
                         String nim = String.valueOf(response.body().getData().getUser().getNim());
                         String nama = String.valueOf(response.body().getData().getUser().getNamaLengkap());
@@ -100,55 +100,53 @@ public class aksi {
 
     }
 //
-//    public void register(String nik,String username,String password, SweetAlertDialog pDialog,String email,String alamat,String telpon,int role ) {
-//        pDialog = new SweetAlertDialog((Activity) ctx, SweetAlertDialog.PROGRESS_TYPE);
-//        pDialog.getProgressHelper().setBarColor(Color.parseColor("#3395ff"));
-//        pDialog.setTitleText("Simpan Data");
-//        pDialog.setContentText("Mohon tunggu sedang memproses...");
-//        pDialog.setCancelable(false);
-//        pDialog.show();
-//
-//
-//        SweetAlertDialog finalPDialog = pDialog;
-//        ApiRequest api = Retroserver_server_AUTH.getClient().create(ApiRequest.class);
-//        Call<Response_login> sendbio = api.register(nik,username,email,alamat,telpon,role,password,password);
-//
-//        sendbio.enqueue(new Callback<Response_login>() {
-//            @Override
-//            public void onResponse(Call<Response_login> call, Response<Response_login> response) {
-//
-//                try {
-//                    String kode = response.body().getKode();
-//                    String role = String.valueOf(response.body().getRole());
-//                    Log.i("role_kode", "onResponse: " + role);
-//
-//                    //role = 1 = pemilik
-//                    //role = 2 = usert
-//                    if (kode.equals("1")) {
-//                        finalPDialog.dismissWithAnimation();
-////                    login_new(email,password,finalPDialog);
-//                        dialog_berhasil_register("Berhasil",response.body().getMessage());
-//                    } else {
-//                        finalPDialog.dismissWithAnimation();
-//                        dialog_gagal("Gagal",response.body().getMessage());
-//                    }
-//                }catch (Exception e){
-//                    Log.i("cek_error_login", "onResponse: "+e);
-//                    finalPDialog.dismiss();
-//                }
-//
-//
-//
-//            }
-//            @Override
-//            public void onFailure(Call<Response_login> call, Throwable t) {
-//                Log.e("cek_eror_login", "onFailure: "+t);
-//
-//                Log.d("RETRO", "Falure : " + "Gagal Mengirim Request");
-//            }
-//        });
-//
-//    }
+    public void register(String nim,String username,String nama_lengkap,String password, ProgressDialog pDialog) {
+        pDialog = new ProgressDialog(ctx);
+        pDialog.setMessage("Logging In...");
+        pDialog.setCancelable(false);
+        pDialog.setCanceledOnTouchOutside(false);
+        pDialog.show();
+        ProgressDialog finalPDialog = pDialog;
+        ApiRequest api = Retroserver_server_AUTH.getClient().create(ApiRequest.class);
+        Call<Response_login> sendbio = api.register(nim,
+                username,nama_lengkap,password,password);
+
+        sendbio.enqueue(new Callback<Response_login>() {
+            @Override
+            public void onResponse(Call<Response_login> call, Response<Response_login> response) {
+
+                try {
+                   // String kode = response.body().getKode();
+                   // String role = String.valueOf(response.body().getRole());
+                   // Log.i("role_kode", "onResponse: " + role);
+
+                    //role = 1 = pemilik
+                    //role = 2 = usert
+                    if (response.isSuccessful()) {
+                        finalPDialog.dismiss();
+//                    login_new(email,password,finalPDialog);
+                        dialog_berhasil_register("Berhasil",response.body().getMessage());
+                    } else {
+                        finalPDialog.dismiss();
+                        dialog_gagal("Gagal",response.body().getMessage());
+                    }
+                }catch (Exception e){
+                    Log.i("cek_error_login", "onResponse: "+e);
+                    finalPDialog.dismiss();
+                }
+
+
+
+            }
+            @Override
+            public void onFailure(Call<Response_login> call, Throwable t) {
+                Log.e("cek_eror_login", "onFailure: "+t);
+
+                Log.d("RETRO", "Falure : " + "Gagal Mengirim Request");
+            }
+        });
+
+    }
 //
 
 

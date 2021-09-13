@@ -36,18 +36,33 @@
                     android:layout_height="match_parent">
 
                     <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/ddsada"
+                        android:id="@+id/klk"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
                         android:textColorHint="@color/grey_1000"
-                        app:layout_constraintEnd_toEndOf="@+id/ddsdadasda"
-                        app:layout_constraintStart_toStartOf="@+id/ddsdadasda"
-                        app:layout_constraintTop_toBottomOf="@+id/ddsdadasda"
-                        tools:ignore="MissingConstraints"/>
+                        app:layout_constraintEnd_toEndOf="@+id/newfsdsdff"
+                        app:layout_constraintStart_toStartOf="@+id/newfsdsdff"
+                        app:layout_constraintTop_toBottomOf="@+id/jjj"
+                        tools:ignore="MissingConstraints">
+
+                        <EditText
+                            android:id="@+id/edit_nama"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_50sdp"
+                            android:layout_centerHorizontal="true"
+                            android:layout_centerVertical="true"
+                            android:ems="10"
+                            android:hint="Nama Lengkap"
+                            android:inputType="textPersonName"
+                            android:textColor="#000000"
+                            android:textColorHint="@color/grey_1000"
+                            android:textSize="@dimen/_12sdp" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/ddsdadasda"
+                        android:id="@+id/jjj"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
@@ -75,9 +90,9 @@
                     <Button
                         android:id="@+id/btn_register"
                         android:layout_width="0dp"
-                        android:layout_height="@dimen/_50sdp"
+                        android:layout_height="wrap_content"
                         android:layout_marginTop="32dp"
-                        android:layout_marginBottom="32dp"
+                        android:layout_marginBottom="8dp"
                         android:background="@color/orange_900"
                         android:text="Register"
                         android:textColor="#FFFFFF"
@@ -120,9 +135,9 @@
                         android:layout_height="76dp"
                         android:layout_marginTop="8dp"
                         android:textColorHint="@color/grey_1000"
-                        app:layout_constraintEnd_toEndOf="@+id/newfsdsdff"
-                        app:layout_constraintStart_toStartOf="@+id/newfsdsdff"
-                        app:layout_constraintTop_toTopOf="@+id/ddsada"
+                        app:layout_constraintEnd_toEndOf="@+id/klk"
+                        app:layout_constraintStart_toStartOf="@+id/klk"
+                        app:layout_constraintTop_toBottomOf="@+id/klk"
                         app:passwordToggleEnabled="true"
                         tools:ignore="MissingConstraints">
 
@@ -169,7 +184,7 @@
                         tools:ignore="MissingConstraints">
 
                         <EditText
-                            android:id="@+id/edit_nik"
+                            android:id="@+id/edit_nim"
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/_50sdp"
                             android:layout_centerHorizontal="true"

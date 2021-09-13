@@ -32,14 +32,11 @@ public interface ApiRequest {
     @FormUrlEncoded
     @POST("register")
     Call<Response_login> register(
-            @Field("nama") String name,
+            @Field("nim") String nim,
             @Field("username") String username,
-            @Field("email") String email,
-            @Field("alamat") String alamat,
-            @Field("telpon") String telpon,
-            @Field("role") int role,
+            @Field("nama_lengkap") String nama_lengkap,
             @Field("password") String password,
-            @Field("password_confirmation") String password_confirmation);
+            @Field("konfirmasi_password") String konfirmasi_password);
 
     @Multipart
     @POST("add_optik")
