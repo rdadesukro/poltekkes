@@ -12,13 +12,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat"
         android:usesCleartextTraffic="true">
-        <activity android:name=".menu.menu_history"></activity>
+        <activity android:name=".menu.menu_history"
+            android:label="History"
+            android:theme="@style/Theme.AppCompat.Light"></activity>
         <activity
             android:name=".menu.menu_pertanyaan"
+            android:label="Pertanyaan"
             android:theme="@style/Theme.AppCompat.Light" />
         <activity
             android:name=".menu.menu_input_data"
-            android:label="Inpu Data"
+            android:label="Input Data"
             android:theme="@style/Theme.AppCompat.Light"
             android:windowSoftInputMode="stateVisible|adjustResize" />
         <activity

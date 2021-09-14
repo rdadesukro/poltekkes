@@ -37,6 +37,15 @@ public interface ApiRequest {
             @Field("password") String password,
             @Field("konfirmasi_password") String konfirmasi_password);
 
+    @FormUrlEncoded
+    @POST("register")
+    Call<Response_action> simpan_pertanyaan(
+            @Field("nama") String nama,
+            @Field("berat") String berat,
+            @Field("panjang") String panjang,
+            @Field("jawaban") String jawaban,
+            @Field("rentang_usia_bayi") String rentang_usia_bayi);
+
 
     @FormUrlEncoded
     @POST("riset_password")

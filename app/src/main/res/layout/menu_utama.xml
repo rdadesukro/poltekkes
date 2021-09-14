@@ -9,47 +9,55 @@
     <View
         android:id="@+id/view2"
         android:layout_width="wrap_content"
-        android:layout_height="80dp"
-        android:background="@color/orange_700"
+        android:layout_height="60dp"
+        android:background="@color/orange_500"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:fontFamily="@font/opensansbold"
-        android:text="Slamat Datang"
-        android:textColor="@color/putih"
-        android:textSize="20dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/view2" />
-
-    <TextView
         android:id="@+id/txt_nama"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:capitalize="characters"
         android:fontFamily="@font/opensansbold"
         android:text="Budi Sudarsono"
-        android:textSize="@dimen/_12sdp"
+        android:textAllCaps="true"
         android:textColor="@color/putih"
-        app:layout_constraintStart_toStartOf="@+id/textView"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        android:textSize="@dimen/_12sdp"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:scaleType="centerInside"
+        android:src="@drawable/logo_white"
+        app:layout_constraintBottom_toBottomOf="@+id/view2"
+        app:layout_constraintEnd_toStartOf="@+id/guideline"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/txt_nis"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
         android:fontFamily="@font/opensansregular"
         android:text="TextView"
         android:textColor="@color/putih"
         android:textSize="@dimen/_9sdp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/txt_nama"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/view2"
+        app:layout_constraintEnd_toEndOf="@+id/txt_nama"
         app:layout_constraintTop_toBottomOf="@+id/txt_nama" />
 
     <androidx.core.widget.NestedScrollView
@@ -381,5 +389,12 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.core.widget.NestedScrollView>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="154dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

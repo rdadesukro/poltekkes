@@ -17,6 +17,7 @@ public interface pertanyaan_view {
 
     void pertanyaan(List<DataItem_pertanyaan> pertanyaan);
     void status(String status,String pesan);
+    void rentang_usia(String rentang_usi);
 
 
 }

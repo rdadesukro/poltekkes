@@ -45,7 +45,7 @@ public class menu_pertanyaan extends AppCompatActivity implements pertanyaan_vie
     private ProgressBar progressBar2;
     private adapter_pertanyaan adapter_pertanyaan;
     com.example.poltekkes.presenter.pertanyaan pertanyaan;
-    String tgl_lahir;
+    String tgl_lahir,nama,berat,panjang,rentang_usia;
     private TextView txtDataAnak;
     private Button btnSimpan;
     BottomSheetDialog bottom_dialog;
@@ -58,38 +58,18 @@ public class menu_pertanyaan extends AppCompatActivity implements pertanyaan_vie
         initView();
         pertanyaan = new pertanyaan(this, menu_pertanyaan.this);
         tgl_lahir = Guru.getString("tgl_lahir", "false");
+        berat = Guru.getString("berat", "false");
+        panjang = Guru.getString("panjang", "false");
+        nama = Guru.getString("nama", "false");
         Log.i("tgl_lahir", "onCreate: " + tgl_lahir);
         pertanyaan.get_pertanyan(tgl_lahir);
+        txtDataAnak.setText("Nama anak "+nama+" dengan umur "+rentang_usia+","+" berat "+berat+" dan panjang "+panjang );
 
         btnSimpan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                bottom_dialog = new BottomSheetDialog(menu_pertanyaan.this);
-                bottom_dialog.setTitle("Login");
-                bottom_dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-                bottom_dialog.setContentView(R.layout.dialog_hasil);
-                bottom_dialog.setCancelable(false);
+                pertanyaan.simpan_pertanyaan(String.valueOf(jawaban),rentang_usia,nama,berat,panjang);
 
-                WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
-//                lp.copyFrom(dialog.getWindow().getAttributes());
-                bottom_dialog.getWindow().setAttributes(lp);
-                bottom_dialog.getWindow().addFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
-                bottom_dialog.getWindow().setDimAmount(0.5f);
-                lp.width = WindowManager.LayoutParams.WRAP_CONTENT;
-                lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
-
-
-                Button pgl = (Button) bottom_dialog.findViewById(R.id.btn_pngggil);
-
-                pgl.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-
-                    }
-                });
-
-
-                bottom_dialog.show();
             }
         });
 
@@ -112,8 +92,9 @@ public class menu_pertanyaan extends AppCompatActivity implements pertanyaan_vie
     @Override
     public void pertanyaan(List<DataItem_pertanyaan> pertanyaan) {
         try {
+            String s1 ="tidak";
             for (int i = 0; i < pertanyaan.size(); i++) {
-                jawaban.add("tidak");
+                jawaban.add(s1);
             }
             Log.i("isi_jawaban", "pertanyaan: "+jawaban);
             Log.i("cek_data_pertanyaan", "event: " + pertanyaan.size());
@@ -136,6 +117,42 @@ public class menu_pertanyaan extends AppCompatActivity implements pertanyaan_vie
 
     @Override
     public void status(String status, String pesan) {
+        if (status.equals("1")){
+            bottom_dialog = new BottomSheetDialog(menu_pertanyaan.this);
+            bottom_dialog.setTitle("Login");
+            bottom_dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+            bottom_dialog.setContentView(R.layout.dialog_hasil);
+            bottom_dialog.setCancelable(false);
+
+            WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
+//                lp.copyFrom(dialog.getWindow().getAttributes());
+            bottom_dialog.getWindow().setAttributes(lp);
+            bottom_dialog.getWindow().addFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
+            bottom_dialog.getWindow().setDimAmount(0.5f);
+            lp.width = WindowManager.LayoutParams.WRAP_CONTENT;
+            lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
+
+
+            Button pgl = (Button) bottom_dialog.findViewById(R.id.btn_pngggil);
+
+            pgl.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                }
+            });
+
+            bottom_dialog.show();
+        }else {
+
+        }
+
+    }
+
+    @Override
+    public void rentang_usia(String rentang_usi) {
+        rentang_usi=rentang_usia;
+        Log.i("rentang_usia", "rentang_usia: "+rentang_usi);
 
     }
 }

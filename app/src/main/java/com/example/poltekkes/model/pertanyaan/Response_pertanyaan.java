@@ -56,7 +56,8 @@ public class Response_pertanyaan {
 			"Response{" + 
 			"data = '" + data + '\'' + 
 			",success = '" + success + '\'' + 
-			",message = '" + message + '\'' + 
-			"}";
+			",message = '" + message + '\'' +
+					",rentang_usia_bayi = '" + rentang_usia_bayi + '\'' +
+					"}";
 		}
 }

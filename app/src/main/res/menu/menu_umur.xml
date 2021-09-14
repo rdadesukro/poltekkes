@@ -1,0 +1,21 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+
+    <item
+        android:id="@+id/dokter"
+        android:title="0-3 Bulan"
+        app:showAsAction="never"
+        />
+    <item
+        android:id="@+id/apotik"
+        android:title="Dokter"
+        app:showAsAction="never"
+        />
+    <item
+        android:id="@+id/toko_obat"
+        android:title="Toko Obat"
+        app:showAsAction="never"
+        />
+</menu>
