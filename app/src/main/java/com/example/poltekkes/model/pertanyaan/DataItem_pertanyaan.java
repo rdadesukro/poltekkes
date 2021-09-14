@@ -7,6 +7,10 @@ public class DataItem_pertanyaan {
 	@SerializedName("text")
 	private String text;
 
+
+
+
+
 	public void setText(String text){
 		this.text = text;
 	}

@@ -1,36 +1,24 @@
-package com.example.poltekkes.model.pertanyaan;
+package com.example.poltekkes.model.slider;
 
 import java.util.List;
 import com.google.gson.annotations.SerializedName;
 
-public class Response_pertanyaan {
+public class Response_slider {
 
 	@SerializedName("data")
-	private List<DataItem_pertanyaan> data;
+	private List<DataItem_slider> data;
 
 	@SerializedName("success")
 	private boolean success;
 
-
-	public String getRentang_usia_bayi() {
-		return rentang_usia_bayi;
-	}
-
-	public void setRentang_usia_bayi(String rentang_usia_bayi) {
-		this.rentang_usia_bayi = rentang_usia_bayi;
-	}
-
-	@SerializedName("rentang_usia_bayi")
-	private String rentang_usia_bayi;
-
 	@SerializedName("message")
 	private String message;
 
-	public void setData(List<DataItem_pertanyaan> data){
+	public void setData(List<DataItem_slider> data){
 		this.data = data;
 	}
 
-	public List<DataItem_pertanyaan> getData(){
+	public List<DataItem_slider> getData(){
 		return data;
 	}
 

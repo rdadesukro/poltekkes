@@ -79,7 +79,7 @@ public class menu_input_data extends AppCompatActivity {
         editTgl = findViewById(R.id.edit_tgl);
     }
     private void updateLabel() {
-        String myFormat = "MM-dd-yy"; //In which you need put here
+        String myFormat = "dd-MM-yyyy"; //In which you need put here
         SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
 
         editTgl.setText(sdf.format(myCalendar.getTime()));

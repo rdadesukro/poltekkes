@@ -10,7 +10,7 @@
         android:id="@+id/view2"
         android:layout_width="wrap_content"
         android:layout_height="80dp"
-        android:background="@color/grey_40"
+        android:background="@color/orange_700"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -47,7 +47,8 @@
         android:fontFamily="@font/opensansregular"
         android:text="TextView"
         android:textColor="@color/putih"
-        android:textSize="@dimen/_8sdp"
+        android:textSize="@dimen/_9sdp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/txt_nama"
         app:layout_constraintTop_toBottomOf="@+id/txt_nama" />
 
@@ -113,7 +114,7 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:srcCompat="@drawable/ic_launcher_foreground" />
+                        app:srcCompat="@drawable/keluar" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
 
@@ -196,7 +197,7 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:srcCompat="@drawable/ic_launcher_foreground" />
+                        app:srcCompat="@drawable/petunjuk" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
 
@@ -242,7 +243,7 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:srcCompat="@drawable/ic_launcher_foreground"
+                        app:srcCompat="@drawable/history"
                         tools:ignore="DuplicateIds" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
@@ -287,7 +288,7 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:srcCompat="@drawable/ic_launcher_foreground" />
+                        app:srcCompat="@drawable/spk" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
 
@@ -331,7 +332,7 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:srcCompat="@drawable/ic_launcher_foreground"
+                        app:srcCompat="@drawable/materi"
                         tools:ignore="DuplicateIds" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>

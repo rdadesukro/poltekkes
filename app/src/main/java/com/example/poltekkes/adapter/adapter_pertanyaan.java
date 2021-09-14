@@ -5,20 +5,26 @@ import android.annotation.TargetApi;
 import android.content.Context;
 import android.os.Build;
 import android.os.CountDownTimer;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.poltekkes.R;
 import com.example.poltekkes.model.pertanyaan.DataItem_pertanyaan;
+import com.github.squti.guru.Guru;
 
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+
+import static com.example.poltekkes.menu.menu_pertanyaan.jawaban;
 
 
 public class adapter_pertanyaan extends RecyclerView.Adapter<adapter_pertanyaan.HolderData> {
@@ -64,7 +70,9 @@ public class adapter_pertanyaan extends RecyclerView.Adapter<adapter_pertanyaan.
     public void onBindViewHolder(final HolderData holder, int position) {
         final DataItem_pertanyaan dm = mList.get(position);
         holder.txt_pertanyaan.setText(dm.getText());
+        holder.txt_no.setText(position+1+".");
         holder.dm = dm;
+        holder.pos =position;
         setAnimation(holder.itemView,position);
 
     }
@@ -80,7 +88,15 @@ public class adapter_pertanyaan extends RecyclerView.Adapter<adapter_pertanyaan.
         @BindView(R.id.txt_pertanyaan)
         TextView txt_pertanyaan;
 
+        @BindView(R.id.txt_no)
+        TextView txt_no;
+
+        @BindView(R.id.cex_jawaban)
+        CheckBox cex_jawaban;
+
         DataItem_pertanyaan dm;
+
+        int pos;
 
 
         public HolderData(View v) {
@@ -89,6 +105,7 @@ public class adapter_pertanyaan extends RecyclerView.Adapter<adapter_pertanyaan.
             v.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View v) {
+
 
 //                   String role = Guru.getString("role", "false");
 //                    if (role.equals("user")){
@@ -103,18 +120,19 @@ public class adapter_pertanyaan extends RecyclerView.Adapter<adapter_pertanyaan.
                 }
             });
 
-            v.setOnClickListener(new View.OnClickListener() {
+            cex_jawaban.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-//                    onImageClickListener.onImageClick(String.valueOf(dm.getId()), String.valueOf(dm.getDataibuId()));
-//                        if (dm.getStatus().equals("buka")){
-//                            Intent goInput = new Intent(ctx, menu_detail.class);
-//                            Guru.putString("id_optik", String.valueOf(dm.getId()));
-//                            ctx.startActivity(goInput);
-//                            CustomIntent.customType(ctx, "bottom-to-up");
-//                        }else {
-//                            Toast.makeText(ctx, "MAAF OPTIK TUTUP", Toast.LENGTH_SHORT).show();
-//                        }
+                    if (cex_jawaban.isChecked())
+                       //  jawaban.set(pos,"ya");
+                       onImageClickListener.onImageClick(pos,"ya"," ");
+//
+
+                    else
+                      //  jawaban.set(pos,"tidak");
+                        onImageClickListener.onImageClick(pos,"tidak"," ");
+                     Log.i("isi_jawaban", "onClick: "+jawaban);
+
 
 
                 }

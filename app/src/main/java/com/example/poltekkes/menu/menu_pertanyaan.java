@@ -1,9 +1,17 @@
 package com.example.poltekkes.menu;
 
+import android.content.Intent;
+import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -16,26 +24,74 @@ import com.example.poltekkes.model.pertanyaan.DataItem_pertanyaan;
 import com.example.poltekkes.presenter.pertanyaan;
 import com.example.poltekkes.view.pertanyaan_view;
 import com.github.squti.guru.Guru;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
+import com.google.android.material.button.MaterialButton;
+import com.smarteist.autoimageslider.IndicatorAnimations;
+import com.smarteist.autoimageslider.SliderAnimations;
+import com.smarteist.autoimageslider.SliderView;
 
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class menu_pertanyaan extends AppCompatActivity implements pertanyaan_view, adapter_pertanyaan.OnImageClickListener {
 
     private SwipeRefreshLayout swifeRefresh;
     private RecyclerView rvAku;
     private ProgressBar progressBar2;
-    private  adapter_pertanyaan adapter_pertanyaan;
+    private adapter_pertanyaan adapter_pertanyaan;
     com.example.poltekkes.presenter.pertanyaan pertanyaan;
     String tgl_lahir;
+    private TextView txtDataAnak;
+    private Button btnSimpan;
+    BottomSheetDialog bottom_dialog;
+    public static List<String> jawaban = new ArrayList<String>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menu_pertanyaan);
         initView();
-        pertanyaan = new pertanyaan(this,menu_pertanyaan.this);
-        tgl_lahir =  Guru.getString("tgl_lahir", "false");
+        pertanyaan = new pertanyaan(this, menu_pertanyaan.this);
+        tgl_lahir = Guru.getString("tgl_lahir", "false");
+        Log.i("tgl_lahir", "onCreate: " + tgl_lahir);
         pertanyaan.get_pertanyan(tgl_lahir);
+
+        btnSimpan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                bottom_dialog = new BottomSheetDialog(menu_pertanyaan.this);
+                bottom_dialog.setTitle("Login");
+                bottom_dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+                bottom_dialog.setContentView(R.layout.dialog_hasil);
+                bottom_dialog.setCancelable(false);
+
+                WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
+//                lp.copyFrom(dialog.getWindow().getAttributes());
+                bottom_dialog.getWindow().setAttributes(lp);
+                bottom_dialog.getWindow().addFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
+                bottom_dialog.getWindow().setDimAmount(0.5f);
+                lp.width = WindowManager.LayoutParams.WRAP_CONTENT;
+                lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
+
+
+                Button pgl = (Button) bottom_dialog.findViewById(R.id.btn_pngggil);
+
+                pgl.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                    }
+                });
+
+
+                bottom_dialog.show();
+            }
+        });
 
     }
 
@@ -43,17 +99,23 @@ public class menu_pertanyaan extends AppCompatActivity implements pertanyaan_vie
         swifeRefresh = findViewById(R.id.swifeRefresh);
         rvAku = findViewById(R.id.rv_aku);
         progressBar2 = findViewById(R.id.progressBar2);
+        txtDataAnak = findViewById(R.id.txt_data_anak);
+        btnSimpan = findViewById(R.id.btn_simpan);
     }
 
     @Override
     public void onImageClick(int id, String nama, String alamat) {
+        jawaban.set(id,nama);
 
     }
 
     @Override
     public void pertanyaan(List<DataItem_pertanyaan> pertanyaan) {
         try {
-            //  progKes.setVisibility(View.VISIBLE);
+            for (int i = 0; i < pertanyaan.size(); i++) {
+                jawaban.add("tidak");
+            }
+            Log.i("isi_jawaban", "pertanyaan: "+jawaban);
             Log.i("cek_data_pertanyaan", "event: " + pertanyaan.size());
             adapter_pertanyaan = new adapter_pertanyaan(menu_pertanyaan.this, pertanyaan, 1, this::onImageClick);
             rvAku.setLayoutManager(new LinearLayoutManager(menu_pertanyaan.this, LinearLayoutManager.VERTICAL, false));

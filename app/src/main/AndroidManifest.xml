@@ -12,7 +12,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat"
         android:usesCleartextTraffic="true">
-        <activity android:name=".menu.menu_pertanyaan"></activity>
+        <activity android:name=".menu.menu_history"></activity>
+        <activity
+            android:name=".menu.menu_pertanyaan"
+            android:theme="@style/Theme.AppCompat.Light" />
         <activity
             android:name=".menu.menu_input_data"
             android:label="Inpu Data"

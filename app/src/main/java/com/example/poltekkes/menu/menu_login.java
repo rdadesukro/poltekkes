@@ -142,6 +142,7 @@ public class menu_login extends AppCompatActivity implements Validator.Validatio
     }
     @Override
     public void onBackPressed() {
+
         finishAffinity();
     }
 }

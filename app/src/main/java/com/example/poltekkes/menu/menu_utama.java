@@ -3,6 +3,7 @@ package com.example.poltekkes.menu;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -12,9 +13,17 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
 import com.example.poltekkes.R;
+import com.example.poltekkes.adapter.adapter_slider;
+import com.example.poltekkes.model.slider.DataItem_slider;
 import com.example.poltekkes.presenter.aksi;
+import com.example.poltekkes.presenter.slider;
+import com.example.poltekkes.view.slider_view;
 import com.github.squti.guru.Guru;
+import com.smarteist.autoimageslider.IndicatorAnimations;
+import com.smarteist.autoimageslider.SliderAnimations;
 import com.smarteist.autoimageslider.SliderView;
+
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -22,7 +31,7 @@ import butterknife.OnClick;
 import cn.pedant.SweetAlert.SweetAlertDialog;
 import maes.tech.intentanim.CustomIntent;
 
-public class menu_utama extends AppCompatActivity {
+public class menu_utama extends AppCompatActivity implements slider_view {
 
     @BindView(R.id.card_petujuk)
     CardView cardPetujuk;
@@ -37,16 +46,21 @@ public class menu_utama extends AppCompatActivity {
     String nama, nim;
     private TextView txtNama;
     private TextView txtNis;
+    com.example.poltekkes.presenter.slider slider;
+
+    private com.example.poltekkes.adapter.adapter_slider adapter_slider;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menu_utama);
         ButterKnife.bind(this);
+        initView();
         getSupportActionBar().hide();
         nama = Guru.getString("nama", "false");
         nim = Guru.getString("nim", "false");
-        initView();
+        slider = new slider(menu_utama.this,menu_utama.this);
+        slider.get_slider();
         txtNama.setText(nama);
         txtNis.setText("NIM : "+nim);
     }
@@ -63,6 +77,9 @@ public class menu_utama extends AppCompatActivity {
                 startActivity(intent);
                 break;
             case R.id.card_history:
+                CustomIntent.customType(this, "fadein-to-fadeout");
+                intent = new Intent((Activity) this, menu_history.class);
+                startActivity(intent);
                 break;
             case R.id.card_materi:
                 break;
@@ -104,5 +121,22 @@ public class menu_utama extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         finishAffinity();
+    }
+
+    @Override
+    public void slider(List<DataItem_slider> slider) {
+        Log.i("data_slider", "slider: " + slider);
+        adapter_slider = new adapter_slider(menu_utama.this, slider, "mas_1");
+        bener.setSliderAdapter(adapter_slider);
+        bener.setIndicatorAnimation(IndicatorAnimations.THIN_WORM);
+        bener.setSliderTransformAnimation(SliderAnimations.FADETRANSFORMATION);
+        bener.setAutoCycleDirection(SliderView.AUTO_CYCLE_DIRECTION_BACK_AND_FORTH);
+        bener.setIndicatorSelectedColor(Color.WHITE);
+        bener.setIndicatorUnselectedColor(Color.RED);
+        bener.setScrollTimeInSec(4);
+        bener.setAutoCycle(true);
+        bener.startAutoCycle();
+        //mRecycler.setAdapter(adapter);
+        adapter_slider.notifyDataSetChanged();
     }
 }
