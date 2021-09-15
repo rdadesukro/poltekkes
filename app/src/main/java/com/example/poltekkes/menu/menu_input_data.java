@@ -5,6 +5,8 @@ import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -14,6 +16,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.poltekkes.R;
 import com.github.squti.guru.Guru;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.mobsandgeeks.saripaar.ValidationError;
 import com.mobsandgeeks.saripaar.Validator;
 import com.mobsandgeeks.saripaar.annotation.NotEmpty;
@@ -35,7 +38,7 @@ public class menu_input_data extends AppCompatActivity implements Validator.Vali
     private EditText editNama;
     private EditText editTgl;
     final Calendar myCalendar = Calendar.getInstance();
-
+    BottomSheetDialog bottom_dialog;
     @NotEmpty
     @BindView(R.id.edit_nama)
     EditText edit_nama;
@@ -90,7 +93,38 @@ public class menu_input_data extends AppCompatActivity implements Validator.Vali
             @Override
             public void onClick(View v) {
 
-                validator.validate();
+//                validator.validate();
+                bottom_dialog = new BottomSheetDialog(menu_input_data.this);
+                bottom_dialog.setTitle("Login");
+                bottom_dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+                bottom_dialog.setContentView(R.layout.dialog_hasil_pertumbuhan);
+                bottom_dialog.setCancelable(false);
+
+                WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
+//                lp.copyFrom(dialog.getWindow().getAttributes());
+                bottom_dialog.getWindow().setAttributes(lp);
+                bottom_dialog.getWindow().addFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
+                bottom_dialog.getWindow().setDimAmount(0.5f);
+                lp.width = WindowManager.LayoutParams.WRAP_CONTENT;
+                lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
+
+
+                Button pgl = (Button) bottom_dialog.findViewById(R.id.btn_pngggil);
+
+                pgl.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Guru.putString("tgl_lahir", editTgl.getText().toString().trim());
+                        Guru.putString("nama", editNama.getText().toString().trim());
+                        Guru.putString("berat", editBerat.getText().toString().trim());
+                        Guru.putString("panjang", editPanjang.getText().toString().trim());
+                        Intent goInput = new Intent(menu_input_data.this, menu_pertanyaan.class);
+                        startActivity(goInput);
+                        CustomIntent.customType(menu_input_data.this, "fadein-to-fadeout");
+                    }
+                });
+
+                bottom_dialog.show();
             }
         });
     }

@@ -68,7 +68,32 @@ public class menu_pertanyaan extends AppCompatActivity implements pertanyaan_vie
         btnSimpan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                pertanyaan.simpan_pertanyaan(String.valueOf(jawaban),rentang_usia,nama,berat,panjang);
+//                pertanyaan.simpan_pertanyaan(String.valueOf(jawaban),rentang_usia,nama,berat,panjang);
+                bottom_dialog = new BottomSheetDialog(menu_pertanyaan.this);
+                bottom_dialog.setTitle("Login");
+                bottom_dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+                bottom_dialog.setContentView(R.layout.dialog_hasil);
+                bottom_dialog.setCancelable(false);
+
+                WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
+//                lp.copyFrom(dialog.getWindow().getAttributes());
+                bottom_dialog.getWindow().setAttributes(lp);
+                bottom_dialog.getWindow().addFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
+                bottom_dialog.getWindow().setDimAmount(0.5f);
+                lp.width = WindowManager.LayoutParams.WRAP_CONTENT;
+                lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
+
+
+                Button pgl = (Button) bottom_dialog.findViewById(R.id.btn_pngggil);
+
+                pgl.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                    }
+                });
+
+                bottom_dialog.show();
 
             }
         });

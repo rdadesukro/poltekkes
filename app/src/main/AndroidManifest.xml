@@ -12,9 +12,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat"
         android:usesCleartextTraffic="true">
-        <activity android:name=".menu.menu_history"
-            android:label="History"
+        <activity android:name=".menu.menu_tentang"
+            android:label="Tentang"
             android:theme="@style/Theme.AppCompat.Light"></activity>
+        <activity
+            android:name=".menu.menu_history"
+            android:label="History"
+            android:theme="@style/Theme.AppCompat.Light" />
         <activity
             android:name=".menu.menu_pertanyaan"
             android:label="Pertanyaan"
@@ -35,7 +39,9 @@
         <activity
             android:name=".menu.menu_utama"
             android:theme="@style/Theme.AppCompat.DayNight" />
-        <activity android:name=".menu.menu_materi" />
+        <activity android:name=".menu.menu_materi"
+            android:label="Materi"
+            android:theme="@style/Theme.AppCompat.Light"/>
         <activity android:name=".menu.menu_bantuan" />
         <activity android:name=".menu.menu_pembuka">
             <intent-filter>

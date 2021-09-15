@@ -146,7 +146,7 @@
                         android:layout_marginTop="2dp"
                         android:layout_marginBottom="8dp"
                         android:fontFamily="@font/opensansregular"
-                        android:text="Laporan"
+                        android:text="Tentang Aplikasi"
                         android:textColor="@color/blue_grey_800"
                         android:textSize="13dp"
                         android:textStyle="bold"
@@ -163,7 +163,7 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:srcCompat="@drawable/ic_launcher_foreground" />
+                        app:srcCompat="@drawable/information" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
 
@@ -233,13 +233,13 @@
                         android:layout_marginBottom="8dp"
                         android:fontFamily="@font/opensansregular"
                         android:gravity="center"
-                        android:text="History Spk"
+                        android:text="History Penilaiaan"
                         android:textColor="@color/blue_grey_800"
                         android:textSize="13dp"
                         android:textStyle="bold"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="@+id/imageView2"
-                        app:layout_constraintStart_toStartOf="@+id/imageView2"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/imageView2"
                         tools:ignore="DuplicateIds" />
 
@@ -279,13 +279,13 @@
                         android:layout_marginBottom="8dp"
                         android:fontFamily="@font/opensansregular"
                         android:gravity="center"
-                        android:text="Spk"
+                        android:text="Penilaiaan"
                         android:textColor="@color/blue_grey_800"
                         android:textSize="13dp"
                         android:textStyle="bold"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="@+id/imageView2"
-                        app:layout_constraintStart_toStartOf="@+id/imageView2"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
                     <ImageView

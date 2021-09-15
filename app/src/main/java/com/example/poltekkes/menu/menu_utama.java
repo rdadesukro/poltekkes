@@ -65,7 +65,7 @@ public class menu_utama extends AppCompatActivity implements slider_view {
         txtNis.setText("NIM : "+nim);
     }
 
-    @OnClick({R.id.card_petujuk, R.id.card_history, R.id.card_materi, R.id.card_keluar, R.id.card_spk})
+    @OnClick({R.id.card_petujuk, R.id.card_history, R.id.card_materi, R.id.card_keluar, R.id.card_spk, R.id.card_laporan})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.card_petujuk:
@@ -82,6 +82,14 @@ public class menu_utama extends AppCompatActivity implements slider_view {
                 startActivity(intent);
                 break;
             case R.id.card_materi:
+                CustomIntent.customType(this, "fadein-to-fadeout");
+                intent = new Intent((Activity) this, menu_materi.class);
+                startActivity(intent);
+                break;
+            case R.id.card_laporan:
+                CustomIntent.customType(this, "fadein-to-fadeout");
+                intent = new Intent((Activity) this, menu_tentang.class);
+                startActivity(intent);
                 break;
             case R.id.card_keluar:
                 SweetAlertDialog pDialog = new SweetAlertDialog(menu_utama.this, SweetAlertDialog.WARNING_TYPE);
