@@ -6,186 +6,24 @@
     android:layout_height="match_parent"
     tools:context=".menu.menu.menu_input_data">
 
-    <RadioGroup
-        android:id="@+id/radio_grup"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="@+id/textView7"
-        app:layout_constraintTop_toBottomOf="@+id/textView7">
-
-        <RadioButton
-            android:id="@+id/rd_lk"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="LAKI-LAKI" />
-
-        <RadioButton
-            android:id="@+id/rd_pr"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="PEREMPUAN" />
-    </RadioGroup>
-
-    <TextView
-        android:id="@+id/textView7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:textColor="@color/grey_1000"
-        android:textSize="@dimen/_16sdp"
-        android:text="Jenis Kelamin"
-        app:layout_constraintStart_toStartOf="@+id/tgl"
-        app:layout_constraintTop_toBottomOf="@+id/tgl" />
-
-    <Button
-        android:id="@+id/btn_simpan"
-        style="@style/Widget.AppCompat.Button"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:background="@color/orange_700"
-        android:text="SIMPAN"
-        android:textColor="@color/putih"
-        app:layout_constraintEnd_toEndOf="@+id/panjang"
-        app:layout_constraintStart_toStartOf="@+id/panjang"
-        app:layout_constraintTop_toBottomOf="@+id/panjang" />
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/nama_ibu"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/con_data"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:background="@color/grey_10"
-        android:layout_marginEnd="8dp"
-        android:textColorHint="@color/grey_1000"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/radio_grup"
-        tools:ignore="MissingConstraints">
+        app:layout_constraintTop_toTopOf="parent">
 
-        <EditText
-            android:id="@+id/edit_nama_ibu"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:ems="10"
-            android:hint="Nama Ibu"
-            android:inputType="textPersonName"
-            android:textSize="@dimen/_12sdp" />
+        <include
+            android:id="@+id/inc_data"
+            layout="@layout/input_data"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/berat"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:background="@color/grey_10"
-        android:textColorHint="@color/grey_1000"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nama_ibu"
-        tools:ignore="MissingConstraints">
-
-        <EditText
-            android:id="@+id/edit_berat"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:ems="10"
-            android:hint="Berat Badan"
-            android:inputType="textPersonName"
-            android:textSize="@dimen/_12sdp" />
-
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/panjang"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:background="@color/grey_10"
-        android:layout_marginEnd="8dp"
-        android:textColorHint="@color/grey_1000"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/berat"
-        tools:ignore="MissingConstraints">
-
-        <EditText
-            android:id="@+id/edit_panjang"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:ems="10"
-            android:hint="Panjang Badan"
-            android:inputType="textPersonName"
-            android:textSize="@dimen/_12sdp" />
-
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/nama"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:background="@color/grey_10"
-        android:layout_marginEnd="8dp"
-        android:textColorHint="@color/grey_1000"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints">
-
-        <EditText
-            android:id="@+id/edit_nama"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:ems="10"
-            android:hint="Nama Lengkap"
-            android:inputType="textPersonName"
-            android:textSize="@dimen/_12sdp" />
-
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tgl"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:background="@color/grey_10"
-        android:textColorHint="@color/grey_1000"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nama"
-        tools:ignore="MissingConstraints">
-
-        <EditText
-            android:id="@+id/edit_tgl"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:clickable="false"
-            android:cursorVisible="false"
-            android:focusable="false"
-            android:focusableInTouchMode="false"
-            android:ems="10"
-            android:hint="Tanggal Lahir"
-            android:inputType="textPersonName"
-            android:textSize="@dimen/_12sdp" />
-
-    </com.google.android.material.textfield.TextInputLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

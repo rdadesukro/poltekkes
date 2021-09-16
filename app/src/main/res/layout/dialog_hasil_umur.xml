@@ -26,7 +26,7 @@
             android:layout_height="match_parent">
 
             <ImageView
-                android:id="@+id/btn_close2"
+                android:id="@+id/btn_close"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_marginEnd="16dp"
@@ -41,12 +41,12 @@
                 android:id="@+id/txt_hasil"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="16dp"
                 android:fontFamily="@font/opensansregular"
-                android:text="Nama Budi umur 3 bulan 10 hari degan berat 3kg dan panjang 30cm menunjukan hasil Sangat Bagus"
+                android:text="Umur balita pada saat ini 3 Bulan 10 Hari, Tekan selanjutnya untuk melakukan penilaiaan pertumbuhan balita"
                 android:textColor="@color/grey_1000"
                 android:textSize="@dimen/_16sdp"
-                app:layout_constraintEnd_toEndOf="@+id/textView30"
+                app:layout_constraintEnd_toEndOf="@+id/btn_close"
                 app:layout_constraintStart_toStartOf="@+id/textView30"
                 app:layout_constraintTop_toBottomOf="@+id/textView30" />
 
@@ -54,13 +54,13 @@
                 android:id="@+id/textView30"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
+                android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="8dp"
                 android:fontFamily="@font/opensansbold"
-                android:text="Hasil Penilaiaan Perkembangan"
+                android:text="Umur Balita"
                 android:textColor="@color/grey_800"
-                android:textSize="@dimen/_16sdp"
+                android:textSize="@dimen/_18sdp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -75,7 +75,7 @@
                 android:backgroundTint="@color/deep_orange_700"
                 android:fontFamily="@font/opensansbold"
                 android:padding="@dimen/_10sdp"
-                android:text="Keluar"
+                android:text="Selanjutnya"
                 android:textColor="@color/white"
                 android:textSize="@dimen/_14sdp"
                 android:textStyle="bold"

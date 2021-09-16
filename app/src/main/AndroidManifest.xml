@@ -12,9 +12,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat"
         android:usesCleartextTraffic="true">
-        <activity android:name=".menu.menu_tentang"
-            android:label="Tentang"
+        <activity android:name=".menu.hasil_rekomendasi_pertumbuhan"
+            android:label="Hasil Rekomendasi"
             android:theme="@style/Theme.AppCompat.Light"></activity>
+        <activity
+            android:name=".menu.menu_input_pertumbuhan"
+            android:label="Input Pertumbuhan"
+            android:theme="@style/Theme.AppCompat.Light"
+            android:windowSoftInputMode="stateVisible|adjustResize" />
+        <activity
+            android:name=".menu.menu_tentang"
+            android:label="Tentang"
+            android:theme="@style/Theme.AppCompat.Light" />
         <activity
             android:name=".menu.menu_history"
             android:label="History"
@@ -25,7 +34,7 @@
             android:theme="@style/Theme.AppCompat.Light" />
         <activity
             android:name=".menu.menu_input_data"
-            android:label="Input Data"
+            android:label="Input Data Balita"
             android:theme="@style/Theme.AppCompat.Light"
             android:windowSoftInputMode="stateVisible|adjustResize" />
         <activity
@@ -39,9 +48,10 @@
         <activity
             android:name=".menu.menu_utama"
             android:theme="@style/Theme.AppCompat.DayNight" />
-        <activity android:name=".menu.menu_materi"
+        <activity
+            android:name=".menu.menu_materi"
             android:label="Materi"
-            android:theme="@style/Theme.AppCompat.Light"/>
+            android:theme="@style/Theme.AppCompat.Light" />
         <activity android:name=".menu.menu_bantuan" />
         <activity android:name=".menu.menu_pembuka">
             <intent-filter>

@@ -1,8 +1,5 @@
 package com.example.poltekkes.menu;
 
-import android.content.Intent;
-import android.graphics.Color;
-import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -25,18 +22,9 @@ import com.example.poltekkes.presenter.pertanyaan;
 import com.example.poltekkes.view.pertanyaan_view;
 import com.github.squti.guru.Guru;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
-import com.google.android.material.button.MaterialButton;
-import com.smarteist.autoimageslider.IndicatorAnimations;
-import com.smarteist.autoimageslider.SliderAnimations;
-import com.smarteist.autoimageslider.SliderView;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class menu_pertanyaan extends AppCompatActivity implements pertanyaan_view, adapter_pertanyaan.OnImageClickListener {
 
@@ -85,14 +73,20 @@ public class menu_pertanyaan extends AppCompatActivity implements pertanyaan_vie
 
 
                 Button pgl = (Button) bottom_dialog.findViewById(R.id.btn_pngggil);
-
+                ImageView close = (ImageView) bottom_dialog.findViewById(R.id.btn_close2);
                 pgl.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
 
                     }
                 });
+                close.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        bottom_dialog.dismiss();
 
+                    }
+                });
                 bottom_dialog.show();
 
             }
@@ -105,7 +99,7 @@ public class menu_pertanyaan extends AppCompatActivity implements pertanyaan_vie
         rvAku = findViewById(R.id.rv_aku);
         progressBar2 = findViewById(R.id.progressBar2);
         txtDataAnak = findViewById(R.id.txt_data_anak);
-        btnSimpan = findViewById(R.id.btn_simpan);
+        btnSimpan = findViewById(R.id.btn_simpan_data);
     }
 
     @Override

@@ -1,6 +1,5 @@
 package com.example.poltekkes.menu;
 
-import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,23 +9,24 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatEditText;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.example.poltekkes.R;
 import com.github.squti.guru.Guru;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.mobsandgeeks.saripaar.ValidationError;
 import com.mobsandgeeks.saripaar.Validator;
-import com.mobsandgeeks.saripaar.annotation.NotEmpty;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
 
-import butterknife.BindView;
 import butterknife.ButterKnife;
 import maes.tech.intentanim.CustomIntent;
 
@@ -39,22 +39,29 @@ public class menu_input_data extends AppCompatActivity implements Validator.Vali
     private EditText editTgl;
     final Calendar myCalendar = Calendar.getInstance();
     BottomSheetDialog bottom_dialog;
-    @NotEmpty
-    @BindView(R.id.edit_nama)
-    EditText edit_nama;
-
-    @NotEmpty
-    @BindView(R.id.edit_berat)
-    EditText edit_berat;
-
-    @NotEmpty
-    @BindView(R.id.edit_panjang)
-    EditText edit_panjang;
+//    @NotEmpty
+//    @BindView(R.id.edit_nama)
+//    EditText edit_nama;
 
 
-    @NotEmpty
-    @BindView(R.id.edit_tgl)
-    EditText edit_tgl;
+//
+//    @NotEmpty
+//    @BindView(R.id.edit_berat)
+//    EditText edit_berat;
+
+//    @NotEmpty
+//    @BindView(R.id.edit_panjang)
+//    EditText edit_panjang;
+
+
+    //    @NotEmpty
+//    @BindView(R.id.edit_tgl)
+//    EditText edit_tgl;
+    private ConstraintLayout conPertumbuhan;
+    private ConstraintLayout conData;
+    public Button btnSimpanData;
+    private AppCompatEditText editAlamat;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,7 +96,7 @@ public class menu_input_data extends AppCompatActivity implements Validator.Vali
                         myCalendar.get(Calendar.DAY_OF_MONTH)).show();
             }
         });
-        btnSimpan.setOnClickListener(new View.OnClickListener() {
+        btnSimpanData.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -97,7 +104,7 @@ public class menu_input_data extends AppCompatActivity implements Validator.Vali
                 bottom_dialog = new BottomSheetDialog(menu_input_data.this);
                 bottom_dialog.setTitle("Login");
                 bottom_dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-                bottom_dialog.setContentView(R.layout.dialog_hasil_pertumbuhan);
+                bottom_dialog.setContentView(R.layout.dialog_hasil_umur);
                 bottom_dialog.setCancelable(false);
 
                 WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
@@ -111,16 +118,29 @@ public class menu_input_data extends AppCompatActivity implements Validator.Vali
 
                 Button pgl = (Button) bottom_dialog.findViewById(R.id.btn_pngggil);
 
+                ImageView close = (ImageView) bottom_dialog.findViewById(R.id.btn_close);
+
                 pgl.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        bottom_dialog.dismiss();
+                        Toast.makeText(menu_input_data.this, "ade", Toast.LENGTH_SHORT).show();
                         Guru.putString("tgl_lahir", editTgl.getText().toString().trim());
                         Guru.putString("nama", editNama.getText().toString().trim());
-                        Guru.putString("berat", editBerat.getText().toString().trim());
-                        Guru.putString("panjang", editPanjang.getText().toString().trim());
-                        Intent goInput = new Intent(menu_input_data.this, menu_pertanyaan.class);
+                        Guru.putString("alamat", editAlamat.getText().toString().trim());
+                        // Guru.putString("berat", editBerat.getText().toString().trim());
+                        // Guru.putString("panjang", editPanjang.getText().toString().trim());
+                        Intent goInput = new Intent(menu_input_data.this, menu_input_pertumbuhan.class);
                         startActivity(goInput);
                         CustomIntent.customType(menu_input_data.this, "fadein-to-fadeout");
+                    }
+                });
+
+                close.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        bottom_dialog.dismiss();
+
                     }
                 });
 
@@ -130,11 +150,14 @@ public class menu_input_data extends AppCompatActivity implements Validator.Vali
     }
 
     private void initView() {
-        btnSimpan = findViewById(R.id.btn_simpan);
+        btnSimpan = findViewById(R.id.btn_simpan_data);
         editBerat = findViewById(R.id.edit_berat);
         editPanjang = findViewById(R.id.edit_panjang);
         editNama = findViewById(R.id.edit_nama);
         editTgl = findViewById(R.id.edit_tgl);
+        conData = findViewById(R.id.con_data);
+        btnSimpanData = findViewById(R.id.btn_simpan_data);
+        editAlamat = findViewById(R.id.edit_alamat);
     }
 
     private void updateLabel() {
