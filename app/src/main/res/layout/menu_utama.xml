@@ -6,42 +6,66 @@
     android:layout_height="match_parent"
     tools:context=".menu.menu.menu_utama">
 
-    <View
-        android:id="@+id/view2"
-        android:layout_width="wrap_content"
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar2"
+        android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:background="@color/orange_500"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_marginTop="24dp"
+        android:background="?attr/colorPrimary"
+        android:backgroundTint="@color/orange_800"
+        android:minHeight="?attr/actionBarSize"
 
-    <TextView
-        android:id="@+id/txt_nama"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:capitalize="characters"
-        android:fontFamily="@font/opensansbold"
-        android:text="Budi Sudarsono"
-        android:textAllCaps="true"
-        android:textColor="@color/putih"
-        android:textSize="@dimen/_12sdp"
-        android:visibility="gone"
+        android:theme="?attr/actionBarTheme"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            android:text="sfsfsf"
+            android:textColor="@color/putih">
+
+
+            <TextView
+                android:id="@+id/textView17"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/opensansregular"
+                android:text="Selamat Datang,"
+                android:textColor="@color/putih"
+                android:textSize="@dimen/_12sdp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/txt_nama"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:capitalize="characters"
+                android:fontFamily="@font/opensansbold"
+                android:text="Budi Sudarsono"
+                android:textAllCaps="true"
+                android:textColor="@color/putih"
+                android:textSize="@dimen/_12sdp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView17" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.appcompat.widget.Toolbar>
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/view2"
         android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        android:scaleType="centerInside"
-        android:src="@drawable/logo_white"
-        app:layout_constraintBottom_toBottomOf="@+id/view2"
-        app:layout_constraintEnd_toStartOf="@+id/guideline"
+        android:layout_height="wrap_content"
+        android:background="@drawable/ic_login_bk"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="@+id/toolbar2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -68,7 +92,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view2">
+        app:layout_constraintTop_toBottomOf="@+id/toolbar2">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/linearLayout"
@@ -83,11 +107,25 @@
             app:layout_constraintVertical_bias="1.0">
 
 
+            <TextView
+                android:id="@+id/textView18"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/opensansbold"
+                android:text="Menu Utama"
+                android:textColor="@color/grey_1000"
+                android:textSize="@dimen/_16sdp"
+                app:layout_constraintStart_toStartOf="@+id/cardView"
+                app:layout_constraintTop_toBottomOf="@+id/cardView" />
+
             <androidx.cardview.widget.CardView
                 android:id="@+id/card_keluar"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_marginTop="8dp"
+                app:cardCornerRadius="@dimen/_8sdp"
+                app:cardElevation="@dimen/_6sdp"
                 app:layout_constraintBottom_toBottomOf="@+id/card_laporan"
                 app:layout_constraintEnd_toEndOf="@+id/card_history"
                 app:layout_constraintStart_toStartOf="@+id/card_history"
@@ -106,8 +144,8 @@
                         android:fontFamily="@font/opensansregular"
                         android:gravity="center"
                         android:text="Keluar"
-                        android:textColor="@color/blue_grey_800"
-                        android:textStyle="bold"
+                        android:textColor="@color/grey_1000"
+                        android:textSize="@dimen/_10sdp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="@+id/imageView2"
                         app:layout_constraintStart_toStartOf="@+id/imageView2"
@@ -131,8 +169,10 @@
                 android:layout_width="0dp"
                 android:layout_height="120dp"
                 android:layout_marginTop="8dp"
+                app:cardCornerRadius="@dimen/_8sdp"
+                app:cardElevation="@dimen/_6sdp"
                 app:layout_constraintEnd_toEndOf="@+id/card_spk"
-                app:layout_constraintStart_toStartOf="@+id/card_spk"
+                app:layout_constraintStart_toStartOf="@+id/card_materi"
                 app:layout_constraintTop_toBottomOf="@+id/card_spk">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
@@ -147,9 +187,8 @@
                         android:layout_marginBottom="8dp"
                         android:fontFamily="@font/opensansregular"
                         android:text="Tentang Aplikasi"
-                        android:textColor="@color/blue_grey_800"
-                        android:textSize="13dp"
-                        android:textStyle="bold"
+                        android:textColor="@color/grey_1000"
+                        android:textSize="@dimen/_10sdp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="@+id/imageView2"
                         app:layout_constraintStart_toStartOf="@+id/imageView2"
@@ -173,6 +212,7 @@
                 android:layout_height="120dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
+                android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="@+id/card_materi"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/card_materi">
@@ -215,6 +255,8 @@
                 android:layout_height="0dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="8dp"
+                app:cardCornerRadius="@dimen/_8sdp"
+                app:cardElevation="@dimen/_6sdp"
                 app:layout_constraintBottom_toBottomOf="@+id/card_spk"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
@@ -234,9 +276,8 @@
                         android:fontFamily="@font/opensansregular"
                         android:gravity="center"
                         android:text="History Penilaiaan"
-                        android:textColor="@color/blue_grey_800"
-                        android:textSize="13dp"
-                        android:textStyle="bold"
+                        android:textColor="@color/grey_1000"
+                        android:textSize="@dimen/_10sdp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -261,6 +302,8 @@
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_marginStart="8dp"
+                app:cardCornerRadius="@dimen/_8sdp"
+                app:cardElevation="@dimen/_6sdp"
                 app:layout_constraintBottom_toBottomOf="@+id/card_materi"
                 app:layout_constraintEnd_toStartOf="@+id/card_history"
                 app:layout_constraintHorizontal_bias="0.5"
@@ -280,9 +323,8 @@
                         android:fontFamily="@font/opensansregular"
                         android:gravity="center"
                         android:text="Penilaiaan"
-                        android:textColor="@color/blue_grey_800"
-                        android:textSize="13dp"
-                        android:textStyle="bold"
+                        android:textColor="@color/grey_1000"
+                        android:textSize="@dimen/_10sdp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -306,10 +348,12 @@
                 android:layout_height="120dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="16dp"
+                app:cardCornerRadius="@dimen/_8sdp"
+                app:cardElevation="@dimen/_6sdp"
                 app:layout_constraintEnd_toStartOf="@+id/card_spk"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cardView">
+                app:layout_constraintTop_toBottomOf="@+id/textView18">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
@@ -323,9 +367,8 @@
                         android:layout_marginBottom="8dp"
                         android:fontFamily="@font/opensansregular"
                         android:text="Materi"
-                        android:textColor="@color/blue_grey_800"
-                        android:textSize="13dp"
-                        android:textStyle="bold"
+                        android:textColor="@color/grey_1000"
+                        android:textSize="@dimen/_10sdp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="@+id/imageView2"
                         app:layout_constraintStart_toStartOf="@+id/imageView2"
@@ -349,8 +392,13 @@
                 android:id="@+id/cardView"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
                 android:clickable="true"
                 android:elevation="10dp"
+                app:cardCornerRadius="@dimen/_8sdp"
+                app:cardElevation="@dimen/_8sdp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">

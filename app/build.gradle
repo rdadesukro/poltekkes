@@ -37,6 +37,13 @@ android {
             url "https://oss.sonatype.org/content/repositories/snapshots/"
         }
     }
+    sourceSets {
+        main {
+            assets {
+                srcDirs 'src\\main\\assets'
+            }
+        }
+    }
 }
 
 dependencies {

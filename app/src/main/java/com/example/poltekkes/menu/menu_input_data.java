@@ -10,6 +10,8 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -61,6 +63,11 @@ public class menu_input_data extends AppCompatActivity implements Validator.Vali
     private ConstraintLayout conData;
     public Button btnSimpanData;
     private AppCompatEditText editAlamat;
+    private RadioGroup radioGrup;
+    private RadioButton rdLk;
+    private RadioButton rdPr;
+    String jk;
+    private EditText editNamaIbu;
 
 
     @Override
@@ -128,6 +135,8 @@ public class menu_input_data extends AppCompatActivity implements Validator.Vali
                         Guru.putString("tgl_lahir", editTgl.getText().toString().trim());
                         Guru.putString("nama", editNama.getText().toString().trim());
                         Guru.putString("alamat", editAlamat.getText().toString().trim());
+                        Guru.putString("jenis_kelamin", jk);
+                        Guru.putString("nama_ibu", editNamaIbu.getText().toString().trim());
                         // Guru.putString("berat", editBerat.getText().toString().trim());
                         // Guru.putString("panjang", editPanjang.getText().toString().trim());
                         Intent goInput = new Intent(menu_input_data.this, menu_input_pertumbuhan.class);
@@ -147,6 +156,26 @@ public class menu_input_data extends AppCompatActivity implements Validator.Vali
                 bottom_dialog.show();
             }
         });
+
+        radioGrup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                // find which radio button is selected
+                if (checkedId == R.id.rd_lk) {
+                    jk = "L";
+
+                } else if (checkedId == R.id.rd_pr) {
+                    jk = "P";
+
+
+                } else {
+                    Toast.makeText(getApplicationContext(), "choice: Vibration",
+                            Toast.LENGTH_SHORT).show();
+                }
+            }
+
+        });
     }
 
     private void initView() {
@@ -158,6 +187,10 @@ public class menu_input_data extends AppCompatActivity implements Validator.Vali
         conData = findViewById(R.id.con_data);
         btnSimpanData = findViewById(R.id.btn_simpan_data);
         editAlamat = findViewById(R.id.edit_alamat);
+        radioGrup = findViewById(R.id.radio_grup);
+        rdLk = findViewById(R.id.rd_lk);
+        rdPr = findViewById(R.id.rd_pr);
+        editNamaIbu = findViewById(R.id.edit_nama_ibu);
     }
 
     private void updateLabel() {

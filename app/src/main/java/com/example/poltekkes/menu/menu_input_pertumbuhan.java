@@ -8,12 +8,10 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.poltekkes.R;
-import com.github.squti.guru.Guru;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 
 import maes.tech.intentanim.CustomIntent;
@@ -63,7 +61,7 @@ public class menu_input_pertumbuhan extends AppCompatActivity {
 //                        Guru.putString("alamat", editAlamat.getText().toString().trim());
                         // Guru.putString("berat", editBerat.getText().toString().trim());
                         // Guru.putString("panjang", editPanjang.getText().toString().trim());
-                        Intent goInput = new Intent(menu_input_pertumbuhan.this, hasil_rekomendasi_pertumbuhan.class);
+                        Intent goInput = new Intent(menu_input_pertumbuhan.this, menu_hasil_rekomendasi_pertumbuhan.class);
                         startActivity(goInput);
                         CustomIntent.customType(menu_input_pertumbuhan.this, "fadein-to-fadeout");
                     }

@@ -50,11 +50,12 @@
                     android:id="@+id/edit_berat"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:textColorHint="@color/grey_1000"
                     android:layout_centerHorizontal="true"
                     android:layout_centerVertical="true"
                     android:ems="10"
                     android:hint="Berat Badan"
-                    android:inputType="textPersonName"
+                    android:inputType="numberDecimal"
                     android:textSize="@dimen/_12sdp" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -81,7 +82,7 @@
                     android:layout_centerVertical="true"
                     android:ems="10"
                     android:hint="Panjang Badan"
-                    android:inputType="textPersonName"
+                    android:inputType="numberDecimal"
                     android:textSize="@dimen/_12sdp" />
 
             </com.google.android.material.textfield.TextInputLayout>

@@ -6,10 +6,13 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.cardview.widget.CardView;
 
 import com.example.poltekkes.R;
@@ -49,6 +52,7 @@ public class menu_utama extends AppCompatActivity implements slider_view {
     com.example.poltekkes.presenter.slider slider;
 
     private com.example.poltekkes.adapter.adapter_slider adapter_slider;
+    private Toolbar toolbar2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,13 +60,17 @@ public class menu_utama extends AppCompatActivity implements slider_view {
         setContentView(R.layout.menu_utama);
         ButterKnife.bind(this);
         initView();
-        getSupportActionBar().hide();
+
+        setSupportActionBar(toolbar2);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setTitle("Main Page");
+        }
         nama = Guru.getString("nama", "false");
         nim = Guru.getString("nim", "false");
-        slider = new slider(menu_utama.this,menu_utama.this);
+        slider = new slider(menu_utama.this, menu_utama.this);
         slider.get_slider();
         txtNama.setText(nama);
-        txtNis.setText("NIM : "+nim);
+        txtNis.setText("NIM : " + nim);
     }
 
     @OnClick({R.id.card_petujuk, R.id.card_history, R.id.card_materi, R.id.card_keluar, R.id.card_spk, R.id.card_laporan})
@@ -125,7 +133,9 @@ public class menu_utama extends AppCompatActivity implements slider_view {
     private void initView() {
         txtNama = findViewById(R.id.txt_nama);
         txtNis = findViewById(R.id.txt_nis);
+        toolbar2 = findViewById(R.id.toolbar2);
     }
+
     @Override
     public void onBackPressed() {
         finishAffinity();
@@ -146,5 +156,25 @@ public class menu_utama extends AppCompatActivity implements slider_view {
         bener.startAutoCycle();
         //mRecycler.setAdapter(adapter);
         adapter_slider.notifyDataSetChanged();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.setting, menu);
+//        MenuItem share = menu.findItem(R.id.share);
+//        share.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+//            @Override
+//            public boolean onMenuItemClick(MenuItem item) {
+//                Intent shareIntent = new Intent();
+//                shareIntent.setAction(Intent.ACTION_SEND);
+//                shareIntent.putExtra(Intent.EXTRA_SUBJECT,url);
+//                shareIntent.setType("text/plain");
+//                startActivity(shareIntent);
+//                return false;
+//            }
+//        });
+
+        return super.onCreateOptionsMenu(menu);
     }
 }

@@ -129,7 +129,6 @@ public class menu_login extends AppCompatActivity implements Validator.Validatio
 
             CustomIntent.customType(this, "fadein-to-fadeout");
             Intent intent = new Intent((Activity) this, menu_utama.class);
-            intent.putExtra("Fragmentone", 0); //pass zero for Fragmentone.
             startActivity(intent);
         }
         return super.onKeyDown(keyCode, event);
