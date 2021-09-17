@@ -59,7 +59,8 @@ public class aksi {
                     //adasdas
 
 
-                    if (response.isSuccessful()) {
+
+                    if (response.body().isSuccess()) {
                         finalPDialog.dismiss();
                         String nim = String.valueOf(response.body().getData().getUser().getNim());
                         String nama = String.valueOf(response.body().getData().getUser().getNamaLengkap());
@@ -159,6 +160,7 @@ public class aksi {
         pDialog.show();
         ApiRequest api = Retroserver_server_AUTH.getClient().create(ApiRequest.class);
         Call<Response_login> sendbio = api.edit_pass(password,password_baru);
+        Log.i("cek_Data_password", "update_password: "+password+"  "+password_baru);
 
         ProgressDialog finalPDialog = pDialog;
         sendbio.enqueue(new Callback<Response_login>() {
@@ -167,17 +169,22 @@ public class aksi {
 
 //                boolean kode = response.body().isSuccess();
 //                Log.i("kode_update", "onResponse: " + kode);
-//
-//                if (kode) {
-//                    finalPDialog.dismiss();
-//                    new GlideToast.makeToast((Activity) ctx, "" + response.body().getMessage(), GlideToast.LENGTHLONG, GlideToast.SUCCESSTOAST, GlideToast.CENTER).show();
-//
-//                }else {
-//                    finalPDialog.dismiss();
-//                    new GlideToast.makeToast((Activity) ctx, "" + response.body().getMessage(), GlideToast.LENGTHLONG, GlideToast.WARNINGTOAST, GlideToast.CENTER).show();
-//
-//                }
 
+                try {
+                    if (response.isSuccessful()) {
+                        finalPDialog.dismiss();
+
+                        new GlideToast.makeToast((Activity) ctx, "" + response.body().getMessage(), GlideToast.LENGTHLONG, GlideToast.SUCCESSTOAST, GlideToast.CENTER).show();
+
+                    } else {
+                        finalPDialog.dismiss();
+                        new GlideToast.makeToast((Activity) ctx, "" + response.body().getMessage(), GlideToast.LENGTHLONG, GlideToast.WARNINGTOAST, GlideToast.CENTER).show();
+
+                    }
+                }catch (Exception E){
+                    Log.i("cek_eror_ubah", "onResponse: "+E.getMessage());
+
+                }
             }
             @Override
             public void onFailure(Call<Response_login> call, Throwable t) {

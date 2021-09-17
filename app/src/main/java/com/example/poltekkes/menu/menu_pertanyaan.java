@@ -2,6 +2,7 @@ package com.example.poltekkes.menu;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -44,6 +45,8 @@ public class menu_pertanyaan extends AppCompatActivity implements pertanyaan_vie
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menu_pertanyaan);
         initView();
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
         pertanyaan = new pertanyaan(this, menu_pertanyaan.this);
         tgl_lahir = Guru.getString("tgl_lahir", "false");
         berat = Guru.getString("berat", "false");
@@ -173,5 +176,14 @@ public class menu_pertanyaan extends AppCompatActivity implements pertanyaan_vie
         rentang_usi=rentang_usia;
         Log.i("rentang_usia", "rentang_usia: "+rentang_usi);
 
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case android.R.id.home:
+                onBackPressed();
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

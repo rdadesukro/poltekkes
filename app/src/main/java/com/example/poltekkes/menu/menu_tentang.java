@@ -25,6 +25,8 @@ public class menu_tentang extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menu_tentang);
         initView();
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             txtTentang.setText(Html.fromHtml(fileName, Html.FROM_HTML_MODE_LEGACY));
         } else

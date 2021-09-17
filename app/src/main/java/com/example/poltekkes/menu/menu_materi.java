@@ -29,6 +29,8 @@ public class menu_materi extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menu_materi);
         initView();
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
         try {
             // Google Play will install latest OpenSSL
             ProviderInstaller.installIfNeeded(this);

@@ -6,6 +6,7 @@ import com.example.poltekkes.model.action.Response_action;
 import com.example.poltekkes.model.login.Response_login;
 import com.example.poltekkes.model.pertanyaan.Response_pertanyaan;
 import com.example.poltekkes.model.slider.Response_slider;
+import com.example.poltekkes.model.umur.Response_balita;
 
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
@@ -29,7 +30,7 @@ public interface ApiRequest {
     Call<Response_login> edit_foto(@Part MultipartBody.Part foto);
 
     @FormUrlEncoded
-    @POST("register")
+    @POST("user/register")
     Call<Response_login> register(
             @Field("nim") String nim,
             @Field("username") String username,
@@ -59,10 +60,10 @@ public interface ApiRequest {
 
 
     @FormUrlEncoded
-    @POST("edit_pass")
+    @POST("user/password/ubah")
     Call<Response_login> edit_pass(
-            @Field("password") String password,
-            @Field("password_baru") String password_baru);
+            @Field("pass_lama") String password,
+            @Field("pass_baru") String password_baru);
 
 
 
@@ -85,6 +86,10 @@ public interface ApiRequest {
 
     @GET("penilaian/{tgl_lahir}")
     Call<Response_pertanyaan> get_pertanyaan(
+            @Path("tgl_lahir") String tgl_lahir);
+
+    @GET("balita/umur/{tgl_lahir}")
+    Call<Response_balita> get_umur(
             @Path("tgl_lahir") String tgl_lahir);
 
 

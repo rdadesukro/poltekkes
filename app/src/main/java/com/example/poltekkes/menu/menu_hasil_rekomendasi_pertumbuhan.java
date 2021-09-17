@@ -2,6 +2,7 @@ package com.example.poltekkes.menu;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -22,7 +23,8 @@ public class menu_hasil_rekomendasi_pertumbuhan extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menu_hasil_rekomendasi_pertumbuhan);
         initView();
-
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
         btnPngggil2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -39,5 +41,14 @@ public class menu_hasil_rekomendasi_pertumbuhan extends AppCompatActivity {
     private void initView() {
         btnPngggil2 = findViewById(R.id.btn_pngggil2);
         txtHasil3 = findViewById(R.id.txt_hasil3);
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case android.R.id.home:
+                onBackPressed();
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

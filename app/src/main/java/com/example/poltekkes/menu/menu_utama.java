@@ -8,8 +8,15 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -22,6 +29,8 @@ import com.example.poltekkes.presenter.aksi;
 import com.example.poltekkes.presenter.slider;
 import com.example.poltekkes.view.slider_view;
 import com.github.squti.guru.Guru;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
+import com.jeevandeshmukh.glidetoastlib.GlideToast;
 import com.smarteist.autoimageslider.IndicatorAnimations;
 import com.smarteist.autoimageslider.SliderAnimations;
 import com.smarteist.autoimageslider.SliderView;
@@ -53,6 +62,7 @@ public class menu_utama extends AppCompatActivity implements slider_view {
 
     private com.example.poltekkes.adapter.adapter_slider adapter_slider;
     private Toolbar toolbar2;
+    BottomSheetDialog bottom_dialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -162,18 +172,85 @@ public class menu_utama extends AppCompatActivity implements slider_view {
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.setting, menu);
-//        MenuItem share = menu.findItem(R.id.share);
-//        share.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
-//            @Override
-//            public boolean onMenuItemClick(MenuItem item) {
-//                Intent shareIntent = new Intent();
-//                shareIntent.setAction(Intent.ACTION_SEND);
-//                shareIntent.putExtra(Intent.EXTRA_SUBJECT,url);
-//                shareIntent.setType("text/plain");
-//                startActivity(shareIntent);
-//                return false;
-//            }
-//        });
+        MenuItem share = menu.findItem(R.id.setting);
+        share.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                bottom_dialog = new BottomSheetDialog(menu_utama.this);
+                bottom_dialog.setTitle("Login");
+                bottom_dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+                bottom_dialog.setContentView(R.layout.dialog_edit_password);
+                bottom_dialog.setCancelable(false);
+
+                WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
+                bottom_dialog.getWindow().setAttributes(lp);
+                bottom_dialog.getWindow().addFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
+                bottom_dialog.getWindow().setDimAmount(0.5f);
+                lp.width = WindowManager.LayoutParams.WRAP_CONTENT;
+                lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
+
+
+                Button pgl = (Button) bottom_dialog.findViewById(R.id.btn_pngggil);
+                ImageView close = (ImageView) bottom_dialog.findViewById(R.id.btn_close);
+                 EditText  pass_lama = (EditText) bottom_dialog.findViewById(R.id.edit_pw_lama);
+                EditText pass_baru = (EditText) bottom_dialog.findViewById(R.id.edit_pw_baru);
+                final EditText pass_baru2 = (EditText) bottom_dialog.findViewById(R.id.edit_konfirmasi);
+                pass_lama.requestFocus();
+                pgl.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if (pass_lama.getText().toString().equals("")) {
+                            //  Toast.makeText(menu_profil_pejabat_pejabat.this, "Password lama tidak boleh kosong", Toast.LENGTH_SHORT);
+
+                            new GlideToast.makeToast(menu_utama.this, "Password lama tidak boleh kosong", GlideToast.LENGTHLONG, GlideToast.WARNINGTOAST, GlideToast.CENTER).show();
+                            pass_lama.requestFocus();
+                        } else if (pass_baru.getText().toString().trim().equals("")) {
+                            new GlideToast.makeToast(menu_utama.this, "Password baru tidak boleh kosong", GlideToast.LENGTHLONG, GlideToast.WARNINGTOAST, GlideToast.CENTER).show();
+
+                            // Toast.makeText(menu_profil_pejabat_pejabat.this, "Password baru tidak boleh kosong", Toast.LENGTH_SHORT);
+                            pass_baru.requestFocus();
+                        } else if (pass_baru2.getText().toString().trim().equals("")) {
+                            new GlideToast.makeToast(menu_utama.this, "Password konfirmasi tidak boleh kosong", GlideToast.LENGTHLONG, GlideToast.WARNINGTOAST, GlideToast.CENTER).show();
+
+                            //Toast.makeText(menu_profil_pejabat_pejabat.this, "Password konfirmasi tidak boleh kosong", Toast.LENGTH_SHORT);
+                            pass_baru2.requestFocus();
+                        } else if (!pass_baru.getText().toString().equals(pass_baru2.getText().toString())) {
+                            new GlideToast.makeToast(menu_utama.this, "pastikan password baru dan konfirmasi password sama !", GlideToast.LENGTHLONG, GlideToast.WARNINGTOAST, GlideToast.CENTER).show();
+
+
+                            // Toast.makeText(menu_profil_pejabat_pejabat.this, "pastikan password baru dan konfirmasi password sama !", Toast.LENGTH_SHORT);
+                            pass_baru2.requestFocus();
+                        } else if (pass_baru.getText().toString().trim().length() < 6) {
+                            //  Toast.makeText(menu_profil_pejabat_pejabat.this, "Minimal Password Baru 6 Karketr", Toast.LENGTH_SHORT);
+                            new GlideToast.makeToast(menu_utama.this, "Minimal Password Baru 6 Karketr", GlideToast.LENGTHLONG, GlideToast.WARNINGTOAST, GlideToast.CENTER).show();
+
+
+                            pass_baru.requestFocus();
+                        } else {
+
+                            aksi countryPresenter = new aksi(null, menu_utama.this);
+                            countryPresenter.update_password(pass_lama.getText().toString().trim(), pass_baru.getText().toString().trim(), progressDialog);
+
+
+
+                        }
+
+
+                    }
+                });
+
+                close.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        bottom_dialog.dismiss();
+
+                    }
+                });
+
+                bottom_dialog.show();
+                return false;
+            }
+        });
 
         return super.onCreateOptionsMenu(menu);
     }
