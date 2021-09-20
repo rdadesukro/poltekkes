@@ -6,6 +6,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -14,6 +15,9 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.poltekkes.R;
+import com.example.poltekkes.presenter.rekomendasi;
+import com.example.poltekkes.view.rekomendasi_view;
+import com.github.squti.guru.Guru;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.mobsandgeeks.saripaar.ValidationError;
 import com.mobsandgeeks.saripaar.Validator;
@@ -25,7 +29,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import maes.tech.intentanim.CustomIntent;
 
-public class menu_input_pertumbuhan extends AppCompatActivity implements Validator.ValidationListener {
+public class menu_input_pertumbuhan extends AppCompatActivity implements Validator.ValidationListener, rekomendasi_view {
 
     private Button btnSimpan;
     private EditText editBerat;
@@ -40,6 +44,8 @@ public class menu_input_pertumbuhan extends AppCompatActivity implements Validat
     @NotEmpty(message = "tidak boleh kosong")
     @BindView(R.id.edit_panjang)
     EditText edit_panjang;
+    com.example.poltekkes.presenter.rekomendasi rekomendasi;
+    String hasil_rekomendasi,umur,jk;
 
 
 
@@ -49,6 +55,9 @@ public class menu_input_pertumbuhan extends AppCompatActivity implements Validat
         setContentView(R.layout.menu_input_pertumbuhan);
         initView();
         ButterKnife.bind(this);
+        jk =   Guru.getString("jenis_kelamin", "false");
+        umur =   Guru.getString("bulan", "false");
+        rekomendasi = new rekomendasi(this,menu_input_pertumbuhan.this);
         validator = new Validator(this);
         validator.setValidationListener(this);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -58,42 +67,7 @@ public class menu_input_pertumbuhan extends AppCompatActivity implements Validat
             public void onClick(View v) {
 
                 validator.validate();
-                bottom_dialog = new BottomSheetDialog(menu_input_pertumbuhan.this);
-                bottom_dialog.setTitle("Login");
-                bottom_dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-                bottom_dialog.setContentView(R.layout.dialog_hasil_pertumbuhan);
-                bottom_dialog.setCancelable(false);
 
-                WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
-//                lp.copyFrom(dialog.getWindow().getAttributes());
-                bottom_dialog.getWindow().setAttributes(lp);
-                bottom_dialog.getWindow().addFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
-                bottom_dialog.getWindow().setDimAmount(0.5f);
-                lp.width = WindowManager.LayoutParams.WRAP_CONTENT;
-                lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
-
-
-                Button pgl = (Button) bottom_dialog.findViewById(R.id.btn_pngggil);
-                ImageView close = (ImageView) bottom_dialog.findViewById(R.id.btn_close);
-                pgl.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        bottom_dialog.dismiss();
-                        Intent goInput = new Intent(menu_input_pertumbuhan.this, menu_hasil_rekomendasi_pertumbuhan.class);
-                        startActivity(goInput);
-                        CustomIntent.customType(menu_input_pertumbuhan.this, "fadein-to-fadeout");
-                    }
-                });
-                close.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        bottom_dialog.dismiss();
-
-                    }
-                });
-
-
-                bottom_dialog.show();
             }
         });
     }
@@ -115,6 +89,11 @@ public class menu_input_pertumbuhan extends AppCompatActivity implements Validat
 
     @Override
     public void onValidationSucceeded() {
+        String berat = editBerat.getText().toString().trim();
+        String pajang = edit_panjang.getText().toString().trim();
+
+        rekomendasi.get_rekomendasi(berat,jk,umur);
+
 
     }
 
@@ -130,6 +109,57 @@ public class menu_input_pertumbuhan extends AppCompatActivity implements Validat
             } else {
                 Toast.makeText(this, message, Toast.LENGTH_LONG).show();
             }
+        }
+    }
+
+    @Override
+    public void umur(String Status_pertumbuhan, String rekomendasi, String status) {
+        if (status.equals("1")){
+            bottom_dialog = new BottomSheetDialog(menu_input_pertumbuhan.this);
+            bottom_dialog.setTitle("Login");
+            bottom_dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+            bottom_dialog.setContentView(R.layout.dialog_hasil_pertumbuhan);
+            bottom_dialog.setCancelable(false);
+
+            WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
+//                lp.copyFrom(dialog.getWindow().getAttributes());
+            bottom_dialog.getWindow().setAttributes(lp);
+            bottom_dialog.getWindow().addFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
+            bottom_dialog.getWindow().setDimAmount(0.5f);
+            lp.width = WindowManager.LayoutParams.WRAP_CONTENT;
+            lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
+
+
+            Button pgl = (Button) bottom_dialog.findViewById(R.id.btn_pngggil);
+            WebView hasil = (WebView) bottom_dialog.findViewById(R.id.txt_hasil);
+            hasil.requestFocus();
+            hasil.getSettings().setLightTouchEnabled(true);
+            hasil.getSettings().setJavaScriptEnabled(true);
+            hasil.loadDataWithBaseURL("","<style>img{display: inline;height: auto;max-width: 100%;}</style>"+ Status_pertumbuhan, "text/html", "UTF-8", "");
+
+            ImageView close = (ImageView) bottom_dialog.findViewById(R.id.btn_close);
+            pgl.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    bottom_dialog.dismiss();
+                    Guru.putString("rekomendasi",rekomendasi);
+                    Intent goInput = new Intent(menu_input_pertumbuhan.this, menu_hasil_rekomendasi_pertumbuhan.class);
+                    startActivity(goInput);
+                    CustomIntent.customType(menu_input_pertumbuhan.this, "fadein-to-fadeout");
+                }
+            });
+            close.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    bottom_dialog.dismiss();
+
+                }
+            });
+
+
+            bottom_dialog.show();
+        }else {
+
         }
     }
 }

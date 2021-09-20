@@ -30,7 +30,7 @@ import android.widget.Toast;
 import com.example.poltekkes.R;
 import com.example.poltekkes.menu.mapel_1;
 import com.example.poltekkes.menu.menu_utama;
-import com.example.poltekkes.model.Soal;
+import com.example.poltekkes.model.rekomendasi.Soal;
 
 import java.util.ArrayList;
 import java.util.Arrays;

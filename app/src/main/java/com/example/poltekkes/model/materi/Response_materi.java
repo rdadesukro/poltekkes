@@ -1,8 +1,12 @@
-package com.example.poltekkes.model.umur;
+package com.example.poltekkes.model.materi;
 
+import java.util.List;
 import com.google.gson.annotations.SerializedName;
 
-public class Response_balita {
+public class Response_materi {
+
+	@SerializedName("data")
+	private List<DataItem_materi> data;
 
 	@SerializedName("success")
 	private boolean success;
@@ -10,8 +14,13 @@ public class Response_balita {
 	@SerializedName("message")
 	private String message;
 
-	@SerializedName("balita")
-	private Balita balita;
+	public void setData(List<DataItem_materi> data){
+		this.data = data;
+	}
+
+	public List<DataItem_materi> getData(){
+		return data;
+	}
 
 	public void setSuccess(boolean success){
 		this.success = success;
@@ -29,21 +38,13 @@ public class Response_balita {
 		return message;
 	}
 
-	public void setBalita(Balita balita){
-		this.balita = balita;
-	}
-
-	public Balita getBalita(){
-		return balita;
-	}
-
 	@Override
  	public String toString(){
 		return 
 			"Response{" + 
-			"success = '" + success + '\'' + 
+			"data = '" + data + '\'' + 
+			",success = '" + success + '\'' + 
 			",message = '" + message + '\'' + 
-			",balita = '" + balita + '\'' + 
 			"}";
 		}
 }

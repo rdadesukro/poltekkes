@@ -4,9 +4,10 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.util.Log;
 
-import com.example.poltekkes.model.umur.Response_umur;
+import com.example.poltekkes.model.rekomendasi.Response_rekomendasi;
 import com.example.poltekkes.server.ApiRequest;
 import com.example.poltekkes.server.Retroserver_server_AUTH;
+import com.example.poltekkes.view.rekomendasi_view;
 import com.example.poltekkes.view.umur_view;
 
 import java.io.IOException;
@@ -17,12 +18,12 @@ import retrofit2.Response;
 
 ;
 
-public class cek_umur {
+public class rekomendasi {
 
     private Context ctx;
-    private umur_view countryView;
+    private rekomendasi_view countryView;
     private Retroserver_server_AUTH countryService;
-    public cek_umur(umur_view view, Context ctx) {
+    public rekomendasi(rekomendasi_view view, Context ctx) {
         this.countryView = view;
         this.ctx = ctx;
 
@@ -31,8 +32,8 @@ public class cek_umur {
         }
     }
 
-    public void get_umur(String tanggal_lahir) {
-        ProgressDialog  pDialog = new ProgressDialog(ctx);
+    public void get_rekomendasi(String berat,String jk,String usia) {
+        ProgressDialog pDialog = new ProgressDialog(ctx);
         pDialog.setMessage("Simpan Data...");
         pDialog.setCancelable(false);
         pDialog.setCanceledOnTouchOutside(false);
@@ -40,22 +41,22 @@ public class cek_umur {
         ProgressDialog finalPDialog = pDialog;
         ApiRequest api = Retroserver_server_AUTH.getClient().create(ApiRequest.class);
         Log.i("isi_server", "isi_server: "+Retroserver_server_AUTH.getClient().baseUrl());
-        Call<Response_umur> call = api.get_umur(tanggal_lahir);
+        Call<Response_rekomendasi> call = api.get_rekomendasi(berat,jk,usia);
 
-        call.enqueue(new Callback<Response_umur>() {
+        call.enqueue(new Callback<Response_rekomendasi>() {
             @Override
-            public void onResponse(Call<Response_umur> call, Response<Response_umur> response) {
+            public void onResponse(Call<Response_rekomendasi> call, Response<Response_rekomendasi> response) {
 
                 try {
 
                     if (response.body().isSuccess()) {
                         pDialog.dismiss();
-                        Response_umur data = response.body();
+                        Response_rekomendasi data = response.body();
                         //Toast.makeText(ctx, ""+ response.body().getMessage(), Toast.LENGTH_SHORT).show();
-                      //  Log.i("isi_data", "onResponse: "+response.body().getBalita().getUsiaTerbilang());
+                        //Log.i("isi_data", "onResponse: "+data);
 
-                            countryView.umur(response.body().getData().getBalita().getUsiaTerbilang(),"1",response.body().getData().getBalita().getUsiaDalamBulan());
-                    }else {
+                            countryView.umur(response.body().getData().getStatusPertumbuhan(),
+                                    response.body().getData().getRekomendasi(),"1");
 
                     }
                 } catch (Exception e) {
@@ -66,7 +67,7 @@ public class cek_umur {
             }
 
             @Override
-            public void onFailure(Call<Response_umur> call, Throwable t) {
+            public void onFailure(Call<Response_rekomendasi> call, Throwable t) {
                 t.printStackTrace();
                 Log.i("cek_error", "onFailure: " + t);
                 if (t instanceof IOException) {

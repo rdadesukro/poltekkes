@@ -4,12 +4,13 @@ package com.example.poltekkes.server;
 
 import com.example.poltekkes.model.action.Response_action;
 import com.example.poltekkes.model.login.Response_login;
+import com.example.poltekkes.model.materi.Response_materi;
 import com.example.poltekkes.model.pertanyaan.Response_pertanyaan;
+import com.example.poltekkes.model.rekomendasi.Response_rekomendasi;
 import com.example.poltekkes.model.slider.Response_slider;
-import com.example.poltekkes.model.umur.Response_balita;
+import com.example.poltekkes.model.umur.Response_umur;
 
 import okhttp3.MultipartBody;
-import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
@@ -18,7 +19,6 @@ import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.Part;
 import retrofit2.http.Path;
-import retrofit2.http.Query;
 
 
 public interface ApiRequest {
@@ -89,8 +89,20 @@ public interface ApiRequest {
             @Path("tgl_lahir") String tgl_lahir);
 
     @GET("balita/umur/{tgl_lahir}")
-    Call<Response_balita> get_umur(
+    Call<Response_umur> get_umur(
             @Path("tgl_lahir") String tgl_lahir);
+
+
+    @FormUrlEncoded
+    @POST("balita/pertumbuhan")
+    Call<Response_rekomendasi> get_rekomendasi(
+            @Field("berat_badan") String berat_badan,
+            @Field("jenis_kelamin") String jenis_kelamin,
+            @Field("usia_dalam_bulan") String usia_dalam_bulan);
+
+
+    @POST("image/data_materi.json")
+    Call<Response_materi> get_materi();
 
 
 

@@ -1,28 +1,22 @@
 package com.example.poltekkes.menu;
 
-import android.graphics.Bitmap;
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.webkit.WebView;
-import android.webkit.WebViewClient;
-import android.widget.ProgressBar;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import com.example.poltekkes.R;
-import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
-import com.google.android.gms.common.GooglePlayServicesRepairableException;
-import com.google.android.gms.security.ProviderInstaller;
 
-import java.security.KeyManagementException;
-import java.security.NoSuchAlgorithmException;
-
-import javax.net.ssl.SSLContext;
+import maes.tech.intentanim.CustomIntent;
 
 public class menu_materi extends AppCompatActivity {
 
-    private WebView web;
-    private ProgressBar progressBar3;
+
+    private CardView cardPertumbuhan;
+    private CardView cardPerkembangan;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,43 +25,18 @@ public class menu_materi extends AppCompatActivity {
         initView();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-        try {
-            // Google Play will install latest OpenSSL
-            ProviderInstaller.installIfNeeded(this);
-            SSLContext sslContext;
-            sslContext = SSLContext.getInstance("TLSv1.2");
-            sslContext.init(null, null, null);
-            sslContext.createSSLEngine();
-        } catch (GooglePlayServicesRepairableException | GooglePlayServicesNotAvailableException
-                | NoSuchAlgorithmException | KeyManagementException e) {
-            e.printStackTrace();
-        }
-        web.setWebViewClient(new myWebclient());
-        web.getSettings().setJavaScriptEnabled(true);
-        web.loadUrl("https://drive.google.com/viewerng/viewer?embedded=true&url=https://ppid.jambikota.go.id/files/dokumen_16_ERAQC.pdf");
+        cardPertumbuhan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                CustomIntent.customType(menu_materi.this, "fadein-to-fadeout");
+                Intent intent = new Intent(menu_materi.this, menu_materi_pertumbuhan.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void initView() {
-        web = findViewById(R.id.web);
-        progressBar3 = findViewById(R.id.progressBar3);
-    }
-
-    public class myWebclient extends WebViewClient {
-        @Override
-        public void onPageFinished(WebView view, String url) {
-            super.onPageFinished(view, url);
-            progressBar3.setVisibility(View.GONE);
-        }
-
-        @Override
-        public void onPageStarted(WebView view, String url, Bitmap favicon) {
-            super.onPageStarted(view, url, favicon);
-        }
-
-        @Override
-        public boolean shouldOverrideUrlLoading(WebView view, String url) {
-            view.loadUrl(url);
-            return super.shouldOverrideUrlLoading(view, url);
-        }
+        cardPertumbuhan = (CardView) findViewById(R.id.card_pertumbuhan);
+        cardPerkembangan = (CardView) findViewById(R.id.card_perkembangan);
     }
 }

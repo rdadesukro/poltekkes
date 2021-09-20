@@ -2,7 +2,7 @@ package com.example.poltekkes.model.umur;
 
 import com.google.gson.annotations.SerializedName;
 
-public class Balita{
+public class Balita_umur {
 
 	@SerializedName("usia_dalam_hari")
 	private int usiaDalamHari;

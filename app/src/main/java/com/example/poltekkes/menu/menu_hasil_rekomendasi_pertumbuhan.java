@@ -4,25 +4,33 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.poltekkes.R;
+import com.github.squti.guru.Guru;
 
 import maes.tech.intentanim.CustomIntent;
 
 public class menu_hasil_rekomendasi_pertumbuhan extends AppCompatActivity {
 
     private Button btnPngggil2;
-    private TextView txtHasil3;
-
+    private WebView txtHasil3;
+    String hasil;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menu_hasil_rekomendasi_pertumbuhan);
         initView();
+        hasil  = Guru.getString("rekomendasi", "false");
+        txtHasil3.requestFocus();
+        txtHasil3.getSettings().setLightTouchEnabled(true);
+        txtHasil3.getSettings().setJavaScriptEnabled(true);
+        txtHasil3.loadDataWithBaseURL("","<style>img{display: inline;height: auto;max-width: 100%;}</style>"+ hasil, "text/html", "UTF-8", "");
+
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         btnPngggil2.setOnClickListener(new View.OnClickListener() {

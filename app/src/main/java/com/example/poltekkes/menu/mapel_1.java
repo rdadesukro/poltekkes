@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 
-import com.example.poltekkes.model.Soal;
+import com.example.poltekkes.model.rekomendasi.Soal;
 
 import java.util.ArrayList;
 import java.util.List;

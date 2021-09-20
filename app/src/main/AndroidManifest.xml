@@ -12,9 +12,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat"
         android:usesCleartextTraffic="true">
-        <activity android:name=".menu.menu_hasil_rekomendasi_pertumbuhan"
-            android:label="Hasil Rekomendasi"
+        <activity android:name=".menu.menu_materi_pertumbuhan"
+            android:label="Materi Pertumbuhan"
             android:theme="@style/Theme.AppCompat.Light"></activity>
+        <activity
+            android:name=".menu.menu_hasil_rekomendasi_pertumbuhan"
+            android:label="Hasil Rekomendasi"
+            android:theme="@style/Theme.AppCompat.Light" />
         <activity
             android:name=".menu.menu_input_pertumbuhan"
             android:label="Input Pertumbuhan"

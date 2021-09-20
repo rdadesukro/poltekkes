@@ -2,11 +2,14 @@ package com.example.poltekkes.menu;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -175,6 +178,7 @@ public class menu_input_data extends AppCompatActivity implements Validator.Vali
 
     @Override
     public void onValidationSucceeded() {
+
         cek_umur.get_umur(editTgl.getText().toString().trim());
     }
 
@@ -222,9 +226,12 @@ public class menu_input_data extends AppCompatActivity implements Validator.Vali
 
             Button pgl = (Button) bottom_dialog.findViewById(R.id.btn_pngggil);
 
-            TextView hasil = (TextView) bottom_dialog.findViewById(R.id.txt_hasil);
-            hasil.setText(umur);
-
+            WebView hasil = (WebView) bottom_dialog.findViewById(R.id.txt_hasil);
+            //hasil.setText(umur);
+            hasil.requestFocus();
+            hasil.getSettings().setLightTouchEnabled(true);
+            hasil.getSettings().setJavaScriptEnabled(true);
+            hasil.loadDataWithBaseURL("","<style>img{display: inline;height: auto;max-width: 100%;}</style>"+ umur, "text/html", "UTF-8", "");
             ImageView close = (ImageView) bottom_dialog.findViewById(R.id.btn_close);
 
             pgl.setOnClickListener(new View.OnClickListener() {
@@ -253,7 +260,26 @@ public class menu_input_data extends AppCompatActivity implements Validator.Vali
             bottom_dialog.show();
 
         }else {
+            Toast.makeText(this, "sdasdasdasd", Toast.LENGTH_SHORT).show();
 
+        }
+    }
+    public class myWebclient extends WebViewClient {
+        @Override
+        public void onPageFinished(WebView view, String url) {
+            super.onPageFinished(view, url);
+           // progressBar3.setVisibility(View.GONE);
+        }
+
+        @Override
+        public void onPageStarted(WebView view, String url, Bitmap favicon) {
+            super.onPageStarted(view, url, favicon);
+        }
+
+        @Override
+        public boolean shouldOverrideUrlLoading(WebView view, String url) {
+            view.loadUrl(url);
+            return super.shouldOverrideUrlLoading(view, url);
         }
     }
 }

@@ -1,4 +1,4 @@
-package com.example.poltekkes.model;
+package com.example.poltekkes.model.rekomendasi;
 
 public class Soal {
 	private String soal_id;
