@@ -83,10 +83,13 @@ public interface ApiRequest {
 
 
 
+//
+//    @GET("penilaian/{tgl_lahir}")
+//    Call<Response_pertanyaan> get_pertanyaan(
+//            @Path("tgl_lahir") String tgl_lahir);
 
-    @GET("penilaian/{tgl_lahir}")
-    Call<Response_pertanyaan> get_pertanyaan(
-            @Path("tgl_lahir") String tgl_lahir);
+    @GET("balita/perkembangan/{tgl_lahir}")
+    Call<Response_pertanyaan> get_pertanyaan(@Path("tgl_lahir") String tgl_lahir);
 
     @GET("balita/umur/{tgl_lahir}")
     Call<Response_umur> get_umur(

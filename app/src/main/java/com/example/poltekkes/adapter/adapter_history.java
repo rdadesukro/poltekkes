@@ -67,8 +67,7 @@ public class adapter_history extends RecyclerView.Adapter<adapter_history.Holder
     @Override
     public void onBindViewHolder(final HolderData holder, int position) {
         final DataItem_pertanyaan dm = mList.get(position);
-        holder.txt_pertanyaan.setText(dm.getText());
-        holder.txt_no.setText(position+1+".");
+       // holder.txt_pertanyaan.setText(dm.getText());
         holder.dm = dm;
         holder.pos =position;
         setAnimation(holder.itemView,position);
@@ -83,11 +82,8 @@ public class adapter_history extends RecyclerView.Adapter<adapter_history.Holder
 
     class HolderData extends  RecyclerView.ViewHolder {
 
-        @BindView(R.id.txt_pertanyaan)
-        TextView txt_pertanyaan;
-
-        @BindView(R.id.txt_no)
-        TextView txt_no;
+//        @BindView(R.id.txt_pertanyaan)
+//        TextView txt_pertanyaan;
 
         @BindView(R.id.cex_jawaban)
         CheckBox cex_jawaban;

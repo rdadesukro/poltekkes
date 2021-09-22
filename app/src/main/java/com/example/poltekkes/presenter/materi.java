@@ -1,21 +1,13 @@
 package com.example.poltekkes.presenter;
 
-import android.app.Activity;
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.util.Log;
 
-import com.example.poltekkes.model.action.Response_action;
 import com.example.poltekkes.model.materi.DataItem_materi;
 import com.example.poltekkes.model.materi.Response_materi;
-import com.example.poltekkes.model.pertanyaan.DataItem_pertanyaan;
-import com.example.poltekkes.model.pertanyaan.Response_pertanyaan;
 import com.example.poltekkes.server.ApiRequest;
-import com.example.poltekkes.server.Retroserver_server_AUTH;
 import com.example.poltekkes.server.Retroserver_server_materi;
 import com.example.poltekkes.view.materi_view;
-import com.example.poltekkes.view.pertanyaan_view;
-import com.jeevandeshmukh.glidetoastlib.GlideToast;
 
 import java.io.IOException;
 import java.util.List;

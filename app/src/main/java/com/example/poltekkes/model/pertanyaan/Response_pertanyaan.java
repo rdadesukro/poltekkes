@@ -5,26 +5,22 @@ import com.google.gson.annotations.SerializedName;
 
 public class Response_pertanyaan {
 
+	@SerializedName("usia_bulan")
+	private int usiaBulan;
+
 	@SerializedName("data")
 	private List<DataItem_pertanyaan> data;
 
 	@SerializedName("success")
 	private boolean success;
 
-
-	public String getRentang_usia_bayi() {
-		return rentang_usia_bayi;
+	public void setUsiaBulan(int usiaBulan){
+		this.usiaBulan = usiaBulan;
 	}
 
-	public void setRentang_usia_bayi(String rentang_usia_bayi) {
-		this.rentang_usia_bayi = rentang_usia_bayi;
+	public int getUsiaBulan(){
+		return usiaBulan;
 	}
-
-	@SerializedName("rentang_usia_bayi")
-	private String rentang_usia_bayi;
-
-	@SerializedName("message")
-	private String message;
 
 	public void setData(List<DataItem_pertanyaan> data){
 		this.data = data;
@@ -42,22 +38,13 @@ public class Response_pertanyaan {
 		return success;
 	}
 
-	public void setMessage(String message){
-		this.message = message;
-	}
-
-	public String getMessage(){
-		return message;
-	}
-
 	@Override
  	public String toString(){
 		return 
 			"Response{" + 
-			"data = '" + data + '\'' + 
+			"usia_bulan = '" + usiaBulan + '\'' + 
+			",data = '" + data + '\'' + 
 			",success = '" + success + '\'' + 
-			",message = '" + message + '\'' +
-					",rentang_usia_bayi = '" + rentang_usia_bayi + '\'' +
-					"}";
+			"}";
 		}
 }

@@ -59,7 +59,7 @@ public class menu_pertanyaan extends AppCompatActivity implements pertanyaan_vie
         btnSimpan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                pertanyaan.simpan_pertanyaan(String.valueOf(jawaban),rentang_usia,nama,berat,panjang);
+                pertanyaan.simpan_pertanyaan(String.valueOf(jawaban),rentang_usia,nama,berat,panjang);
                 bottom_dialog = new BottomSheetDialog(menu_pertanyaan.this);
                 bottom_dialog.setTitle("Login");
                 bottom_dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -115,13 +115,23 @@ public class menu_pertanyaan extends AppCompatActivity implements pertanyaan_vie
     public void pertanyaan(List<DataItem_pertanyaan> pertanyaan) {
         try {
             String s1 ="tidak";
+            String s2 ="judul";
             for (int i = 0; i < pertanyaan.size(); i++) {
-                jawaban.add(s1);
+                String first = pertanyaan.get(i).getText();
+                String s=first.substring(0,1);
+
+                if (s.equals("#")){
+                    jawaban.add(s2);
+                }else {
+                    jawaban.add(s1);
+                }
+
             }
             Log.i("isi_jawaban", "pertanyaan: "+jawaban);
             Log.i("cek_data_pertanyaan", "event: " + pertanyaan.size());
             adapter_pertanyaan = new adapter_pertanyaan(menu_pertanyaan.this, pertanyaan, 1, this::onImageClick);
             rvAku.setLayoutManager(new LinearLayoutManager(menu_pertanyaan.this, LinearLayoutManager.VERTICAL, false));
+            rvAku.setHasFixedSize(true);
             rvAku.setAdapter(adapter_pertanyaan);
             swifeRefresh.setRefreshing(false);
             if (pertanyaan.size() == 0) {

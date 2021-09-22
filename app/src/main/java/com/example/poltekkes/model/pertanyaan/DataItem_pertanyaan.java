@@ -4,12 +4,22 @@ import com.google.gson.annotations.SerializedName;
 
 public class DataItem_pertanyaan {
 
+	@SerializedName("id")
+	private int id;
+
 	@SerializedName("text")
 	private String text;
 
+	@SerializedName("bulan")
+	private int bulan;
 
+	public void setId(int id){
+		this.id = id;
+	}
 
-
+	public int getId(){
+		return id;
+	}
 
 	public void setText(String text){
 		this.text = text;
@@ -19,11 +29,21 @@ public class DataItem_pertanyaan {
 		return text;
 	}
 
+	public void setBulan(int bulan){
+		this.bulan = bulan;
+	}
+
+	public int getBulan(){
+		return bulan;
+	}
+
 	@Override
  	public String toString(){
 		return 
 			"DataItem{" + 
-			"text = '" + text + '\'' + 
+			"id = '" + id + '\'' + 
+			",text = '" + text + '\'' + 
+			",bulan = '" + bulan + '\'' + 
 			"}";
 		}
 }

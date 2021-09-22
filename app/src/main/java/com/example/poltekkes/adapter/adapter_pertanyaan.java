@@ -9,15 +9,15 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
 import android.widget.CheckBox;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.poltekkes.R;
 import com.example.poltekkes.model.pertanyaan.DataItem_pertanyaan;
-import com.github.squti.guru.Guru;
 
 import java.util.List;
 
@@ -69,11 +69,40 @@ public class adapter_pertanyaan extends RecyclerView.Adapter<adapter_pertanyaan.
     @Override
     public void onBindViewHolder(final HolderData holder, int position) {
         final DataItem_pertanyaan dm = mList.get(position);
-        holder.txt_pertanyaan.setText(dm.getText());
-        holder.txt_no.setText(position+1+".");
+//        holder.txt_pertanyaan.setText(dm.getText());
+
+
+        String test = dm.getText();
+        String s=test.substring(0,1);
+
+        if (s.equals("#"))
+        {
+
+            holder.txt_judul.setVisibility(View.VISIBLE);
+            holder.cex_jawaban.setVisibility(View.GONE);
+            holder.txt_judul.setText(dm.getText());
+
+        }else {
+            holder.cex_jawaban.setVisibility(View.VISIBLE);
+            holder.txt_judul.setVisibility(View.GONE);
+//            holder.txt_pertanyaan.setText(dm.getText());
+            holder.txt_pertanyaan.requestFocus();
+            holder.txt_pertanyaan.getSettings().setLightTouchEnabled(true);
+            holder.txt_pertanyaan.getSettings().setJavaScriptEnabled(true);
+            holder.txt_pertanyaan.getSettings().setRenderPriority(WebSettings.RenderPriority.HIGH);
+            holder.txt_pertanyaan.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
+            holder.txt_pertanyaan.loadDataWithBaseURL("","<style>img{display: inline;height: auto;max-width: 100%;}</style>"+ dm.getText(), "text/html", "UTF-8", "");
+
+
+
+        }
+
+        Log.i("data_pertama", "onBindViewHolder: "+s);
+
+
         holder.dm = dm;
         holder.pos =position;
-        setAnimation(holder.itemView,position);
+
 
     }
 
@@ -83,13 +112,25 @@ public class adapter_pertanyaan extends RecyclerView.Adapter<adapter_pertanyaan.
     }
 
 
+    @Override
+    public long getItemId(int position) {
+        return position;
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        return position;
+    }
+
+
     class HolderData extends  RecyclerView.ViewHolder {
 
         @BindView(R.id.txt_pertanyaan)
-        TextView txt_pertanyaan;
+        WebView txt_pertanyaan;
 
-        @BindView(R.id.txt_no)
-        TextView txt_no;
+        @BindView(R.id.txt_judul)
+        TextView txt_judul;
+
 
         @BindView(R.id.cex_jawaban)
         CheckBox cex_jawaban;
@@ -144,13 +185,5 @@ public class adapter_pertanyaan extends RecyclerView.Adapter<adapter_pertanyaan.
 
     }
 
-    private int lastPosition = -1;
-    private boolean on_attach = true;
 
-    private void setAnimation(View view, int position) {
-        if (position > lastPosition) {
-           // ItemAnimation.animate(view, on_attach ? position : -1, animation_type);
-            lastPosition = position;
-        }
-    }
 }

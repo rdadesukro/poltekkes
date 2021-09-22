@@ -10,6 +10,7 @@
         android:requestLegacyExternalStorage="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+        android:hardwareAccelerated="true"
         android:theme="@style/Theme.AppCompat"
         android:usesCleartextTraffic="true">
         <activity android:name=".menu.menu_materi_pertumbuhan"
@@ -32,10 +33,10 @@
             android:name=".menu.menu_history"
             android:label="History"
             android:theme="@style/Theme.AppCompat.Light" />
-        <activity
-            android:name=".menu.menu_pertanyaan"
-            android:label="Pertanyaan"
-            android:theme="@style/Theme.AppCompat.Light" />
+<!--        <activity-->
+<!--            android:name=".menu.menu_pertanyaan"-->
+<!--            android:label="Pertanyaan"-->
+<!--            android:theme="@style/Theme.AppCompat.Light" />-->
         <activity
             android:name=".menu.menu_input_data"
             android:label="Input Data Balita"
@@ -57,7 +58,8 @@
             android:label="Materi"
             android:theme="@style/Theme.AppCompat.Light" />
         <activity android:name=".menu.menu_bantuan" />
-        <activity android:name=".menu.menu_pembuka">
+        <activity android:name=".menu.menu_pertanyaan"
+            android:theme="@style/Theme.AppCompat.DayNight">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

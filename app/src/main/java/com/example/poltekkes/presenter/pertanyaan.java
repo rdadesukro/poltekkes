@@ -3,14 +3,12 @@ package com.example.poltekkes.presenter;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.graphics.Color;
 import android.util.Log;
 ;
 import com.example.poltekkes.model.action.Response_action;
-import com.example.poltekkes.model.login.Response_login;
 import com.example.poltekkes.model.pertanyaan.DataItem_pertanyaan;
-import com.example.poltekkes.server.ApiRequest;
 import com.example.poltekkes.model.pertanyaan.Response_pertanyaan;
+import com.example.poltekkes.server.ApiRequest;
 import com.example.poltekkes.server.Retroserver_server_AUTH;
 import com.example.poltekkes.view.pertanyaan_view;
 import com.jeevandeshmukh.glidetoastlib.GlideToast;
@@ -18,9 +16,6 @@ import com.jeevandeshmukh.glidetoastlib.GlideToast;
 import java.io.IOException;
 import java.util.List;
 
-import cn.pedant.SweetAlert.SweetAlertDialog;
-import okhttp3.MultipartBody;
-import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -42,7 +37,7 @@ public class pertanyaan {
     public void get_pertanyan(String tanggal_lahir) {
         ApiRequest api = Retroserver_server_AUTH.getClient().create(ApiRequest.class);
         Log.i("isi_server", "isi_server: "+Retroserver_server_AUTH.getClient().baseUrl());
-        Call<Response_pertanyaan> call = api.get_pertanyaan(tanggal_lahir);
+        Call<Response_pertanyaan> call = api.get_pertanyaan("12-08-2021");
 
         call.enqueue(new Callback<Response_pertanyaan>() {
             @Override
@@ -57,7 +52,7 @@ public class pertanyaan {
                         if (data != null && data.getData() != null) {
                             List<DataItem_pertanyaan> result = data.getData();
                             countryView.pertanyaan(result);
-                            countryView.rentang_usia(response.body().getRentang_usia_bayi());
+                            //countryView.rentang_usia(response.body().getRentang_usia_bayi());
                         }
                     }
                 } catch (Exception e) {

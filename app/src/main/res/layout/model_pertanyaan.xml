@@ -28,6 +28,7 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
+                android:textColor="@color/grey_1000"
                 android:fontFamily="@font/opensansbold"
                 android:text="Tanyakan Kepada Anak"
                 android:textSize="@dimen/_13sdp"
@@ -46,38 +47,28 @@
                 android:visibility="gone"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@+id/cex_jawaban"
-                app:layout_constraintStart_toEndOf="@+id/txt_no"
+                app:layout_constraintStart_toStartOf="@+id/txt_pertanyaan"
                 app:layout_constraintTop_toBottomOf="@+id/cex_jawaban"
                 tools:srcCompat="@tools:sample/avatars"
                 tools:visibility="visible" />
-
-            <TextView
-                android:id="@+id/txt_no"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:fontFamily="@font/opensansbold"
-                android:text="1"
-                android:textColor="@color/grey_1000"
-                android:textSize="16sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txt_judul" />
 
             <CheckBox
                 android:id="@+id/cex_jawaban"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
+                android:visibility="gone"
                 app:layout_constraintBottom_toBottomOf="@+id/txt_pertanyaan"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/txt_pertanyaan" />
+                app:layout_constraintTop_toTopOf="@+id/txt_pertanyaan"
+                tools:visibility="visible" />
 
-            <TextView
+            <WebView
                 android:id="@+id/txt_pertanyaan"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
+                android:scrollbars="none"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
                 android:fontFamily="@font/opensansregular"
@@ -85,7 +76,7 @@
                 android:textColor="@color/contentTextColor"
                 android:textSize="@dimen/_12sdp"
                 app:layout_constraintEnd_toStartOf="@+id/cex_jawaban"
-                app:layout_constraintStart_toEndOf="@+id/txt_no"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txt_judul" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>

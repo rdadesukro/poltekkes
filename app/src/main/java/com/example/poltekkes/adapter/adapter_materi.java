@@ -6,13 +6,10 @@ import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.CountDownTimer;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CheckBox;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
@@ -24,14 +21,11 @@ import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.Target;
 import com.example.poltekkes.R;
 import com.example.poltekkes.model.materi.DataItem_materi;
-import com.example.poltekkes.model.pertanyaan.DataItem_pertanyaan;
 
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-
-import static com.example.poltekkes.menu.menu_pertanyaan.jawaban;
 
 
 public class adapter_materi extends RecyclerView.Adapter<adapter_materi.HolderData> {
