@@ -238,7 +238,7 @@ public class menu_input_data extends AppCompatActivity implements Validator.Vali
                 @Override
                 public void onClick(View v) {
                     bottom_dialog.dismiss();
-                    Toast.makeText(menu_input_data.this, "ade", Toast.LENGTH_SHORT).show();
+                   // Toast.makeText(menu_input_data.this, "ade", Toast.LENGTH_SHORT).show();
                     Guru.putString("tgl_lahir", editTgl.getText().toString().trim());
                     Guru.putString("nama", editNama.getText().toString().trim());
                     Guru.putString("alamat", editAlamat.getText().toString().trim());
@@ -260,7 +260,7 @@ public class menu_input_data extends AppCompatActivity implements Validator.Vali
             bottom_dialog.show();
 
         }else {
-            Toast.makeText(this, "sdasdasdasd", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Gagal", Toast.LENGTH_SHORT).show();
 
         }
     }

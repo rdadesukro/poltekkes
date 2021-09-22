@@ -63,6 +63,7 @@ public class menu_utama extends AppCompatActivity implements slider_view {
     private com.example.poltekkes.adapter.adapter_slider adapter_slider;
     private Toolbar toolbar2;
     BottomSheetDialog bottom_dialog;
+    String username;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,6 +77,7 @@ public class menu_utama extends AppCompatActivity implements slider_view {
             getSupportActionBar().setTitle("Main Page");
         }
         nama = Guru.getString("nama", "false");
+        username =Guru.getString("username", "false");
         nim = Guru.getString("nim", "false");
         slider = new slider(menu_utama.this, menu_utama.this);
         slider.get_slider();

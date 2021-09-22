@@ -3,6 +3,7 @@ package com.example.poltekkes.menu;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -38,5 +39,14 @@ public class menu_materi extends AppCompatActivity {
     private void initView() {
         cardPertumbuhan = (CardView) findViewById(R.id.card_pertumbuhan);
         cardPerkembangan = (CardView) findViewById(R.id.card_perkembangan);
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case android.R.id.home:
+                onBackPressed();
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

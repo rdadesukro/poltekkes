@@ -3,6 +3,7 @@ package com.example.poltekkes.menu;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.Html;
+import android.view.MenuItem;
 import android.webkit.WebView;
 import android.widget.TextView;
 
@@ -35,5 +36,15 @@ public class menu_tentang extends AppCompatActivity {
 
     private void initView() {
         txtTentang = findViewById(R.id.txt_tentang);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case android.R.id.home:
+                onBackPressed();
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

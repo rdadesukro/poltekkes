@@ -58,23 +58,21 @@ public class aksi {
                     Log.i("isi_kode", "onResponse: "+kode);
                     //adasdas
 
-
-
                     if (response.body().isSuccess()) {
                         finalPDialog.dismiss();
                         String nim = String.valueOf(response.body().getData().getUser().getNim());
                         String nama = String.valueOf(response.body().getData().getUser().getNamaLengkap());
+                        String userame =response.body().getData().getUser().getUsername();
 
                             new GlideToast.makeToast((Activity) ctx, "" + response.body().getMessage(), GlideToast.LENGTHLONG, GlideToast.SUCCESSTOAST, GlideToast.CENTER).show();
                             Guru.putString("status_loign", "true");
                             Guru.putString("nama", nama);
+                            Guru.putString("username", userame);
                             Guru.putString("nim", nim);
                             Guru.putString("auth", response.body().getData().getToken());
                             Intent intent = new Intent((Activity) ctx, menu_utama.class);
-                            intent.putExtra("Fragmentone", 3); //pass zero for Fragmentone.
                             ctx.startActivity(intent);
                             CustomIntent.customType((Activity) ctx,"fadein-to-fadeout");
-
 
                     } else {
                         finalPDialog.dismiss();
@@ -171,7 +169,7 @@ public class aksi {
 //                Log.i("kode_update", "onResponse: " + kode);
 
                 try {
-                    if (response.isSuccessful()) {
+                    if (response.body().isSuccess()) {
                         finalPDialog.dismiss();
 
                         new GlideToast.makeToast((Activity) ctx, "" + response.body().getMessage(), GlideToast.LENGTHLONG, GlideToast.SUCCESSTOAST, GlideToast.CENTER).show();

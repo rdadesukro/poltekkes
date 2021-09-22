@@ -34,6 +34,7 @@ public class rekomendasi {
 
     public void get_rekomendasi(String berat,String jk,String usia) {
         ProgressDialog pDialog = new ProgressDialog(ctx);
+        pDialog.setTitle("Mohon Tunggu!!!");
         pDialog.setMessage("Simpan Data...");
         pDialog.setCancelable(false);
         pDialog.setCanceledOnTouchOutside(false);

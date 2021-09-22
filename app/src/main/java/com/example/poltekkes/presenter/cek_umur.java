@@ -33,6 +33,7 @@ public class cek_umur {
 
     public void get_umur(String tanggal_lahir) {
         ProgressDialog  pDialog = new ProgressDialog(ctx);
+        pDialog.setTitle("Mohon Tunggu!!!");
         pDialog.setMessage("Simpan Data...");
         pDialog.setCancelable(false);
         pDialog.setCanceledOnTouchOutside(false);

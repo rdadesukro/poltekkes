@@ -84,6 +84,7 @@ public class pertanyaan {
 
     public void simpan_pertanyaan(String jawaban,String rentang_usia_bayi,String nama,String berat, String panjang) {
         ProgressDialog  pDialog = new ProgressDialog(ctx);
+        pDialog.setTitle("Mohon Tunggu!!!");
         pDialog.setMessage("Simpan Jawaban...");
         pDialog.setCancelable(false);
         pDialog.setCanceledOnTouchOutside(false);

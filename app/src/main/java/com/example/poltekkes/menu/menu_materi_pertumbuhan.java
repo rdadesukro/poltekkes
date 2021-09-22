@@ -8,6 +8,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -59,7 +60,7 @@ public class menu_materi_pertumbuhan extends AppCompatActivity implements materi
         }
         web.setWebViewClient(new menu_materi_pertumbuhan.myWebclient());
         web.getSettings().setJavaScriptEnabled(true);
-        web.loadUrl("https://drive.google.com/drive/u/0/my-drive");
+        web.loadUrl("https://drive.google.com/viewerng/viewer?embedded=true&url=https://ppid.jambikota.go.id/files/dokumen_16_ERAQC.pdf");
 
     }
 
@@ -115,5 +116,14 @@ public class menu_materi_pertumbuhan extends AppCompatActivity implements materi
             view.loadUrl(url);
             return super.shouldOverrideUrlLoading(view, url);
         }
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case android.R.id.home:
+                onBackPressed();
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

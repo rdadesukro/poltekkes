@@ -4,18 +4,65 @@
 
 
     <item
-        android:id="@+id/dokter"
+        android:id="@+id/bln_3"
         android:title="0-3 Bulan"
         app:showAsAction="never"
         />
     <item
-        android:id="@+id/apotik"
-        android:title="Dokter"
+        android:id="@+id/bln_6"
+        android:title="3-6 Bulan"
         app:showAsAction="never"
         />
     <item
-        android:id="@+id/toko_obat"
-        android:title="Toko Obat"
+        android:id="@+id/blm_9"
+        android:title="6-9 Bulan"
         app:showAsAction="never"
         />
+    <item
+        android:id="@+id/blm_12"
+        android:title="9-12 Bulan"
+        app:showAsAction="never"
+        />
+    <item
+        android:id="@+id/blm_18"
+        android:title="12-18 Bulan"
+        app:showAsAction="never"
+        />
+    <item
+        android:id="@+id/blm_24"
+        android:title="18-24 Bulan"
+        app:showAsAction="never"
+        />
+    <item
+        android:id="@+id/blm_30"
+        android:title="24-30 Bulan"
+        app:showAsAction="never"
+        />
+    <item
+        android:id="@+id/blm_36"
+        android:title="30-36 Bulan"
+        app:showAsAction="never"
+        />
+    <item
+        android:id="@+id/blm_42"
+        android:title="36-42 Bulan"
+        app:showAsAction="never"
+        />
+    <item
+        android:id="@+id/blm_48"
+        android:title="42-48 Bulan"
+        app:showAsAction="never"
+        />
+    <item
+        android:id="@+id/blm_54"
+        android:title="48-54 Bulan"
+        app:showAsAction="never"
+        />
+    <item
+        android:id="@+id/blm_60"
+        android:title="54-60 Bulan"
+        app:showAsAction="never"
+        />
+
+
 </menu>
