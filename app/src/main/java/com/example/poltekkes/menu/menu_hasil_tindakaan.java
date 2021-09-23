@@ -34,7 +34,7 @@ public class menu_hasil_tindakaan extends AppCompatActivity {
         btnPngggil2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent goInput = new Intent(menu_hasil_tindakaan.this, menu_pertanyaan.class);
+                Intent goInput = new Intent(menu_hasil_tindakaan.this, menu_jadwal.class);
                 startActivity(goInput);
                 CustomIntent.customType(menu_hasil_tindakaan.this, "fadein-to-fadeout");
 

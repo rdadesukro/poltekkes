@@ -105,13 +105,20 @@ public class rekomendasi {
                         Response_perkembangan data = response.body();
 
 
-                        countryView.umur(response.body().getData().getHasilPerkembangan(),
-                                response.body().getData().getTindakan(),"1");
+
+                        countryView.hasil(response.body().getData().getHasilPerkembangan(),
+                                response.body().getData().getTindakan(),
+                                "1",
+                                response.body().getData().getJadwalPertumbuhan(),
+                                response.body().getData().getJadwalPerkembangan());
 
                     }else {
                         Toast.makeText(ctx, ""+ response.body().getMessage(), Toast.LENGTH_SHORT).show();
                         //pDialog.dismiss();
-                        countryView.umur("", "","0");
+                        countryView.hasil("response.body().getData().getHasilPerkembangan()",
+                                "response.body().getData().getTindakan()",
+                                "0","","");
+
                     }
                 } catch (Exception e) {
                     Log.i("CEK_ERROR_PER", "There is an error" + e.getMessage());

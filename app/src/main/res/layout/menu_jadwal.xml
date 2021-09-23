@@ -3,8 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@color/putih"
-    android:backgroundTint="@color/putih"
     android:layout_height="match_parent"
     tools:context=".menu.menu_hasil_rekomendasi_pertumbuhan">
 
@@ -12,7 +10,6 @@
         android:id="@+id/btn_pngggil2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
         android:backgroundTint="@color/deep_orange_700"
@@ -23,8 +20,16 @@
         android:textSize="@dimen/_14sdp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView20" />
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <WebView
+        android:id="@+id/txt_hasil"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="@+id/txt_hasil3"
+        app:layout_constraintStart_toStartOf="@+id/txt_hasil3"
+        app:layout_constraintTop_toBottomOf="@+id/txt_hasil3" />
 
     <WebView
         android:id="@+id/txt_hasil3"
@@ -39,5 +44,7 @@
         android:textSize="@dimen/_16sdp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent" >
+
+    </WebView>
 </androidx.constraintlayout.widget.ConstraintLayout>

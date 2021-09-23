@@ -116,6 +116,13 @@ public class menu_pertanyaan extends AppCompatActivity implements rekomendasi_vi
     }
 
     @Override
+    public void lihat_gambar(int id, String gambar,ImageView foto) {
+        new PhotoFullPopupWindow(this, R.layout.popup_photo_full, foto, gambar, null);
+
+
+    }
+
+    @Override
     public void pertanyaan(List<DataItem_pertanyaan> pertanyaan) {
         try {
             String s1 ='"'+"tidak"+'"';
@@ -133,7 +140,7 @@ public class menu_pertanyaan extends AppCompatActivity implements rekomendasi_vi
             }
             Log.i("isi_jawaban", "pertanyaan: "+jawaban);
             Log.i("cek_data_pertanyaan", "event: " + pertanyaan.size());
-            adapter_pertanyaan = new adapter_pertanyaan(menu_pertanyaan.this, pertanyaan, 1, this::onImageClick);
+            adapter_pertanyaan = new adapter_pertanyaan(menu_pertanyaan.this, pertanyaan, 1,this);
             rvAku.setLayoutManager(new LinearLayoutManager(menu_pertanyaan.this, LinearLayoutManager.VERTICAL, false));
             rvAku.setHasFixedSize(true);
             adapter_pertanyaan.notifyDataSetChanged();
@@ -176,6 +183,11 @@ public class menu_pertanyaan extends AppCompatActivity implements rekomendasi_vi
 
     @Override
     public void umur(String Status_pertumbuhan, String rekomendasi, String status) {
+
+    }
+
+    @Override
+    public void hasil(String Status_perkembangan, String rekomendasi, String status, String jadwal_pertumbuhan, String jadwal_perkembangan) {
         if (status.equals("1")){
             bottom_dialog = new BottomSheetDialog(menu_pertanyaan.this);
             bottom_dialog.setTitle("Login");
@@ -199,7 +211,7 @@ public class menu_pertanyaan extends AppCompatActivity implements rekomendasi_vi
             hasil.getSettings().setJavaScriptEnabled(true);
             hasil.getSettings().setRenderPriority(WebSettings.RenderPriority.HIGH);
             hasil.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
-            hasil.loadDataWithBaseURL("","<style>img{display: inline;height: auto;max-width: 100%;}</style>"+ Status_pertumbuhan, "text/html", "UTF-8", "");
+            hasil.loadDataWithBaseURL("","<style>img{display: inline;height: auto;max-width: 100%;}</style>"+ Status_perkembangan, "text/html", "UTF-8", "");
 
             ImageView close = (ImageView) bottom_dialog.findViewById(R.id.btn_close2);
             pgl.setOnClickListener(new View.OnClickListener() {
@@ -207,7 +219,9 @@ public class menu_pertanyaan extends AppCompatActivity implements rekomendasi_vi
                 public void onClick(View v) {
 
                     bottom_dialog.dismiss();
-                    Guru.putString("tindakan",rekomendasi);bottom_dialog.dismiss();
+                    Guru.putString("tindakan",rekomendasi);
+                    Guru.putString("jadwal_perkembangan",jadwal_perkembangan);
+                    Guru.putString("jadwal_pertumbuhan",jadwal_pertumbuhan);
                     Intent goInput = new Intent(menu_pertanyaan.this, menu_hasil_tindakaan.class);
                     startActivity(goInput);
                     CustomIntent.customType(menu_pertanyaan.this, "fadein-to-fadeout");

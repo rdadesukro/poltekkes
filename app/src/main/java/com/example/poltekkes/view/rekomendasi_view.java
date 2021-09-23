@@ -11,6 +11,7 @@ package com.example.poltekkes.view;
 public interface rekomendasi_view {
 
     void umur(String Status_pertumbuhan,String rekomendasi,String status);
+    void hasil(String Status_perkembangan,String rekomendasi,String status,String jadwal_pertumbuhan,String jadwal_perkembangan);
 
 
 }

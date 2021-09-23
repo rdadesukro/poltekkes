@@ -30,9 +30,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat"
         android:usesCleartextTraffic="true">
-        <activity android:name=".menu.menu_hasil_tindakaan"
+        <activity android:name=".menu.menu_jadwal"
+            android:theme="@style/Theme.AppCompat.Light"
+            android:label="Jadwal"></activity>
+        <activity
+            android:name=".menu.menu_hasil_tindakaan"
             android:label="Rekomendasi"
-            android:theme="@style/Theme.AppCompat.Light"></activity>
+            android:theme="@style/Theme.AppCompat.Light" />
         <activity
             android:name=".menu.menu_materi_pertumbuhan"
             android:label="Materi Pertumbuhan"

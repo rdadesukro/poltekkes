@@ -58,7 +58,9 @@ public class adapter_pertanyaan extends RecyclerView.Adapter<adapter_pertanyaan.
         void onImageClick(int id,
                           String nama,
                           String alamat);
+        void lihat_gambar(int id, String gambar,ImageView foto);
     }
+
 
 
 
@@ -197,9 +199,8 @@ public class adapter_pertanyaan extends RecyclerView.Adapter<adapter_pertanyaan.
                 @Override
                 public boolean onLongClick(View v) {
 
-
-
-                       return false;
+                    onImageClickListener.lihat_gambar(pos,dm.getGambar(),img_gambar);
+                    return false;
                 }
             });
 

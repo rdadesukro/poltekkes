@@ -165,4 +165,9 @@ public class menu_input_pertumbuhan extends AppCompatActivity implements Validat
 
         }
     }
+
+    @Override
+    public void hasil(String Status_perkembangan, String rekomendasi, String status, String jadwal_pertumbuhan, String jadwal_perkembangan) {
+
+    }
 }
