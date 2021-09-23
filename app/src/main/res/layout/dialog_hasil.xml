@@ -58,7 +58,7 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="8dp"
                 android:fontFamily="@font/opensansbold"
-                android:text="Hasil Penilaiaan Perkembangan"
+                android:text="Penilaiaan Perkembangan"
                 android:textColor="@color/grey_800"
                 android:textSize="@dimen/_16sdp"
                 app:layout_constraintEnd_toEndOf="parent"

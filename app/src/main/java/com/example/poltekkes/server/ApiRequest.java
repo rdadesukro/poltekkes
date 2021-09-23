@@ -8,6 +8,7 @@ import com.example.poltekkes.model.materi.Response_materi;
 import com.example.poltekkes.model.pertanyaan.Response_pertanyaan;
 import com.example.poltekkes.model.rekomendasi.Response_rekomendasi;
 import com.example.poltekkes.model.slider.Response_slider;
+import com.example.poltekkes.model.tindakan_perkembangan.Response_perkembangan;
 import com.example.poltekkes.model.umur.Response_umur;
 
 import okhttp3.MultipartBody;
@@ -39,13 +40,19 @@ public interface ApiRequest {
             @Field("konfirmasi_password") String konfirmasi_password);
 
     @FormUrlEncoded
-    @POST("register")
-    Call<Response_action> simpan_pertanyaan(
-            @Field("nama") String nama,
-            @Field("berat") String berat,
-            @Field("panjang") String panjang,
+    @POST("user/jawaban/")
+    Call<Response_action> simpan_semua_data(
+            @Field("nama_balita") String nama,
+            @Field("tgl_lahir") String tgl_lahir,
+            @Field("nama_ibu") String nama_ibu,
+            @Field("alamat") String alamat,
+            @Field("usia_dalam_bulan") String usia_dalam_bulan,
+            @Field("jenis_kelamin") String jenis_kelamin,
+            @Field("berat_badan") String berat_badan,
+            @Field("rentang_usia") String rentang_usia,
             @Field("jawaban") String jawaban,
-            @Field("rentang_usia_bayi") String rentang_usia_bayi);
+            @Field("pertumbuhan_kode") String pertumbuhan_kode,
+            @Field("rekomendasi_kode") String rekomendasi_kode);
 
 
     @FormUrlEncoded
@@ -94,6 +101,12 @@ public interface ApiRequest {
     @GET("balita/umur/{tgl_lahir}")
     Call<Response_umur> get_umur(
             @Path("tgl_lahir") String tgl_lahir);
+
+    @FormUrlEncoded
+    @POST("balita/perkembangan/hasil")
+    Call<Response_perkembangan> get_perkembangan(
+            @Field("tgl_lahir") String tgl_lahir,
+            @Field("jawaban") String jawaban);
 
 
     @FormUrlEncoded

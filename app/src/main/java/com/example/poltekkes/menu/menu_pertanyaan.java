@@ -1,15 +1,19 @@
 package com.example.poltekkes.menu;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -20,20 +24,32 @@ import com.example.poltekkes.R;
 import com.example.poltekkes.adapter.adapter_pertanyaan;
 import com.example.poltekkes.model.pertanyaan.DataItem_pertanyaan;
 import com.example.poltekkes.presenter.pertanyaan;
+import com.example.poltekkes.presenter.rekomendasi;
 import com.example.poltekkes.view.pertanyaan_view;
+import com.example.poltekkes.view.rekomendasi_view;
 import com.github.squti.guru.Guru;
+import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
+import com.google.android.gms.common.GooglePlayServicesRepairableException;
+import com.google.android.gms.security.ProviderInstaller;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 
+import java.security.KeyManagementException;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class menu_pertanyaan extends AppCompatActivity implements pertanyaan_view, adapter_pertanyaan.OnImageClickListener {
+import javax.net.ssl.SSLContext;
+
+import maes.tech.intentanim.CustomIntent;
+
+public class menu_pertanyaan extends AppCompatActivity implements rekomendasi_view,pertanyaan_view, adapter_pertanyaan.OnImageClickListener {
 
     private SwipeRefreshLayout swifeRefresh;
     private RecyclerView rvAku;
     private ProgressBar progressBar2;
     private adapter_pertanyaan adapter_pertanyaan;
     com.example.poltekkes.presenter.pertanyaan pertanyaan;
+    com.example.poltekkes.presenter.rekomendasi rekomendasi;
     String tgl_lahir,nama,berat,panjang,rentang_usia;
     private TextView txtDataAnak;
     private Button btnSimpan;
@@ -45,9 +61,21 @@ public class menu_pertanyaan extends AppCompatActivity implements pertanyaan_vie
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menu_pertanyaan);
         initView();
+        try {
+            // Google Play will install latest OpenSSL
+            ProviderInstaller.installIfNeeded(getApplicationContext());
+            SSLContext sslContext;
+            sslContext = SSLContext.getInstance("TLSv1.2");
+            sslContext.init(null, null, null);
+            sslContext.createSSLEngine();
+        } catch (GooglePlayServicesRepairableException | GooglePlayServicesNotAvailableException
+                | NoSuchAlgorithmException | KeyManagementException e) {
+            e.printStackTrace();
+        }
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         pertanyaan = new pertanyaan(this, menu_pertanyaan.this);
+        rekomendasi = new rekomendasi(this, menu_pertanyaan.this);
         tgl_lahir = Guru.getString("tgl_lahir", "false");
         berat = Guru.getString("berat", "false");
         panjang = Guru.getString("panjang", "false");
@@ -59,38 +87,14 @@ public class menu_pertanyaan extends AppCompatActivity implements pertanyaan_vie
         btnSimpan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                pertanyaan.simpan_pertanyaan(String.valueOf(jawaban),rentang_usia,nama,berat,panjang);
-                bottom_dialog = new BottomSheetDialog(menu_pertanyaan.this);
-                bottom_dialog.setTitle("Login");
-                bottom_dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-                bottom_dialog.setContentView(R.layout.dialog_hasil);
-                bottom_dialog.setCancelable(false);
+                rekomendasi.get_tindakan(tgl_lahir, String.valueOf(jawaban));
+            }
+        });
 
-                WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
-//                lp.copyFrom(dialog.getWindow().getAttributes());
-                bottom_dialog.getWindow().setAttributes(lp);
-                bottom_dialog.getWindow().addFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
-                bottom_dialog.getWindow().setDimAmount(0.5f);
-                lp.width = WindowManager.LayoutParams.WRAP_CONTENT;
-                lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
-
-
-                Button pgl = (Button) bottom_dialog.findViewById(R.id.btn_pngggil);
-                ImageView close = (ImageView) bottom_dialog.findViewById(R.id.btn_close2);
-                pgl.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-
-                    }
-                });
-                close.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        bottom_dialog.dismiss();
-
-                    }
-                });
-                bottom_dialog.show();
+        swifeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                pertanyaan.get_pertanyan(tgl_lahir);
 
             }
         });
@@ -114,8 +118,8 @@ public class menu_pertanyaan extends AppCompatActivity implements pertanyaan_vie
     @Override
     public void pertanyaan(List<DataItem_pertanyaan> pertanyaan) {
         try {
-            String s1 ="tidak";
-            String s2 ="judul";
+            String s1 ='"'+"tidak"+'"';
+            String s2 ='"'+"judul"+'"';
             for (int i = 0; i < pertanyaan.size(); i++) {
                 String first = pertanyaan.get(i).getText();
                 String s=first.substring(0,1);
@@ -132,6 +136,7 @@ public class menu_pertanyaan extends AppCompatActivity implements pertanyaan_vie
             adapter_pertanyaan = new adapter_pertanyaan(menu_pertanyaan.this, pertanyaan, 1, this::onImageClick);
             rvAku.setLayoutManager(new LinearLayoutManager(menu_pertanyaan.this, LinearLayoutManager.VERTICAL, false));
             rvAku.setHasFixedSize(true);
+            adapter_pertanyaan.notifyDataSetChanged();
             rvAku.setAdapter(adapter_pertanyaan);
             swifeRefresh.setRefreshing(false);
             if (pertanyaan.size() == 0) {
@@ -149,35 +154,7 @@ public class menu_pertanyaan extends AppCompatActivity implements pertanyaan_vie
 
     @Override
     public void status(String status, String pesan) {
-        if (status.equals("1")){
-            bottom_dialog = new BottomSheetDialog(menu_pertanyaan.this);
-            bottom_dialog.setTitle("Login");
-            bottom_dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-            bottom_dialog.setContentView(R.layout.dialog_hasil);
-            bottom_dialog.setCancelable(false);
 
-            WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
-//                lp.copyFrom(dialog.getWindow().getAttributes());
-            bottom_dialog.getWindow().setAttributes(lp);
-            bottom_dialog.getWindow().addFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
-            bottom_dialog.getWindow().setDimAmount(0.5f);
-            lp.width = WindowManager.LayoutParams.WRAP_CONTENT;
-            lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
-
-
-            Button pgl = (Button) bottom_dialog.findViewById(R.id.btn_pngggil);
-
-            pgl.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-
-                }
-            });
-
-            bottom_dialog.show();
-        }else {
-
-        }
 
     }
 
@@ -195,5 +172,59 @@ public class menu_pertanyaan extends AppCompatActivity implements pertanyaan_vie
                 break;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void umur(String Status_pertumbuhan, String rekomendasi, String status) {
+        if (status.equals("1")){
+            bottom_dialog = new BottomSheetDialog(menu_pertanyaan.this);
+            bottom_dialog.setTitle("Login");
+            bottom_dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+            bottom_dialog.setContentView(R.layout.dialog_hasil);
+            bottom_dialog.setCancelable(false);
+
+            WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
+//                lp.copyFrom(dialog.getWindow().getAttributes());
+            bottom_dialog.getWindow().setAttributes(lp);
+            bottom_dialog.getWindow().addFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
+            bottom_dialog.getWindow().setDimAmount(0.5f);
+            lp.width = WindowManager.LayoutParams.WRAP_CONTENT;
+            lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
+
+
+            Button pgl = (Button) bottom_dialog.findViewById(R.id.btn_pngggil);
+            WebView hasil = (WebView) bottom_dialog.findViewById(R.id.txt_hasil);
+            hasil.requestFocus();
+            hasil.getSettings().setLightTouchEnabled(true);
+            hasil.getSettings().setJavaScriptEnabled(true);
+            hasil.getSettings().setRenderPriority(WebSettings.RenderPriority.HIGH);
+            hasil.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
+            hasil.loadDataWithBaseURL("","<style>img{display: inline;height: auto;max-width: 100%;}</style>"+ Status_pertumbuhan, "text/html", "UTF-8", "");
+
+            ImageView close = (ImageView) bottom_dialog.findViewById(R.id.btn_close2);
+            pgl.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    bottom_dialog.dismiss();
+                    Guru.putString("tindakan",rekomendasi);bottom_dialog.dismiss();
+                    Intent goInput = new Intent(menu_pertanyaan.this, menu_hasil_tindakaan.class);
+                    startActivity(goInput);
+                    CustomIntent.customType(menu_pertanyaan.this, "fadein-to-fadeout");
+                }
+            });
+            close.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    bottom_dialog.dismiss();
+
+                }
+            });
+
+
+            bottom_dialog.show();
+        }else {
+
+        }
     }
 }

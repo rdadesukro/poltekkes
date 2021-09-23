@@ -3,19 +3,40 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.poltekkes">
 
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.screen.portrait"
+        android:required="true" />
+
     <application
         android:allowBackup="true"
+        android:hardwareAccelerated="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:requestLegacyExternalStorage="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:hardwareAccelerated="true"
         android:theme="@style/Theme.AppCompat"
         android:usesCleartextTraffic="true">
-        <activity android:name=".menu.menu_materi_pertumbuhan"
-            android:label="Materi Pertumbuhan"
+        <activity android:name=".menu.menu_hasil_tindakaan"
+            android:label="Rekomendasi"
             android:theme="@style/Theme.AppCompat.Light"></activity>
+        <activity
+            android:name=".menu.menu_materi_pertumbuhan"
+            android:label="Materi Pertumbuhan"
+            android:theme="@style/Theme.AppCompat.Light" />
         <activity
             android:name=".menu.menu_hasil_rekomendasi_pertumbuhan"
             android:label="Hasil Rekomendasi"
@@ -32,11 +53,10 @@
         <activity
             android:name=".menu.menu_history"
             android:label="History"
-            android:theme="@style/Theme.AppCompat.Light" />
-<!--        <activity-->
-<!--            android:name=".menu.menu_pertanyaan"-->
-<!--            android:label="Pertanyaan"-->
-<!--            android:theme="@style/Theme.AppCompat.Light" />-->
+            android:theme="@style/Theme.AppCompat.Light" /> <!-- <activity -->
+        <!-- android:name=".menu.menu_pertanyaan" -->
+        <!-- android:label="Pertanyaan" -->
+        <!-- android:theme="@style/Theme.AppCompat.Light" /> -->
         <activity
             android:name=".menu.menu_input_data"
             android:label="Input Data Balita"
@@ -58,7 +78,8 @@
             android:label="Materi"
             android:theme="@style/Theme.AppCompat.Light" />
         <activity android:name=".menu.menu_bantuan" />
-        <activity android:name=".menu.menu_pertanyaan"
+        <activity
+            android:name=".menu.menu_pertanyaan"
             android:theme="@style/Theme.AppCompat.DayNight">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

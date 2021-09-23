@@ -3,10 +3,8 @@ package com.example.poltekkes.presenter;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.util.Log;
-import android.widget.Toast;
 
 import com.example.poltekkes.model.rekomendasi.Response_rekomendasi;
-import com.example.poltekkes.model.tindakan_perkembangan.Response_perkembangan;
 import com.example.poltekkes.server.ApiRequest;
 import com.example.poltekkes.server.Retroserver_server_AUTH;
 import com.example.poltekkes.view.rekomendasi_view;
@@ -19,12 +17,12 @@ import retrofit2.Response;
 
 ;
 
-public class rekomendasi {
+public class tindakan {
 
     private Context ctx;
     private rekomendasi_view countryView;
     private Retroserver_server_AUTH countryService;
-    public rekomendasi(rekomendasi_view view, Context ctx) {
+    public tindakan(rekomendasi_view view, Context ctx) {
         this.countryView = view;
         this.ctx = ctx;
 
@@ -70,58 +68,6 @@ public class rekomendasi {
 
             @Override
             public void onFailure(Call<Response_rekomendasi> call, Throwable t) {
-                t.printStackTrace();
-                Log.i("cek_error", "onFailure: " + t);
-                if (t instanceof IOException) {
-
-                    Log.i("cek_error", "onFailure: " + t);
-                } else {
-
-                    Log.i("cek_error", "onFailure: " + t);
-                }
-            }
-        });
-    }
-    public void get_tindakan(String tgl_lahir,String jawaban) {
-        ProgressDialog pDialog = new ProgressDialog(ctx);
-        pDialog.setTitle("Mohon Tunggu!!!");
-        pDialog.setMessage("Simpan Data...");
-        pDialog.setCancelable(false);
-        pDialog.setCanceledOnTouchOutside(false);
-        pDialog.show();
-        ProgressDialog finalPDialog = pDialog;
-        ApiRequest api = Retroserver_server_AUTH.getClient().create(ApiRequest.class);
-        Log.i("isi_server", "isi_server: "+Retroserver_server_AUTH.getClient().baseUrl());
-        Call<Response_perkembangan> call = api.get_perkembangan(tgl_lahir,jawaban);
-
-        call.enqueue(new Callback<Response_perkembangan>() {
-            @Override
-            public void onResponse(Call<Response_perkembangan> call, Response<Response_perkembangan> response) {
-
-                try {
-
-                    if (response.body().isSuccess()) {
-                        pDialog.dismiss();
-                        Response_perkembangan data = response.body();
-
-
-                        countryView.umur(response.body().getData().getHasilPerkembangan(),
-                                response.body().getData().getTindakan(),"1");
-
-                    }else {
-                        Toast.makeText(ctx, ""+ response.body().getMessage(), Toast.LENGTH_SHORT).show();
-                        //pDialog.dismiss();
-                        countryView.umur("", "","0");
-                    }
-                } catch (Exception e) {
-                    Log.i("CEK_ERROR_PER", "There is an error" + e.getMessage());
-                    e.printStackTrace();
-                }
-
-            }
-
-            @Override
-            public void onFailure(Call<Response_perkembangan> call, Throwable t) {
                 t.printStackTrace();
                 Log.i("cek_error", "onFailure: " + t);
                 if (t instanceof IOException) {

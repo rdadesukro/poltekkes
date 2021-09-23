@@ -13,6 +13,19 @@ public class DataItem_pertanyaan {
 	@SerializedName("bulan")
 	private int bulan;
 
+
+	public String getGambar() {
+		return gambar;
+	}
+
+	public void setGambar(String gambar) {
+		this.gambar = gambar;
+	}
+
+	@SerializedName("gambar")
+	private String gambar;
+
+
 	public void setId(int id){
 		this.id = id;
 	}

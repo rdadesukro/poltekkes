@@ -16,6 +16,31 @@ public class Data_rekomendasi {
 	@SerializedName("rekomendasi")
 	private String rekomendasi;
 
+	@SerializedName("rekomendasi_kode")
+	private String rekomendasi_kode;
+
+	public String getRekomendasi_kode() {
+		return rekomendasi_kode;
+	}
+
+	public void setRekomendasi_kode(String rekomendasi_kode) {
+		this.rekomendasi_kode = rekomendasi_kode;
+	}
+
+	public String getPertumbuhan_kode() {
+		return pertumbuhan_kode;
+	}
+
+	public void setPertumbuhan_kode(String pertumbuhan_kode) {
+		this.pertumbuhan_kode = pertumbuhan_kode;
+	}
+
+	@SerializedName("pertumbuhan_kode")
+	private String pertumbuhan_kode;
+
+
+
+
 	@SerializedName("jenis_kelamin")
 	private String jenisKelamin;
 

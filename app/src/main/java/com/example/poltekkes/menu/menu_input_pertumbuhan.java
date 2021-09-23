@@ -6,6 +6,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.EditText;
@@ -135,6 +136,8 @@ public class menu_input_pertumbuhan extends AppCompatActivity implements Validat
             hasil.requestFocus();
             hasil.getSettings().setLightTouchEnabled(true);
             hasil.getSettings().setJavaScriptEnabled(true);
+            hasil.getSettings().setRenderPriority(WebSettings.RenderPriority.HIGH);
+            hasil.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
             hasil.loadDataWithBaseURL("","<style>img{display: inline;height: auto;max-width: 100%;}</style>"+ Status_pertumbuhan, "text/html", "UTF-8", "");
 
             ImageView close = (ImageView) bottom_dialog.findViewById(R.id.btn_close);

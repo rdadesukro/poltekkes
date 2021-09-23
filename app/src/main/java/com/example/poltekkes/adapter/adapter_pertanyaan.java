@@ -3,6 +3,7 @@ package com.example.poltekkes.adapter;
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.CountDownTimer;
 import android.util.Log;
@@ -12,10 +13,18 @@ import android.view.ViewGroup;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.CheckBox;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.Nullable;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.DataSource;
+import com.bumptech.glide.load.engine.GlideException;
+import com.bumptech.glide.request.RequestListener;
+import com.bumptech.glide.request.target.Target;
 import com.example.poltekkes.R;
 import com.example.poltekkes.model.pertanyaan.DataItem_pertanyaan;
 
@@ -86,16 +95,48 @@ public class adapter_pertanyaan extends RecyclerView.Adapter<adapter_pertanyaan.
             holder.cex_jawaban.setVisibility(View.VISIBLE);
             holder.txt_judul.setVisibility(View.GONE);
 //            holder.txt_pertanyaan.setText(dm.getText());
-            holder.txt_pertanyaan.requestFocus();
-            holder.txt_pertanyaan.getSettings().setLightTouchEnabled(true);
-            holder.txt_pertanyaan.getSettings().setJavaScriptEnabled(true);
+           // holder.txt_pertanyaan.requestFocus();
             holder.txt_pertanyaan.getSettings().setRenderPriority(WebSettings.RenderPriority.HIGH);
             holder.txt_pertanyaan.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
+            holder.txt_pertanyaan.getSettings().setCacheMode(WebSettings.LOAD_NO_CACHE);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+                // chromium, enable hardware acceleration
+                holder.txt_pertanyaan.setLayerType(View.LAYER_TYPE_HARDWARE, null);
+            } else {
+                // older android version, disable hardware acceleration
+                holder.txt_pertanyaan.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
+            }
             holder.txt_pertanyaan.loadDataWithBaseURL("","<style>img{display: inline;height: auto;max-width: 100%;}</style>"+ dm.getText(), "text/html", "UTF-8", "");
 
 
 
         }
+
+        if (dm.getGambar().equals("")){
+            holder.img_gambar.setVisibility(View.GONE);
+            holder.card_img.setVisibility(View.GONE);
+        }else {
+            holder.img_gambar.setVisibility(View.VISIBLE);
+            holder.card_img.setVisibility(View.VISIBLE);
+            Glide.with(ctx)
+                    .load(dm.getGambar())
+                    .listener(new RequestListener<Drawable>() {
+                        @Override
+                        public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
+                            return false;
+                        }
+
+                        @Override
+                        public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, DataSource dataSource, boolean isFirstResource) {
+                            return false;
+                        }
+                    })
+                    .error(R.drawable.error_circle)
+                    .into(holder.img_gambar);
+        }
+
+
+
 
         Log.i("data_pertama", "onBindViewHolder: "+s);
 
@@ -132,6 +173,15 @@ public class adapter_pertanyaan extends RecyclerView.Adapter<adapter_pertanyaan.
         TextView txt_judul;
 
 
+        @BindView(R.id.img_gambar)
+        ImageView img_gambar;
+
+        @BindView(R.id.card_img)
+        CardView card_img;
+
+
+
+
         @BindView(R.id.cex_jawaban)
         CheckBox cex_jawaban;
 
@@ -143,20 +193,12 @@ public class adapter_pertanyaan extends RecyclerView.Adapter<adapter_pertanyaan.
         public HolderData(View v) {
             super(v);
             ButterKnife.bind(this, itemView);
-            v.setOnLongClickListener(new View.OnLongClickListener() {
+            img_gambar.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View v) {
 
 
-//                   String role = Guru.getString("role", "false");
-//                    if (role.equals("user")){
-//
-//                    }else {
-//                        onImageClickListener.onImageClick(dm.getId(),
-//                                dm.getNamaOptik(),
-//                                dm.getAlamat(),dm.getPhone(),dm.getFoto(),dm.getLat(),dm.getLng(),dm.getStatus(),dm.getStatusBpjs(),dm.getInformasi(),dm.getJamOprasional());
-//
-//                    }
+
                        return false;
                 }
             });
@@ -164,14 +206,17 @@ public class adapter_pertanyaan extends RecyclerView.Adapter<adapter_pertanyaan.
             cex_jawaban.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    String tidak ='"'+"tidak"+'"';
+                    String ya ='"'+"ya"+'"';
                     if (cex_jawaban.isChecked())
                        //  jawaban.set(pos,"ya");
-                       onImageClickListener.onImageClick(pos,"ya"," ");
+
+                       onImageClickListener.onImageClick(pos,ya," ");
 //
 
                     else
                       //  jawaban.set(pos,"tidak");
-                        onImageClickListener.onImageClick(pos,"tidak"," ");
+                        onImageClickListener.onImageClick(pos,tidak," ");
                      Log.i("isi_jawaban", "onClick: "+jawaban);
 
 

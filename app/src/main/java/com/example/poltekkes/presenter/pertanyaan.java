@@ -37,7 +37,7 @@ public class pertanyaan {
     public void get_pertanyan(String tanggal_lahir) {
         ApiRequest api = Retroserver_server_AUTH.getClient().create(ApiRequest.class);
         Log.i("isi_server", "isi_server: "+Retroserver_server_AUTH.getClient().baseUrl());
-        Call<Response_pertanyaan> call = api.get_pertanyaan("12-08-2021");
+        Call<Response_pertanyaan> call = api.get_pertanyaan(tanggal_lahir);
 
         call.enqueue(new Callback<Response_pertanyaan>() {
             @Override
@@ -56,6 +56,7 @@ public class pertanyaan {
                         }
                     }
                 } catch (Exception e) {
+                    Log.i("eror_pertanyaan", "onResponse: "+e.getMessage());
                     Log.e("onResponse", "There is an error" + e);
                     e.printStackTrace();
                 }
@@ -77,7 +78,17 @@ public class pertanyaan {
         });
     }
 
-    public void simpan_pertanyaan(String jawaban,String rentang_usia_bayi,String nama,String berat, String panjang) {
+    public void simpan_pertanyaan(String nama,
+                                  String tgl_lahir,
+                                  String nama_ibu,
+                                  String alamat,
+                                  String usia_dalam_bulan,
+                                  String jenis_kelamin,
+                                  String berat_badan,
+                                  String rentang_usia,
+                                  String jawaban,
+                                  String pertumbuhan_kode,
+                                  String rekomenadasi_kode) {
         ProgressDialog  pDialog = new ProgressDialog(ctx);
         pDialog.setTitle("Mohon Tunggu!!!");
         pDialog.setMessage("Simpan Jawaban...");
@@ -87,7 +98,17 @@ public class pertanyaan {
         ProgressDialog finalPDialog = pDialog;
 
         ApiRequest api = Retroserver_server_AUTH.getClient().create(ApiRequest.class);
-        Call<Response_action> sendbio = api.simpan_pertanyaan(nama,berat,panjang,jawaban,rentang_usia_bayi);
+        Call<Response_action> sendbio = api.simpan_semua_data(nama,
+                                                            tgl_lahir,
+                nama_ibu,
+                alamat,
+                usia_dalam_bulan,
+                jenis_kelamin,
+                berat_badan,
+                rentang_usia,
+                jawaban,
+                pertumbuhan_kode,
+                rekomenadasi_kode);
         sendbio.enqueue(new Callback<Response_action>() {
             @Override
             public void onResponse(Call<Response_action> call, Response<Response_action> response) {
