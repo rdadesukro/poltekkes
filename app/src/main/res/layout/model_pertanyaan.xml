@@ -21,6 +21,42 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
+            <RadioGroup
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt_pertanyaan">
+
+                <CheckBox
+                    android:id="@+id/cex_jawaban"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:text="Ya"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="@+id/checkBox"
+                    app:layout_constraintEnd_toStartOf="@+id/checkBox"
+                    app:layout_constraintTop_toTopOf="@+id/checkBox"
+                    tools:visibility="visible" />
+
+                <CheckBox
+                    android:id="@+id/checkBox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="8dp"
+                    android:text="Tidak"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txt_pertanyaan"
+                    app:layout_constraintVertical_bias="1.0" />
+            </RadioGroup>
+
             <androidx.cardview.widget.CardView
                 android:id="@+id/card_img"
                 android:layout_width="100dp"
@@ -70,29 +106,19 @@
                 app:layout_constraintTop_toTopOf="parent"
                 tools:visibility="visible" />
 
-            <CheckBox
-                android:id="@+id/cex_jawaban"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:visibility="gone"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/txt_pertanyaan"
-                tools:visibility="visible" />
-
             <WebView
                 android:id="@+id/txt_pertanyaan"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:scrollbars="none"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
                 android:fontFamily="@font/opensansregular"
+                android:scrollbars="none"
                 android:text="Ap yang menyebabpkan anak alahir"
                 android:textColor="@color/contentTextColor"
                 android:textSize="@dimen/_12sdp"
-                app:layout_constraintEnd_toStartOf="@+id/cex_jawaban"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txt_judul" />
         </androidx.constraintlayout.widget.ConstraintLayout>
