@@ -30,9 +30,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat"
         android:usesCleartextTraffic="true">
-        <activity android:name=".menu.menu_jadwal"
-            android:theme="@style/Theme.AppCompat.Light"
-            android:label="Jadwal"></activity>
+        <activity android:name=".menu.menu_detail_history"
+            android:label="Detail History"
+            android:theme="@style/Theme.AppCompat.Light"></activity>
+        <activity
+            android:name=".menu.menu_jadwal"
+            android:label="Jadwal"
+            android:theme="@style/Theme.AppCompat.Light" />
         <activity
             android:name=".menu.menu_hasil_tindakaan"
             android:label="Rekomendasi"
@@ -44,6 +48,10 @@
         <activity
             android:name=".menu.menu_hasil_rekomendasi_pertumbuhan"
             android:label="Hasil Rekomendasi"
+            android:theme="@style/Theme.AppCompat.Light" />
+        <activity
+            android:name=".menu.menu_pertanyaan"
+            android:label="Pertanyaan"
             android:theme="@style/Theme.AppCompat.Light" />
         <activity
             android:name=".menu.menu_input_pertumbuhan"
@@ -58,9 +66,6 @@
             android:name=".menu.menu_history"
             android:label="History"
             android:theme="@style/Theme.AppCompat.Light" /> <!-- <activity -->
-        <!-- android:name=".menu.menu_pertanyaan" -->
-        <!-- android:label="Pertanyaan" -->
-        <!-- android:theme="@style/Theme.AppCompat.Light" /> -->
         <activity
             android:name=".menu.menu_input_data"
             android:label="Input Data Balita"
@@ -83,7 +88,7 @@
             android:theme="@style/Theme.AppCompat.Light" />
         <activity android:name=".menu.menu_bantuan" />
         <activity
-            android:name=".menu.menu_pertanyaan"
+            android:name=".menu.menu_pembuka"
             android:theme="@style/Theme.AppCompat.DayNight">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

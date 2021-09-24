@@ -92,7 +92,6 @@ public class adapter_materi extends RecyclerView.Adapter<adapter_materi.HolderDa
                 .into(holder.imageView);
 
         holder.pos =position;
-        setAnimation(holder.itemView,position);
 
     }
 
@@ -120,39 +119,10 @@ public class adapter_materi extends RecyclerView.Adapter<adapter_materi.HolderDa
                 @Override
                 public boolean onLongClick(View v) {
 
-
-//                   String role = Guru.getString("role", "false");
-//                    if (role.equals("user")){
-//
-//                    }else {
-//                        onImageClickListener.onImageClick(dm.getId(),
-//                                dm.getNamaOptik(),
-//                                dm.getAlamat(),dm.getPhone(),dm.getFoto(),dm.getLat(),dm.getLng(),dm.getStatus(),dm.getStatusBpjs(),dm.getInformasi(),dm.getJamOprasional());
-//
-//                    }
                        return false;
                 }
             });
 
-//            cex_jawaban.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    if (cex_jawaban.isChecked())
-//                       //  jawaban.set(pos,"ya");
-//                       onImageClickListener.onImageClick(pos,"ya"," ");
-////
-//
-//                    else
-//                      //  jawaban.set(pos,"tidak");
-//                        onImageClickListener.onImageClick(pos,"tidak"," ");
-//                     Log.i("isi_jawaban", "onClick: "+jawaban);
-//
-//
-//
-//                }
-//            });
-
-//
         }
 
 
@@ -161,10 +131,5 @@ public class adapter_materi extends RecyclerView.Adapter<adapter_materi.HolderDa
     private int lastPosition = -1;
     private boolean on_attach = true;
 
-    private void setAnimation(View view, int position) {
-        if (position > lastPosition) {
-           // ItemAnimation.animate(view, on_attach ? position : -1, animation_type);
-            lastPosition = position;
-        }
-    }
+
 }

@@ -3,6 +3,8 @@ package com.example.poltekkes.server;
 
 
 import com.example.poltekkes.model.action.Response_action;
+import com.example.poltekkes.model.detail_history.Response_detail_history;
+import com.example.poltekkes.model.history.Response_history;
 import com.example.poltekkes.model.login.Response_login;
 import com.example.poltekkes.model.materi.Response_materi;
 import com.example.poltekkes.model.pertanyaan.Response_pertanyaan;
@@ -97,6 +99,17 @@ public interface ApiRequest {
 
     @GET("balita/perkembangan/{tgl_lahir}")
     Call<Response_pertanyaan> get_pertanyaan(@Path("tgl_lahir") String tgl_lahir);
+
+    @GET("user/jawaban/histori")
+    Call<Response_history> get_history_user();
+
+
+    @GET("user/jawaban/histori/admin")
+    Call<Response_history> get_history_admin();
+
+
+    @GET("user/jawaban/histori/detail/{id}")
+    Call<Response_detail_history> get_history_detail(@Path("id") String id);
 
     @GET("balita/umur/{tgl_lahir}")
     Call<Response_umur> get_umur(

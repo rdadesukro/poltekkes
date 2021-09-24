@@ -3,14 +3,15 @@ package com.example.poltekkes.presenter;
 import android.content.Context;
 import android.util.Log;
 
+import com.example.poltekkes.model.detail_history.Data;
+import com.example.poltekkes.model.detail_history.JawabanItem;
+import com.example.poltekkes.model.detail_history.Response_detail_history;
 import com.example.poltekkes.model.history.DataItem_history;
 import com.example.poltekkes.model.history.Response_history;
-import com.example.poltekkes.model.pertanyaan.DataItem_pertanyaan;
-import com.example.poltekkes.model.pertanyaan.Response_pertanyaan;
 import com.example.poltekkes.server.ApiRequest;
 import com.example.poltekkes.server.Retroserver_server_AUTH;
+import com.example.poltekkes.view.history_detail_view;
 import com.example.poltekkes.view.history_view;
-import com.example.poltekkes.view.pertanyaan_view;
 
 import java.io.IOException;
 import java.util.List;
@@ -21,12 +22,12 @@ import retrofit2.Response;
 
 ;
 
-public class history {
+public class history_detail {
 
     private Context ctx;
-    private history_view countryView;
+    private history_detail_view countryView;
     private Retroserver_server_AUTH countryService;
-    public history(history_view view, Context ctx) {
+    public history_detail(history_detail_view view, Context ctx) {
         this.countryView = view;
         this.ctx = ctx;
 
@@ -35,31 +36,27 @@ public class history {
         }
     }
 
-    public void get_history(String hak_akses) {
+    public void get_history_detail(String id) {
         ApiRequest api = Retroserver_server_AUTH.getClient().create(ApiRequest.class);
         Log.i("isi_server", "isi_server: "+Retroserver_server_AUTH.getClient().baseUrl());
 
-        Call<Response_history> call;
-        if (hak_akses.equals("admin")){
-            call = api.get_history_admin();
-        }else {
-            call = api.get_history_user();
-        }
+        Call<Response_detail_history> call = api.get_history_detail(id);
 
 
-        call.enqueue(new Callback<Response_history>() {
+
+        call.enqueue(new Callback<Response_detail_history>() {
             @Override
-            public void onResponse(Call<Response_history> call, Response<Response_history> response) {
+            public void onResponse(Call<Response_detail_history> call, Response<Response_detail_history> response) {
 
                 try {
 
                     if (response.isSuccessful()) {
-                        Response_history data = response.body();
+                        Response_detail_history data = response.body();
                         //Toast.makeText(ctx, ""+ response.body().getMessage(), Toast.LENGTH_SHORT).show();
                         Log.i("isi_data", "onResponse: "+data);
                         if (data != null && data.getData() != null) {
-                            List<DataItem_history> result = data.getData();
-                            countryView.history(result);
+                            List<JawabanItem> result = data.getData().getJawaban();
+                            countryView.history_detail(result);
                         }
                     }
                 } catch (Exception e) {
@@ -70,7 +67,7 @@ public class history {
             }
 
             @Override
-            public void onFailure(Call<Response_history> call, Throwable t) {
+            public void onFailure(Call<Response_detail_history> call, Throwable t) {
                 t.printStackTrace();
                 Log.i("cek_error", "onFailure: " + t);
                 if (t instanceof IOException) {
