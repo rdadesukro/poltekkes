@@ -5,17 +5,23 @@ import android.os.Bundle;
 import android.text.Html;
 import android.util.Log;
 import android.view.View;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.poltekkes.R;
 import com.example.poltekkes.adapter.adapter_detail_history;
+import com.example.poltekkes.model.detail_history.Balita;
 import com.example.poltekkes.model.detail_history.JawabanItem;
+import com.example.poltekkes.model.detail_history.Pemeriksa;
+import com.example.poltekkes.model.detail_history.Perkembangan;
+import com.example.poltekkes.model.detail_history.Pertumbuhan;
 import com.example.poltekkes.presenter.history_detail;
 import com.example.poltekkes.view.history_detail_view;
 import com.github.squti.guru.Guru;
@@ -30,29 +36,28 @@ public class menu_detail_history extends AppCompatActivity implements history_de
     String id, nama, tgl_lahir, alamat, bb, pb, nama_ibu, jenis_kelamin;
     public String data;
     private TextView webDataBayi;
+    private TextView txtNama;
+    private TextView txtNim;
+    private WebView webRekPertumbuhan;
+    private WebView txtStatus;
+    private WebView txtWaktuPertumbuhan;
+    private WebView webRekPerkembangan;
+    private WebView txtStatusPerke;
+    private WebView txtWaktuPerkembangan;
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menu_detail_history);
         initView();
-        data = "<h2>Pengenalan Aplikasi</h2>\n" +
-                "<ul>\n" +
-                "    <li>Nama Balita         : "+ nama +"</li>"+
-                "    <li>Tangal Lahir        : "+ tgl_lahir +"</li>"+
-                "    <li>Jenis Kelamin : " + jenis_kelamin +"</li>"+
-                "    <li>Berat Badan      : "+ bb +"</li>"+
-                "    <li>Panjang Badan   : "+ pb +"</li>"+
-                "    <li>Alamat          :</li>" + alamat +
-                "    <li>Nama Ibu        :</li>" + nama_ibu +
-                "</ul>";
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            webDataBayi.setText(Html.fromHtml(data, Html.FROM_HTML_MODE_LEGACY));
-        } else
-            webDataBayi.setText(Html.fromHtml(data));
+
         id = Guru.getString("id_detail_histiry", "false");
         history_detail = new history_detail(this, menu_detail_history.this);
         history_detail.get_history_detail(id);
+
+        // txtNama.setText(nama);
+
     }
 
     @Override
@@ -80,9 +85,91 @@ public class menu_detail_history extends AppCompatActivity implements history_de
         }
     }
 
+    @Override
+    public void data_bayi(String nama_bayi, String tgl_lahir, String bb, String pb, String jk, String alamat, String nama_ibu) {
+        nama = nama_bayi;
+        Log.i("nama_bayi", "data_bayi: " + nama_bayi);
+        //txtNama.setText(nama_bayi);
+    }
+
+    @Override
+    public void pemeriksa(Pemeriksa pemeriksa) {
+        txtNama.setText(pemeriksa.getNamaLengkap());
+        txtNim.setText(pemeriksa.getNim());
+    }
+
+    @Override
+    public void pertumbuhan(Pertumbuhan pertumbuhan) {
+
+
+        txtStatus.requestFocus();
+        txtStatus.getSettings().setLightTouchEnabled(true);
+        txtStatus.getSettings().setJavaScriptEnabled(true);
+        txtStatus.getSettings().setRenderPriority(WebSettings.RenderPriority.HIGH);
+        txtStatus.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
+        txtStatus.loadDataWithBaseURL("","<style>img{display: inline;height: auto;max-width: 100%;}</style>"+ pertumbuhan.getStatusPertumbuhan(), "text/html", "UTF-8", "");
+
+
+
+        webRekPertumbuhan.requestFocus();
+        webRekPertumbuhan.getSettings().setLightTouchEnabled(true);
+        webRekPertumbuhan.getSettings().setJavaScriptEnabled(true);
+        webRekPertumbuhan.getSettings().setRenderPriority(WebSettings.RenderPriority.HIGH);
+        webRekPertumbuhan.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
+        webRekPertumbuhan.loadDataWithBaseURL("","<style>img{display: inline;height: auto;max-width: 100%;}</style>"+ pertumbuhan.getStatusRekomendasi(), "text/html", "UTF-8", "");
+
+    }
+
+    @Override
+    public void perkembangan(Perkembangan perkembangan) {
+
+        webRekPerkembangan.requestFocus();
+        webRekPerkembangan.getSettings().setLightTouchEnabled(true);
+        webRekPerkembangan.getSettings().setJavaScriptEnabled(true);
+        webRekPerkembangan.getSettings().setRenderPriority(WebSettings.RenderPriority.HIGH);
+        webRekPerkembangan.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
+        webRekPerkembangan.loadDataWithBaseURL("","<style>img{display: inline;height: auto;max-width: 100%;}</style>"+ perkembangan.getTindakan(), "text/html", "UTF-8", "");
+        txtWaktuPertumbuhan.loadDataWithBaseURL("","<style>img{display: inline;height: auto;max-width: 100%;}</style>"+ perkembangan.getJadwalPertumbuhan(), "text/html", "UTF-8", "");
+        txtWaktuPerkembangan.loadDataWithBaseURL("","<style>img{display: inline;height: auto;max-width: 100%;}</style>"+ perkembangan.getJadwalPerkembangan(), "text/html", "UTF-8", "");
+        txtStatusPerke.loadDataWithBaseURL("","<style>img{display: inline;height: auto;max-width: 100%;}</style>"+ perkembangan.getHasil(), "text/html", "UTF-8", "");
+
+
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    @Override
+    public void balita(Balita balita) {
+        String jk;
+        if (balita.getJenisKelamin().equals("L")) {
+            jk = "Laki-Laki";
+        } else {
+            jk = "Perempuan";
+        }
+
+
+        data = "<ul>\n" +
+                "<li><strong>Nama Balita</strong></li>\n" + "&nbsp;" + balita.getNama() +
+                "<li><strong>Tanggal Lahir</strong></li>\n" + "&nbsp;" + balita.getTanggalLahir() +
+                "<li><strong>Jenis Kelamin </strong></li>\n" + "&nbsp;" + jk +
+                "<li><strong>Berat Badan</strong></li>\n" + "&nbsp;" + balita.getBerat() +
+                "<li><strong>Panjang Badan</strong></li>\n" + "&nbsp;" + balita.getPanjang() +
+                "<li><strong>Alamat </strong></li>\n" + "&nbsp;" + balita.getAlamat() +
+                "<li><strong>Nama Ibu </strong></li>\n" + "&nbsp;" + balita.getNamaIbu() +
+                "</ul>";
+        webDataBayi.setText(Html.fromHtml(data, Html.FROM_HTML_MODE_LEGACY));
+    }
+
     private void initView() {
         RecyclerView = findViewById(R.id.RecyclerView);
         progressBar = findViewById(R.id.progressBar);
         webDataBayi = (TextView) findViewById(R.id.web_data_bayi);
+        txtNama = (TextView) findViewById(R.id.txt_nama);
+        txtNim = (TextView) findViewById(R.id.txt_nim);
+        webRekPertumbuhan = (WebView) findViewById(R.id.web_rek_pertumbuhan);
+        txtStatus = (WebView) findViewById(R.id.txt_status);
+        txtWaktuPertumbuhan = (WebView) findViewById(R.id.txt_waktu_pertumbuhan);
+        webRekPerkembangan = (WebView) findViewById(R.id.web_rek_perkembangan);
+        txtStatusPerke = (WebView) findViewById(R.id.txt_status_perke);
+        txtWaktuPerkembangan = (WebView) findViewById(R.id.txt_waktu_perkembangan);
     }
 }

@@ -3,6 +3,7 @@ package com.example.poltekkes.presenter;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.example.poltekkes.model.umur.Response_umur;
 import com.example.poltekkes.server.ApiRequest;
@@ -57,6 +58,9 @@ public class cek_umur {
 
                             countryView.umur(response.body().getData().getBalita().getUsiaTerbilang(),"1",response.body().getData().getBalita().getUsiaDalamBulan());
                     }else {
+                        pDialog.dismiss();
+                        Toast.makeText(ctx, ""+ response.body().getMessage(), Toast.LENGTH_SHORT).show();
+
 
                     }
                 } catch (Exception e) {

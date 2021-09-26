@@ -3,8 +3,12 @@ package com.example.poltekkes.presenter;
 import android.content.Context;
 import android.util.Log;
 
+import com.example.poltekkes.model.detail_history.Balita;
 import com.example.poltekkes.model.detail_history.Data;
 import com.example.poltekkes.model.detail_history.JawabanItem;
+import com.example.poltekkes.model.detail_history.Pemeriksa;
+import com.example.poltekkes.model.detail_history.Perkembangan;
+import com.example.poltekkes.model.detail_history.Pertumbuhan;
 import com.example.poltekkes.model.detail_history.Response_detail_history;
 import com.example.poltekkes.model.history.DataItem_history;
 import com.example.poltekkes.model.history.Response_history;
@@ -52,11 +56,24 @@ public class history_detail {
 
                     if (response.isSuccessful()) {
                         Response_detail_history data = response.body();
-                        //Toast.makeText(ctx, ""+ response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                        Balita balita =  data.getData().getBalita();
+                        Perkembangan perkembanga = data.getData().getPerkembangan();
+                        Pertumbuhan pertumbuhan = data.getData().getPertumbuhan();
+                        Pemeriksa pemeriksa = data.getData().getPemeriksa();
+
+
+                        countryView.balita(balita);
+                        countryView.pemeriksa(pemeriksa);
+                        countryView.perkembangan(perkembanga);
+                        countryView.pertumbuhan(pertumbuhan);
+
+
                         Log.i("isi_data", "onResponse: "+data);
                         if (data != null && data.getData() != null) {
+
                             List<JawabanItem> result = data.getData().getJawaban();
                             countryView.history_detail(result);
+                            countryView.balita(balita);
                         }
                     }
                 } catch (Exception e) {

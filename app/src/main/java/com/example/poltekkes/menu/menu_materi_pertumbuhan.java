@@ -60,7 +60,7 @@ public class menu_materi_pertumbuhan extends AppCompatActivity implements materi
         }
         web.setWebViewClient(new menu_materi_pertumbuhan.myWebclient());
         web.getSettings().setJavaScriptEnabled(true);
-        web.loadUrl("https://drive.google.com/viewerng/viewer?embedded=true&url=https://ppid.jambikota.go.id/files/dokumen_16_ERAQC.pdf");
+        web.loadUrl("https://lmproject.my.id/storage/viewpdf/web/viewer.html?url=https://lmproject.my.id/storage/materi/materi_perkembangan.pdf");
 
     }
 

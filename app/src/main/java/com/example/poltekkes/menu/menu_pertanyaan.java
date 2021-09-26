@@ -36,10 +36,12 @@ import com.google.android.material.bottomsheet.BottomSheetDialog;
 import java.security.KeyManagementException;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.net.ssl.SSLContext;
 
+import cn.pedant.SweetAlert.SweetAlertDialog;
 import maes.tech.intentanim.CustomIntent;
 
 public class menu_pertanyaan extends AppCompatActivity implements rekomendasi_view,pertanyaan_view, adapter_pertanyaan.OnImageClickListener {
@@ -55,6 +57,8 @@ public class menu_pertanyaan extends AppCompatActivity implements rekomendasi_vi
     private Button btnSimpan;
     BottomSheetDialog bottom_dialog;
     public static List<String> jawaban = new ArrayList<String>();
+    private List<String> validasi = new ArrayList<>();
+    private  boolean validasi_data;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,11 +87,17 @@ public class menu_pertanyaan extends AppCompatActivity implements rekomendasi_vi
         Log.i("tgl_lahir", "onCreate: " + tgl_lahir);
         pertanyaan.get_pertanyan(tgl_lahir);
         txtDataAnak.setText("Nama anak "+nama+" dengan umur "+rentang_usia+","+" berat "+berat+" dan panjang "+panjang );
-
         btnSimpan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                rekomendasi.get_tindakan(tgl_lahir, String.valueOf(jawaban));
+                validasi_data =validasi.contains("");
+                    if (validasi_data){
+                        masih_kosong();
+                    }else {
+                        rekomendasi.get_tindakan(tgl_lahir, String.valueOf(jawaban));
+                    }
+
+
             }
         });
 
@@ -112,6 +122,7 @@ public class menu_pertanyaan extends AppCompatActivity implements rekomendasi_vi
     @Override
     public void onImageClick(int id, String nama, String alamat) {
         jawaban.set(id,nama);
+        validasi.set(id,"ada");
 
     }
 
@@ -125,16 +136,20 @@ public class menu_pertanyaan extends AppCompatActivity implements rekomendasi_vi
     @Override
     public void pertanyaan(List<DataItem_pertanyaan> pertanyaan) {
         try {
-            String s1 ='"'+"tidak"+'"';
+            String s1 ='"'+"kosong"+'"';
             String s2 ='"'+"judul"+'"';
             for (int i = 0; i < pertanyaan.size(); i++) {
+
                 String first = pertanyaan.get(i).getText();
                 String s=first.substring(0,1);
 
                 if (s.equals("#")){
                     jawaban.add(s2);
+                    validasi.add("ada");
+
                 }else {
                     jawaban.add(s1);
+                    validasi.add("");
                 }
 
             }
@@ -241,4 +256,24 @@ public class menu_pertanyaan extends AppCompatActivity implements rekomendasi_vi
 
         }
     }
+    void masih_kosong(){
+
+        SweetAlertDialog pDialog = new SweetAlertDialog(menu_pertanyaan.this, SweetAlertDialog.WARNING_TYPE);
+        pDialog.setTitleText("Opss");
+        pDialog.setContentText("Pastikan Di Pilih Semua Jawaban");
+        pDialog.setCancelable(false);
+        pDialog.setConfirmText("OK");
+        pDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+            @Override
+            public void onClick(SweetAlertDialog sweetAlertDialog) {
+                sweetAlertDialog.dismissWithAnimation();
+
+            }
+        });
+
+        pDialog.setCanceledOnTouchOutside(false);
+        pDialog.show();
+
+    }
+
 }
