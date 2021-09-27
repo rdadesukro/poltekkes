@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/grey_10"
     tools:context=".view.menu.menu_detail_laporan">
 
     <androidx.core.widget.NestedScrollView
@@ -22,9 +23,12 @@
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
+                android:elevation="@dimen/_8sdp"
                 android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                app:cardCornerRadius="8dp">
+                android:layout_marginTop="@dimen/_8sdp"
+                android:layout_marginBottom="@dimen/_8sdp"
+                app:cardElevation="@dimen/_8sdp"
+                >
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
@@ -76,7 +80,7 @@
                         android:layout_marginBottom="8dp"
                         android:clipToPadding="true"
                         app:cardCornerRadius="8dp"
-                        app:cardElevation="0dp"
+                        app:cardElevation="@dimen/_8sdp"
                         app:cardPreventCornerOverlap="false"
                         app:cardUseCompatPadding="false"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -110,7 +114,7 @@
                         android:layout_marginBottom="16dp"
                         android:text="Pemeriksa"
                         android:textColor="@color/grey_1000"
-                        android:textSize="@dimen/_16sdp"
+                        android:textSize="@dimen/_14sdp"
                         app:fontFamily="@font/opensansbold"
                         app:layout_constraintBottom_toTopOf="@+id/con_berita"
                         app:layout_constraintStart_toStartOf="parent"
@@ -122,27 +126,48 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                app:cardCornerRadius="8dp">
+                android:elevation="@dimen/_8sdp"
+               >
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
-                    <TextView
-                        android:id="@+id/web_data_bayi"
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/con_balita"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:layout_marginEnd="8dp"
                         android:layout_marginBottom="8dp"
-                        android:fontFamily="@font/opensansregular"
-                        android:textColor="@color/grey_1000"
-                        android:text="-"
+                        android:visibility="gone"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintEnd_toEndOf="@+id/btn_balita"
                         app:layout_constraintStart_toStartOf="@+id/txt"
-                        app:layout_constraintTop_toBottomOf="@+id/view5" />
+                        app:layout_constraintTop_toBottomOf="@+id/view5"
+                        tools:visibility="visible">
+
+                        <TextView
+                            android:id="@+id/web_data_bayi"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/opensansregular"
+                            android:text="-"
+                            android:textColor="@color/grey_1000"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:visibility="visible" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <Button
+                        android:id="@+id/btn_balita"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginEnd="8dp"
+                        android:background="@drawable/ic_baseline_arrow_drop_down_24"
+                         app:layout_constraintBottom_toBottomOf="@+id/txt"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/txt" />
 
                     <View
                         android:id="@+id/view5"
@@ -167,7 +192,7 @@
                         android:layout_marginBottom="16dp"
                         android:text="Balita"
                         android:textColor="@color/grey_1000"
-                        android:textSize="@dimen/_16sdp"
+                        android:textSize="@dimen/_14sdp"
                         app:fontFamily="@font/opensansbold"
                         app:layout_constraintBottom_toTopOf="@+id/con_berita"
                         app:layout_constraintStart_toStartOf="parent"
@@ -179,6 +204,9 @@
             <androidx.cardview.widget.CardView
                 android:id="@+id/card_foto"
                 android:layout_width="match_parent"
+                android:elevation="@dimen/_8sdp"
+                android:layout_margin="@dimen/_8sdp"
+                app:cardCornerRadius="@dimen/_8sdp"
                 android:layout_height="wrap_content">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
@@ -191,9 +219,10 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
                         android:fontFamily="@font/opensansbold"
-                        android:textSize="@dimen/_14sdp"
+                        android:textSize="@dimen/_12sdp"
                         android:text="Jadwal Pemerikasan Kembali"
-                        android:textColor="@color/grey_1000"
+                        android:background="@drawable/bg_status_baik"
+                        android:textColor="@color/putih"
                         app:layout_constraintStart_toStartOf="@+id/web_rek_pertumbuhan"
                         app:layout_constraintTop_toBottomOf="@+id/web_rek_pertumbuhan" />
 
@@ -202,10 +231,11 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
-                        android:textSize="@dimen/_14sdp"
+                        android:textSize="@dimen/_12sdp"
                         android:fontFamily="@font/opensansbold"
                         android:text="Rekomendasi Pertumbuhan"
-                        android:textColor="@color/grey_1000"
+                        android:background="@drawable/bg_status_baik"
+                        android:textColor="@color/putih"
                         app:layout_constraintStart_toStartOf="@+id/txt_status"
                         app:layout_constraintTop_toBottomOf="@+id/txt_status" />
 
@@ -249,8 +279,9 @@
                         android:layout_marginTop="8dp"
                         android:fontFamily="@font/opensansbold"
                         android:text="Status Pertumbuhan"
-                        android:textSize="@dimen/_14sdp"
-                        android:textColor="@color/grey_1000"
+                        android:textSize="@dimen/_12sdp"
+                        android:background="@drawable/bg_status_baik"
+                        android:textColor="@color/putih"
                         app:layout_constraintStart_toStartOf="@+id/txt"
                         app:layout_constraintTop_toBottomOf="@+id/view4" />
 
@@ -263,7 +294,7 @@
                         android:layout_marginBottom="16dp"
                         android:text="Hasil Penilaian Pertumbuhan"
                         android:textColor="@color/grey_1000"
-                        android:textSize="@dimen/_16sdp"
+                        android:textSize="@dimen/_14sdp"
                         app:fontFamily="@font/opensansbold"
                         app:layout_constraintBottom_toTopOf="@+id/con_berita"
                         app:layout_constraintStart_toStartOf="parent"
@@ -288,8 +319,9 @@
             <androidx.cardview.widget.CardView
                 android:id="@+id/card_foto"
                 android:layout_width="match_parent"
-                android:layout_marginTop="8dp"
+               android:layout_margin="@dimen/_8sdp"
                 android:elevation="@dimen/_8sdp"
+                app:cardCornerRadius="@dimen/_8sdp"
                 android:layout_height="wrap_content">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
@@ -303,8 +335,9 @@
                         android:layout_marginTop="16dp"
                         android:fontFamily="@font/opensansbold"
                         android:text="Jadwal Pemerikasan Kembali"
-                        android:textSize="@dimen/_14sdp"
-                        android:textColor="@color/grey_1000"
+                        android:textSize="@dimen/_12sdp"
+                        android:background="@drawable/bg_status_baik"
+                        android:textColor="@color/putih"
                         app:layout_constraintStart_toStartOf="@+id/web_rek_perkembangan"
                         app:layout_constraintTop_toBottomOf="@+id/web_rek_perkembangan" />
 
@@ -314,9 +347,10 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
                         android:fontFamily="@font/opensansbold"
-                        android:text="Rekomendasi Pertumbuhan"
-                        android:textColor="@color/grey_1000"
-                        android:textSize="@dimen/_14sdp"
+                        android:text="Rekomendasi Perkembangan"
+                        android:background="@drawable/bg_status_baik"
+                        android:textColor="@color/putih"
+                        android:textSize="@dimen/_12sdp"
                         app:layout_constraintStart_toStartOf="@+id/txt_status_perke"
                         app:layout_constraintTop_toBottomOf="@+id/txt_status_perke" />
 
@@ -360,8 +394,9 @@
                         android:layout_marginTop="8dp"
                         android:fontFamily="@font/opensansbold"
                         android:text="Status Perkembangan"
-                        android:textSize="@dimen/_14sdp"
-                        android:textColor="@color/grey_1000"
+                        android:textSize="@dimen/_12sdp"
+                        android:background="@drawable/bg_status_baik"
+                        android:textColor="@color/putih"
                         app:layout_constraintStart_toStartOf="@+id/txt"
                         app:layout_constraintTop_toBottomOf="@+id/view4" />
 
@@ -374,7 +409,7 @@
                         android:layout_marginBottom="16dp"
                         android:text="Hasil Penilaian Perkembangan"
                         android:textColor="@color/grey_1000"
-                        android:textSize="@dimen/_16sdp"
+                        android:textSize="@dimen/_14sdp"
                         app:fontFamily="@font/opensansbold"
                         app:layout_constraintBottom_toTopOf="@+id/con_berita"
                         app:layout_constraintStart_toStartOf="parent"
@@ -400,8 +435,9 @@
             <androidx.cardview.widget.CardView
                 android:id="@+id/card_Data"
                 android:layout_width="match_parent"
-                android:layout_marginTop="@dimen/_8sdp"
+               android:layout_margin="@dimen/_8sdp"
                 android:layout_height="wrap_content"
+                app:cardCornerRadius="@dimen/_8sdp"
                 android:layout_marginBottom="8dp"
                 app:cardElevation="8dp">
 
@@ -419,7 +455,7 @@
                         android:text="Hasil Pertanyaan"
 
                         android:textColor="@color/grey_1000"
-                        android:textSize="@dimen/_16sdp"
+                        android:textSize="@dimen/_14sdp"
                         app:fontFamily="@font/opensansbold"
                         app:layout_constraintBottom_toTopOf="@+id/con_berita"
                         app:layout_constraintStart_toStartOf="parent"

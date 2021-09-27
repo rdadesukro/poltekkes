@@ -57,28 +57,20 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-        android:id="@+id/swifeRefresh"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_aku"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
+        app:fastScrollEnabled="false"
         app:layout_constraintBottom_toTopOf="@+id/btn_simpan_data"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardView4">
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_aku"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:fastScrollEnabled="false"
-            tools:listitem="@layout/model_pertanyaan" />
-
-    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+        app:layout_constraintTop_toTopOf="parent"
+        tools:listitem="@layout/model_pertanyaan" />
 
     <ProgressBar
         android:id="@+id/progressBar2"
@@ -86,8 +78,7 @@
 
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/swifeRefresh"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="@+id/swifeRefresh"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
 import com.example.poltekkes.R;
+import com.github.squti.guru.Guru;
 
 import maes.tech.intentanim.CustomIntent;
 
@@ -30,6 +31,16 @@ public class menu_materi extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 CustomIntent.customType(menu_materi.this, "fadein-to-fadeout");
+                Guru.putString("jenis","pertumbuhan");
+                Intent intent = new Intent(menu_materi.this, menu_materi_pertumbuhan.class);
+                startActivity(intent);
+            }
+        });
+        cardPerkembangan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                CustomIntent.customType(menu_materi.this, "fadein-to-fadeout");
+                Guru.putString("jenis","perkembangan");
                 Intent intent = new Intent(menu_materi.this, menu_materi_pertumbuhan.class);
                 startActivity(intent);
             }

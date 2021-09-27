@@ -76,7 +76,7 @@ public class menu_utama extends AppCompatActivity implements slider_view {
         if (getSupportActionBar() != null) {
             getSupportActionBar().setTitle("Main Page");
         }
-        nama = Guru.getString("nama", "false");
+        nama = Guru.getString("nama_user", "false");
         username =Guru.getString("username", "false");
         nim = Guru.getString("nim", "false");
         slider = new slider(menu_utama.this, menu_utama.this);

@@ -66,7 +66,7 @@ public class aksi {
 
                             new GlideToast.makeToast((Activity) ctx, "" + response.body().getMessage(), GlideToast.LENGTHLONG, GlideToast.SUCCESSTOAST, GlideToast.CENTER).show();
                             Guru.putString("status_loign", "true");
-                            Guru.putString("nama", nama);
+                            Guru.putString("nama_user", nama);
                             Guru.putString("username", userame);
                             Guru.putString("nim", nim);
                             Guru.putString("auth", response.body().getData().getToken());

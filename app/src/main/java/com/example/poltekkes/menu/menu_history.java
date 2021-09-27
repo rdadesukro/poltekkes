@@ -2,6 +2,7 @@ package com.example.poltekkes.menu;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -127,5 +128,14 @@ public class menu_history extends AppCompatActivity implements history_view, ada
     @Override
     public void lihat_gambar(int id, String gambar, ImageView foto) {
 
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case android.R.id.home:
+                onBackPressed();
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

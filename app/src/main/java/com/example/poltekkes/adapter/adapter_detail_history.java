@@ -92,10 +92,10 @@ public class adapter_detail_history extends RecyclerView.Adapter<adapter_detail_
         if (s.equals("#"))
         {
 
-            holder.txt_judul.setVisibility(View.VISIBLE);
+            holder.txt_judul.setVisibility(View.GONE);
             holder.radioGrup.setVisibility(View.GONE);
             holder.txt_judul.setText(dm.getText());
-
+            holder.card_img.setVisibility(View.GONE);
         }else {
             holder.radioGrup.setVisibility(View.VISIBLE);
             holder.txt_judul.setVisibility(View.GONE);

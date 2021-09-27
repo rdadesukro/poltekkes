@@ -55,8 +55,8 @@ public class tindakan {
                         //Toast.makeText(ctx, ""+ response.body().getMessage(), Toast.LENGTH_SHORT).show();
                         //Log.i("isi_data", "onResponse: "+data);
 
-                            countryView.umur(response.body().getData().getStatusPertumbuhan(),
-                                    response.body().getData().getRekomendasi(),"1");
+//                            countryView.umur(response.body().getData().getStatusPertumbuhan(),
+//                                    response.body().getData().getRekomendasi(),"1");
 
                     }
                 } catch (Exception e) {

@@ -103,9 +103,9 @@ public class menu_login extends AppCompatActivity implements Validator.Validatio
                 CustomIntent.customType(menu_login.this, "fadein-to-fadeout");
                 break;
             case R.id.btn_lupa:
-//                goInput = new Intent(this, menu_lupa_password.class);
-//                startActivity(goInput);
-//                CustomIntent.customType(menu_login.this, "fadein-to-fadeout");
+                goInput = new Intent(this, menu_riset_password.class);
+                startActivity(goInput);
+                CustomIntent.customType(menu_login.this, "fadein-to-fadeout");
                 break;
         }
     }
@@ -141,7 +141,6 @@ public class menu_login extends AppCompatActivity implements Validator.Validatio
     }
     @Override
     public void onBackPressed() {
-
         finishAffinity();
     }
 }

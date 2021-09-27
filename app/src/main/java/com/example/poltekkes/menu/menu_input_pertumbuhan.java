@@ -114,7 +114,7 @@ public class menu_input_pertumbuhan extends AppCompatActivity implements Validat
     }
 
     @Override
-    public void umur(String Status_pertumbuhan, String rekomendasi, String status) {
+    public void umur(String Status_pertumbuhan, String rekomendasi, String status,String pertumbuhan_kode,String Rekomendasi_kode) {
         if (status.equals("1")){
             bottom_dialog = new BottomSheetDialog(menu_input_pertumbuhan.this);
             bottom_dialog.setTitle("Login");
@@ -146,6 +146,11 @@ public class menu_input_pertumbuhan extends AppCompatActivity implements Validat
                 public void onClick(View v) {
                     bottom_dialog.dismiss();
                     Guru.putString("rekomendasi",rekomendasi);
+                    Guru.putString("pertumbuhan_kode",pertumbuhan_kode);
+                    Guru.putString("Rekomendasi_kode",Rekomendasi_kode);
+                    Guru.putString("bb", edit_berat.getText().toString().trim());
+                    Guru.putString("pb", edit_panjang.getText().toString().trim());
+                    Guru.putString("jenis_kelamin", jk);
                     Intent goInput = new Intent(menu_input_pertumbuhan.this, menu_hasil_rekomendasi_pertumbuhan.class);
                     startActivity(goInput);
                     CustomIntent.customType(menu_input_pertumbuhan.this, "fadein-to-fadeout");
@@ -167,7 +172,7 @@ public class menu_input_pertumbuhan extends AppCompatActivity implements Validat
     }
 
     @Override
-    public void hasil(String Status_perkembangan, String rekomendasi, String status, String jadwal_pertumbuhan, String jadwal_perkembangan) {
+    public void hasil(String Status_perkembangan, String rekomendasi, String status, String jadwal_pertumbuhan, String jadwal_perkembangan,String kode_tindakan_perkembangan) {
 
     }
 }

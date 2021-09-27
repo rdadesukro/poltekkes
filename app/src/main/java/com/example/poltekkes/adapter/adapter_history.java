@@ -111,21 +111,11 @@ public class adapter_history extends RecyclerView.Adapter<adapter_history.Holder
         public HolderData(View v) {
             super(v);
             ButterKnife.bind(this, itemView);
-            tgl_periksa.setOnLongClickListener(new View.OnLongClickListener() {
-                @Override
-                public boolean onLongClick(View v) {
-                    Toast.makeText(ctx, ""+dm.getNamaBalita(), Toast.LENGTH_SHORT).show();
-                    Intent goInput = new Intent(ctx, menu_detail_history.class);
-                    ctx.startActivity(goInput);
-                    Guru.putString("id_detail_histiry", String.valueOf(dm.getId()));
-                    CustomIntent.customType(ctx, "fadein-to-fadeout");
-                    return false;
-                }
-            });
+
             v.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Toast.makeText(ctx, ""+dm.getNamaBalita(), Toast.LENGTH_SHORT).show();
+                  //  Toast.makeText(ctx, ""+dm.getNamaBalita(), Toast.LENGTH_SHORT).show();
                     Intent goInput = new Intent(ctx, menu_detail_history.class);
                     ctx.startActivity(goInput);
                     Guru.putString("id_detail_histiry", String.valueOf(dm.getId()));
@@ -133,23 +123,7 @@ public class adapter_history extends RecyclerView.Adapter<adapter_history.Holder
                 }
             });
 //
-//            cex_jawaban.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    if (cex_jawaban.isChecked())
-//                       //  jawaban.set(pos,"ya");
-//                       onImageClickListener.onImageClick(pos,"ya"," ");
-////
-//
-//                    else
-//                      //  jawaban.set(pos,"tidak");
-//                        onImageClickListener.onImageClick(pos,"tidak"," ");
-//                     Log.i("isi_jawaban", "onClick: "+jawaban);
-//
-//
-//
-//                }
-//            });
+
 
 //
         }

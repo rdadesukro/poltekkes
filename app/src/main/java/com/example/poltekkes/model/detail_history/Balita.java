@@ -13,6 +13,19 @@ public class Balita{
 	@SerializedName("nama_ibu")
 	private String namaIbu;
 
+	public String getUsia() {
+		return usia;
+	}
+
+	public void setUsia(String usia) {
+		this.usia = usia;
+	}
+
+	@SerializedName("usia")
+	private String usia;
+
+
+
 	@SerializedName("berat")
 	private String berat;
 

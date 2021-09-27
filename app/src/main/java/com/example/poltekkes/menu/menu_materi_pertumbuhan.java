@@ -19,6 +19,7 @@ import com.example.poltekkes.adapter.adapter_materi;
 import com.example.poltekkes.model.materi.DataItem_materi;
 import com.example.poltekkes.presenter.materi;
 import com.example.poltekkes.view.materi_view;
+import com.github.squti.guru.Guru;
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
 import com.google.android.gms.common.GooglePlayServicesRepairableException;
 import com.google.android.gms.security.ProviderInstaller;
@@ -38,6 +39,7 @@ public class menu_materi_pertumbuhan extends AppCompatActivity implements materi
     private RecyclerView rvAku;
     com.example.poltekkes.presenter.materi materi;
     private com.example.poltekkes.adapter.adapter_materi adapter_materi;
+    String JENIS;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,9 +60,15 @@ public class menu_materi_pertumbuhan extends AppCompatActivity implements materi
                 | NoSuchAlgorithmException | KeyManagementException e) {
             e.printStackTrace();
         }
+        JENIS = Guru.getString("jenis", "false");
         web.setWebViewClient(new menu_materi_pertumbuhan.myWebclient());
         web.getSettings().setJavaScriptEnabled(true);
-        web.loadUrl("https://lmproject.my.id/storage/viewpdf/web/viewer.html?url=https://lmproject.my.id/storage/materi/materi_perkembangan.pdf");
+        if (JENIS.equals("pertumbuhan")){
+            web.loadUrl( "https://lmproject.my.id/storage/viewpdf/web/viewer.html?url=https://lmproject.my.id/storage/materi/materi_pertumbuhan.pdf");
+        }else {
+            web.loadUrl("https://lmproject.my.id/storage/viewpdf/web/viewer.html?url=https://lmproject.my.id/storage/materi/materi_perkembangan.pdf");
+
+        }
 
     }
 

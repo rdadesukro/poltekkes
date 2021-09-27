@@ -3,6 +3,7 @@ package com.example.poltekkes.server;
 
 
 import com.example.poltekkes.model.action.Response_action;
+import com.example.poltekkes.model.action.Response_simpan_data;
 import com.example.poltekkes.model.detail_history.Response_detail_history;
 import com.example.poltekkes.model.history.Response_history;
 import com.example.poltekkes.model.login.Response_login;
@@ -42,19 +43,20 @@ public interface ApiRequest {
             @Field("konfirmasi_password") String konfirmasi_password);
 
     @FormUrlEncoded
-    @POST("user/jawaban/")
-    Call<Response_action> simpan_semua_data(
+    @POST("user/jawaban/kirim")
+    Call<Response_simpan_data> simpan_semua_data(
             @Field("nama_balita") String nama,
-            @Field("tgl_lahir") String tgl_lahir,
+            @Field("tanggal_lahir") String tgl_lahir,
             @Field("nama_ibu") String nama_ibu,
             @Field("alamat") String alamat,
             @Field("usia_dalam_bulan") String usia_dalam_bulan,
             @Field("jenis_kelamin") String jenis_kelamin,
-            @Field("berat_badan") String berat_badan,
-            @Field("rentang_usia") String rentang_usia,
-            @Field("jawaban") String jawaban,
-            @Field("pertumbuhan_kode") String pertumbuhan_kode,
-            @Field("rekomendasi_kode") String rekomendasi_kode);
+            @Field("berat") String berat_badan,
+            @Field("panjang") String panjang_badan,
+            @Field("kode_pertumbuhan") String pertumbuhan_kode,
+            @Field("kode_rekomendasi") String rekomendasi_kode,
+            @Field("kode_tindakan_perkembangan") String kode_tindakan_perkembangan,
+            @Field("jawaban_array") String jawaban_array);
 
 
     @FormUrlEncoded
@@ -89,6 +91,12 @@ public interface ApiRequest {
     Call<Response_login> login(
             @Field("username") String username,
             @Field("password") String password);
+
+    @FormUrlEncoded
+    @POST("user/password/reset")
+    Call<Response_simpan_data> riset(
+            @Field("username") String username,
+            @Field("nim") String nim);
 
 
 

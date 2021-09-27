@@ -101,18 +101,18 @@ public class menu_pertanyaan extends AppCompatActivity implements rekomendasi_vi
             }
         });
 
-        swifeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                pertanyaan.get_pertanyan(tgl_lahir);
-
-            }
-        });
+//        swifeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+//            @Override
+//            public void onRefresh() {
+//                //pertanyaan.get_pertanyan(tgl_lahir);
+//
+//            }
+//        });
 
     }
 
     private void initView() {
-        swifeRefresh = findViewById(R.id.swifeRefresh);
+       // swifeRefresh = findViewById(R.id.swifeRefresh);
         rvAku = findViewById(R.id.rv_aku);
         progressBar2 = findViewById(R.id.progressBar2);
         txtDataAnak = findViewById(R.id.txt_data_anak);
@@ -160,7 +160,9 @@ public class menu_pertanyaan extends AppCompatActivity implements rekomendasi_vi
             rvAku.setHasFixedSize(true);
             adapter_pertanyaan.notifyDataSetChanged();
             rvAku.setAdapter(adapter_pertanyaan);
-            swifeRefresh.setRefreshing(false);
+
+
+           // swifeRefresh.setRefreshing(false);
             if (pertanyaan.size() == 0) {
                 progressBar2.setVisibility(View.VISIBLE);
                 //  cardEvent.setVisibility(View.GONE);
@@ -197,12 +199,12 @@ public class menu_pertanyaan extends AppCompatActivity implements rekomendasi_vi
     }
 
     @Override
-    public void umur(String Status_pertumbuhan, String rekomendasi, String status) {
+    public void umur(String Status_pertumbuhan, String rekomendasi, String status,String pertumbuhan_kode,String Rekomendasi_kode) {
 
     }
 
     @Override
-    public void hasil(String Status_perkembangan, String rekomendasi, String status, String jadwal_pertumbuhan, String jadwal_perkembangan) {
+    public void hasil(String Status_perkembangan, String rekomendasi, String status, String jadwal_pertumbuhan, String jadwal_perkembangan,String kode_tindakan_perkembangan) {
         if (status.equals("1")){
             bottom_dialog = new BottomSheetDialog(menu_pertanyaan.this);
             bottom_dialog.setTitle("Login");
@@ -237,6 +239,7 @@ public class menu_pertanyaan extends AppCompatActivity implements rekomendasi_vi
                     Guru.putString("tindakan",rekomendasi);
                     Guru.putString("jadwal_perkembangan",jadwal_perkembangan);
                     Guru.putString("jadwal_pertumbuhan",jadwal_pertumbuhan);
+                    Guru.putString("kode_tindakan_perkembangan",kode_tindakan_perkembangan);
                     Intent goInput = new Intent(menu_pertanyaan.this, menu_hasil_tindakaan.class);
                     startActivity(goInput);
                     CustomIntent.customType(menu_pertanyaan.this, "fadein-to-fadeout");

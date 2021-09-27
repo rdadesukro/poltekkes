@@ -63,8 +63,8 @@ public class cek_umur {
 
 
                     }
-                } catch (Exception e) {
-                    Log.i("onResponse", "There is an error" + e.getMessage());
+                } catch (Throwable e) {
+                    Log.i("cek_input_Data", "There is an error" + e.getMessage());
                     e.printStackTrace();
                 }
 

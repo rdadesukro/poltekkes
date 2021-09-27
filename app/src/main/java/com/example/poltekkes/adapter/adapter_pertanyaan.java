@@ -196,12 +196,18 @@ public class adapter_pertanyaan extends RecyclerView.Adapter<adapter_pertanyaan.
         public HolderData(View v) {
             super(v);
             ButterKnife.bind(this, itemView);
-            img_gambar.setOnLongClickListener(new View.OnLongClickListener() {
+//            img_gambar.setOnClickListener(new View.OnLongClickListener() {
+//                @Override
+//                public boolean onLongClick(View v) {
+//
+//
+//                    return false;
+//                }
+//            });
+            img_gambar.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public boolean onLongClick(View v) {
-
+                public void onClick(View v) {
                     onImageClickListener.lihat_gambar(pos,dm.getGambar(),img_gambar);
-                    return false;
                 }
             });
 

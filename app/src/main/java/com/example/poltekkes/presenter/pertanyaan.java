@@ -4,8 +4,10 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.util.Log;
+import android.widget.Toast;
 ;
-import com.example.poltekkes.model.action.Response_action;
+import com.example.poltekkes.model.action.Response_simpan_data;
+import com.example.poltekkes.model.login.Response_login;
 import com.example.poltekkes.model.pertanyaan.DataItem_pertanyaan;
 import com.example.poltekkes.model.pertanyaan.Response_pertanyaan;
 import com.example.poltekkes.server.ApiRequest;
@@ -85,41 +87,55 @@ public class pertanyaan {
                                   String usia_dalam_bulan,
                                   String jenis_kelamin,
                                   String berat_badan,
-                                  String rentang_usia,
-                                  String jawaban,
-                                  String pertumbuhan_kode,
-                                  String rekomenadasi_kode) {
+                                  String panjang_badan,
+                                  String kode_pertumbuhan,
+                                  String kode_rekomendasi,
+                                  String kode_tindakan_perkembangan,
+                                  String jawaban_array) {
         ProgressDialog  pDialog = new ProgressDialog(ctx);
         pDialog.setTitle("Mohon Tunggu!!!");
-        pDialog.setMessage("Simpan Jawaban...");
+        pDialog.setMessage("Simpan Data...");
         pDialog.setCancelable(false);
         pDialog.setCanceledOnTouchOutside(false);
         pDialog.show();
         ProgressDialog finalPDialog = pDialog;
+        Log.i("cek_semua_Data", "simpan_pertanyaan: "+nama+" "+
+                tgl_lahir +" "+
+                nama_ibu+ " "+
+                alamat+" "+
+                usia_dalam_bulan+ " "+
+                jenis_kelamin + " "+
+                berat_badan +  " "+
+                panjang_badan +" "+
+                kode_pertumbuhan + " "+
+                kode_rekomendasi+" "+
+               kode_tindakan_perkembangan+
+            jawaban_array);
 
         ApiRequest api = Retroserver_server_AUTH.getClient().create(ApiRequest.class);
-        Call<Response_action> sendbio = api.simpan_semua_data(nama,
+        Call<Response_simpan_data> sendbio = api.simpan_semua_data(nama,
                                                             tgl_lahir,
                 nama_ibu,
                 alamat,
                 usia_dalam_bulan,
                 jenis_kelamin,
                 berat_badan,
-                rentang_usia,
-                jawaban,
-                pertumbuhan_kode,
-                rekomenadasi_kode);
-        sendbio.enqueue(new Callback<Response_action>() {
+                panjang_badan,
+                kode_pertumbuhan,
+                kode_rekomendasi,
+                kode_tindakan_perkembangan,
+                jawaban_array);
+        sendbio.enqueue(new Callback<Response_simpan_data>() {
             @Override
-            public void onResponse(Call<Response_action> call, Response<Response_action> response) {
+            public void onResponse(Call<Response_simpan_data> call, Response<Response_simpan_data> response) {
 
                 try {
-                    String kode = response.body().getKode();
-                    countryView.status(kode,"");
-                    if (kode.equals("1")) {
-                        finalPDialog.dismiss();
 
-                        new GlideToast.makeToast((Activity) ctx, "" + response.body().getMessage(), GlideToast.LENGTHLONG, GlideToast.SUCCESSTOAST, GlideToast.CENTER).show();
+
+                    if (response.body().isSuccess()) {
+                        finalPDialog.dismiss();
+                        countryView.status("1","");
+                      //  new GlideToast.makeToast((Activity) ctx, "" + response.body().getMessage(), GlideToast.LENGTHLONG, GlideToast.SUCCESSTOAST, GlideToast.CENTER).show();
 
                     } else {
                         finalPDialog.dismiss();
@@ -127,6 +143,7 @@ public class pertanyaan {
 
                     }
                 }catch (Exception e){
+                  //  Toast.makeText(ctx, ""+response.code(), Toast.LENGTH_SHORT).show();
                     Log.i("cek_error_login", "onResponse: "+e);
                     finalPDialog.dismiss();
                 }
@@ -135,7 +152,7 @@ public class pertanyaan {
 
             }
             @Override
-            public void onFailure(Call<Response_action> call, Throwable t) {
+            public void onFailure(Call<Response_simpan_data> call, Throwable t) {
                 Log.i("cek_info", "onFailure: "+t);
                 Log.e("cek_eror_login", "onFailure: "+t);
 
@@ -144,47 +161,7 @@ public class pertanyaan {
         });
 
     }
-//    public  void  hapus_optik(String id, ProgressDialog pDialog ){
-//        pDialog = new ProgressDialog(ctx);
-//        pDialog.setTitle("Mohon Tunggu!!!");
-//        pDialog.setMessage("Hapus Data");
-//        pDialog.setCancelable(false);
-//        pDialog.setCanceledOnTouchOutside(false);
-//        pDialog.show();
-//        ProgressDialog finalPDialog = pDialog;
-//        ApiRequest api = Retroserver_server_AUTH.getClient().create(ApiRequest.class);
-//
-//        Call<Response_action> sendbio = api.hapus_optik(id);
-//
-//
-//        sendbio.enqueue(new Callback<Response_action>() {
-//            @Override
-//            public void onResponse(Call<Response_action> call, Response<Response_action> response) {
-//
-//                String kode = response.body().getKode();
-//                Log.i("kode_foto", "onResponse: " + kode);
-//                countryView.status(kode,"");
-//
-//                if (kode.equals("1")) {
-//                    finalPDialog.dismiss();
-//                    new GlideToast.makeToast((Activity) ctx, "" + response.body().getMessage(), GlideToast.LENGTHLONG, GlideToast.SUCCESSTOAST, GlideToast.CENTER).show();
-//
-//                } else {
-//
-//                    finalPDialog.dismiss();
-//                    new GlideToast.makeToast((Activity) ctx, "" + response.body().getMessage(), GlideToast.LENGTHLONG, GlideToast.WARNINGTOAST, GlideToast.CENTER).show();
-//                }
-//
-//            }
-//            @Override
-//            public void onFailure(Call<Response_action> call, Throwable t) {
-//                Log.i("cek_error", "onFailure: "+t);
-//
-//                Log.d("RETRO", "Falure : " + "Gagal Mengirim Request");
-//            }
-//        });
-//
-//    }
+
 
     }
 
