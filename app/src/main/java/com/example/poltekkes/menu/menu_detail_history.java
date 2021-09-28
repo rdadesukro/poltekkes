@@ -1,5 +1,6 @@
 package com.example.poltekkes.menu;
 
+import android.content.res.Resources;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.Html;
@@ -41,7 +42,7 @@ public class menu_detail_history extends AppCompatActivity implements history_de
     com.example.poltekkes.presenter.history_detail history_detail;
     String id, nama, tgl_lahir, alamat, bb, pb, nama_ibu, jenis_kelamin;
     public String data;
-    private TextView webDataBayi;
+    private WebView webDataBayi;
     private TextView txtNama;
     private TextView txtNim;
     private WebView webRekPertumbuhan;
@@ -52,6 +53,7 @@ public class menu_detail_history extends AppCompatActivity implements history_de
     private WebView txtWaktuPerkembangan;
     private Button btnBalita;
     private ConstraintLayout conBalita;
+    String pemeriksa_Tgl;
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
@@ -120,6 +122,7 @@ public class menu_detail_history extends AppCompatActivity implements history_de
 
     @Override
     public void pemeriksa(Pemeriksa pemeriksa) {
+        pemeriksa_Tgl = pemeriksa.getTanggalPemeriksaan();
         txtNama.setText(pemeriksa.getNamaLengkap());
         txtNim.setText(pemeriksa.getNim());
     }
@@ -172,23 +175,72 @@ public class menu_detail_history extends AppCompatActivity implements history_de
         }
 
 
-        data = "<ul>\n" +
-                "<li><strong>Nama Balita</strong></li>\n" + "&nbsp;" + balita.getNama() +
-                "<li><strong>Tanggal Lahir</strong></li>\n" + "&nbsp;" + balita.getTanggalLahir() +
-                "<li><strong>Umur</strong></li>\n" + "&nbsp;" + balita.getUsia() +
-                "<li><strong>Jenis Kelamin </strong></li>\n" + "&nbsp;" + jk +
-                "<li><strong>Berat Badan</strong></li>\n" + "&nbsp;" + balita.getBerat() +
-                "<li><strong>Panjang Badan</strong></li>\n" + "&nbsp;" + balita.getPanjang() +
-                "<li><strong>Alamat </strong></li>\n" + "&nbsp;" + balita.getAlamat() +
-                "<li><strong>Nama Ibu </strong></li>\n" + "&nbsp;" + balita.getNamaIbu() +
-                "</ul>";
-        webDataBayi.setText(Html.fromHtml(data, Html.FROM_HTML_MODE_LEGACY));
+        Resources res = getResources();
+        String text = String.format(res.getString(R.string.data_table));
+        CharSequence styledText = Html.fromHtml(text);
+
+
+        String myTable = "<table border=0>" +
+                "<tr>" +
+                "<td>Nama Balita</td>" +
+                "<td>:</td>" +
+                "<td>"+balita.getNama()+"</td>" +
+                "</tr>" +
+                "<tr>" +
+                "<td>Tanggal Lahir</td>" +
+                "<td>:</td>" +
+                "<td>"+balita.getTanggalLahir()+"</td>" +
+                "</tr>" +
+                "<tr>" +
+                "<td>Usia</td>" +
+                "<td>:</td>" +
+                "<td>"+balita.getUsia()+"</td>" +
+                "</tr>" +
+                "<tr>" +
+                "<td>Berat Badan</td>" +
+                "<td>:</td>" +
+                "<td>"+balita.getBerat()+"</td>" +
+                "</tr>" +
+                "<tr>" +
+                "<td>Panjang Badan</td>" +
+                "<td>:</td>" +
+                "<td>"+balita.getPanjang()+"</td>" +
+                "</tr>" +
+                "<tr>" +
+                "<td>Jenis Kelamin</td>" +
+                "<td>:</td>" +
+                "<td>"+jk+"</td>" +
+                "</tr>" +
+                "<tr>" +
+                "<td>Nama Ibu</td>" +
+                "<td>:</td>" +
+                "<td>"+balita.getNamaIbu()+"</td>" +
+                "</tr>" +
+                "<tr>" +
+                "<td>Alamat</td>" +
+                "<td>:</td>" +
+                "<td>"+balita.getAlamat()+"</td>" +
+                "</tr>" +
+                "<tr>" +
+                "<td>Tanggal Pemiriksaan</td>" +
+                "<td>:</td>" +
+                "<td>"+pemeriksa_Tgl+"</td>" +
+                "</tr>" +
+                "</table>";
+
+        webDataBayi.requestFocus();
+        webDataBayi.getSettings().setLightTouchEnabled(true);
+        webDataBayi.getSettings().setJavaScriptEnabled(true);
+        webDataBayi.getSettings().setRenderPriority(WebSettings.RenderPriority.HIGH);
+        webDataBayi.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
+       // webDataBayi.loadDataWithBaseURL("","<style>img{display: inline;height: auto;max-width: 100%;}</style>"+ text, "text/html", "UTF-8", "");
+        webDataBayi.loadDataWithBaseURL(null, myTable, "text/html", "utf-8", null);
     }
 
     private void initView() {
         RecyclerView = findViewById(R.id.RecyclerView);
         progressBar = findViewById(R.id.progressBar);
-        webDataBayi = (TextView) findViewById(R.id.web_data_bayi);
+        webDataBayi = (WebView) findViewById(R.id.web_data_bayi);
         txtNama = (TextView) findViewById(R.id.txt_nama);
         txtNim = (TextView) findViewById(R.id.txt_nim);
         webRekPertumbuhan = (WebView) findViewById(R.id.web_rek_pertumbuhan);

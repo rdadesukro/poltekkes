@@ -6,5 +6,90 @@
     <string name="tentang3">Rekomendasi hasil penilaian pertumbuhan dan perkembangan balita</string>
     <string name="tentang">Aplikasi ini adalah alat bantu dalam menilai pertumbuhan dan perkembangan balita</string>
     <string name="isi"><u><b>maka perlu dikonfirmasi oleh petugas kesehatan yang berkompeten untuk dilakukan:  penilaian status gizi berdasarkan indeks BB/U, PB/U atau TB/U, BB/PB dan atau BB/TB, IMT/U </b></u></string>
+
+
+        <string name="welcome_messages">Hello, %1$s! You have &lt;b>%2$d new messages&lt;/b>.</string>
+
+     <string name="data_table"><table style="width: 502px;">
+<tbody>
+<tr>
+<td style="width: 38.2188px;">Nama</td>
+<td style="width: 10px;">
+<p>:</p>
+</td>
+<td style="width: 136px;">
+<p>Ade Sukron</p>
+</td>
+</tr>
+<tr>
+<td style="width: 38.2188px;">
+<p>Tanggal Lahir</p>
+</td>
+<td style="width: 10px;">
+<p>:</p>
+</td>
+<td style="width: 136px;">
+<p>08 September 2021</p>
+</td>
+</tr>
+<tr>
+<td style="width: 38.2188px;">
+<p>Jenis Kelamin</p>
+</td>
+<td style="width: 10px;">
+<p>:</p>
+</td>
+<td style="width: 136px;">
+<p>Laki-Laki</p>
+</td>
+</tr>
+<tr>
+<td style="width: 38.2188px;">
+<p>Berat Badan</p>
+</td>
+<td style="width: 10px;">
+<p>:</p>
+</td>
+<td style="width: 136px;">
+<p>20 Kg</p>
+</td>
+</tr>
+<tr>
+<td style="width: 38.2188px;">
+<p>Panjang Badan</p>
+</td>
+<td style="width: 10px;">
+<p>:</p>
+</td>
+<td style="width: 136px;">
+<p>10 Cm</p>
+</td>
+</tr>
+<tr>
+<td style="width: 38.2188px;">
+<p>Usia</p>
+</td>
+<td style="width: 10px;">
+<p>:</p>
+</td>
+<td style="width: 136px;">10 Bulan</td>
+</tr>
+<tr>
+<td style="width: 38.2188px;">
+<p>Alamat</p>
+</td>
+<td style="width: 10px;">:</td>
+<td style="width: 136px;">Jambi</td>
+</tr>
+<tr>
+<td style="width: 38.2188px;">
+<p>Nama Ibu</p>
+</td>
+<td style="width: 10px;">:</td>
+<td style="width: 136px;">Patim</td>
+</tr>
+</tbody>
+</table></string>
+
 </resources>
 

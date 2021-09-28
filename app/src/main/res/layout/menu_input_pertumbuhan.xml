@@ -54,7 +54,7 @@
                     android:layout_centerHorizontal="true"
                     android:layout_centerVertical="true"
                     android:ems="10"
-                    android:hint="Berat Badan"
+                    android:hint="Berat Badan (Kg)"
                     android:inputType="numberDecimal"
                     android:textSize="@dimen/_12sdp" />
 
@@ -81,7 +81,7 @@
                     android:layout_centerHorizontal="true"
                     android:layout_centerVertical="true"
                     android:ems="10"
-                    android:hint="Panjang Badan"
+                    android:hint="Panjang Badan (Cm)"
                     android:inputType="numberDecimal"
                     android:textSize="@dimen/_12sdp" />
 

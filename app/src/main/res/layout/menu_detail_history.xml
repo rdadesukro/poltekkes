@@ -57,7 +57,8 @@
                         android:text="Budi"
                         android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
                         android:textColor="@color/grey_80"
-                        app:fontFamily="sans-serif-medium"
+                        android:textSize="@dimen/_12sdp"
+                        app:fontFamily="@font/opensansbold"
                         app:layout_constraintStart_toEndOf="@+id/cardView"
                         app:layout_constraintTop_toTopOf="@+id/cardView" />
 
@@ -66,8 +67,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="No Hp : 081272168388"
+                        android:textSize="@dimen/_12sdp"
                         android:textAppearance="@style/TextAppearance.AppCompat.Caption"
-                        android:textColor="@color/grey_40"
+                        android:textColor="@color/grey_1000"
                         app:layout_constraintBottom_toBottomOf="@+id/cardView"
                         app:layout_constraintStart_toStartOf="@+id/txt_nama"
                         app:layout_constraintTop_toBottomOf="@+id/txt_nama" />
@@ -146,13 +148,16 @@
                         app:layout_constraintTop_toBottomOf="@+id/view5"
                         tools:visibility="visible">
 
-                        <TextView
+                        <WebView
                             android:id="@+id/web_data_bayi"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginBottom="8dp"
                             android:fontFamily="@font/opensansregular"
                             android:text="-"
                             android:textColor="@color/grey_1000"
+                            app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
