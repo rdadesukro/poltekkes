@@ -55,6 +55,7 @@ public class menu_pertanyaan extends AppCompatActivity implements rekomendasi_vi
     String tgl_lahir,nama,berat,panjang,rentang_usia;
     private TextView txtDataAnak;
     private Button btnSimpan;
+    private List<DataItem_pertanyaan> mList ;
     BottomSheetDialog bottom_dialog;
     public static List<String> jawaban = new ArrayList<String>();
     private List<String> validasi = new ArrayList<>();
@@ -90,7 +91,8 @@ public class menu_pertanyaan extends AppCompatActivity implements rekomendasi_vi
         btnSimpan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                validasi_data =validasi.contains("");
+                String  s1 ='"'+"kosong"+'"';
+                validasi_data =jawaban.contains(s1);
                     if (validasi_data){
                         masih_kosong();
                     }else {
@@ -122,7 +124,7 @@ public class menu_pertanyaan extends AppCompatActivity implements rekomendasi_vi
     @Override
     public void onImageClick(int id, String nama, String alamat) {
         jawaban.set(id,nama);
-        validasi.set(id,"ada");
+        //validasi.set(id,"ada");
 
     }
 
@@ -134,23 +136,38 @@ public class menu_pertanyaan extends AppCompatActivity implements rekomendasi_vi
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+       jawaban.clear();
+       pertanyaan.get_pertanyan(tgl_lahir);
+    }
+
+    @Override
     public void pertanyaan(List<DataItem_pertanyaan> pertanyaan) {
         try {
+            mList=pertanyaan;
             String s1 ='"'+"kosong"+'"';
             String s2 ='"'+"judul"+'"';
             for (int i = 0; i < pertanyaan.size(); i++) {
 
                 String first = pertanyaan.get(i).getText();
                 String s=first.substring(0,1);
+              if (jawaban.size()!=pertanyaan.size()){
 
-                if (s.equals("#")){
-                    jawaban.add(s2);
-                    validasi.add("ada");
+                  if (s.equals("#")){
 
-                }else {
-                    jawaban.add(s1);
-                    validasi.add("");
-                }
+
+                      jawaban.add(s2);
+                     // validasi.add("ada");
+
+                  }else {
+                      jawaban.add(s1);
+                     // validasi.add("");
+                  }
+              }else {
+                  Toast.makeText(this, "dak boleh", Toast.LENGTH_SHORT).show();
+              }
+
 
             }
             Log.i("isi_jawaban", "pertanyaan: "+jawaban);
