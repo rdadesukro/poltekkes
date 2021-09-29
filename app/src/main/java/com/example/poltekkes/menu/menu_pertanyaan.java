@@ -138,35 +138,30 @@ public class menu_pertanyaan extends AppCompatActivity implements rekomendasi_vi
     @Override
     protected void onResume() {
         super.onResume();
-       jawaban.clear();
-       pertanyaan.get_pertanyan(tgl_lahir);
+     //  jawaban.clear();
+     //  pertanyaan.get_pertanyan(tgl_lahir);
     }
 
     @Override
     public void pertanyaan(List<DataItem_pertanyaan> pertanyaan) {
         try {
-            mList=pertanyaan;
+            jawaban.clear();
+           // mList=pertanyaan;
             String s1 ='"'+"kosong"+'"';
             String s2 ='"'+"judul"+'"';
             for (int i = 0; i < pertanyaan.size(); i++) {
 
                 String first = pertanyaan.get(i).getText();
                 String s=first.substring(0,1);
-              if (jawaban.size()!=pertanyaan.size()){
+                if (s.equals("#")){
 
-                  if (s.equals("#")){
+                    jawaban.add(s2);
+                    // validasi.add("ada");
 
-
-                      jawaban.add(s2);
-                     // validasi.add("ada");
-
-                  }else {
-                      jawaban.add(s1);
-                     // validasi.add("");
-                  }
-              }else {
-                  Toast.makeText(this, "dak boleh", Toast.LENGTH_SHORT).show();
-              }
+                }else {
+                    jawaban.add(s1);
+                    // validasi.add("");
+                }
 
 
             }
