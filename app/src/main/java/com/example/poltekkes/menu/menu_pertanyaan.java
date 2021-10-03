@@ -93,11 +93,11 @@ public class menu_pertanyaan extends AppCompatActivity implements rekomendasi_vi
             public void onClick(View v) {
                 String  s1 ='"'+"kosong"+'"';
                 validasi_data =jawaban.contains(s1);
-                    if (validasi_data){
-                        masih_kosong();
-                    }else {
-                        rekomendasi.get_tindakan(tgl_lahir, String.valueOf(jawaban));
-                    }
+                if (validasi_data){
+                    masih_kosong();
+                }else {
+                    rekomendasi.get_tindakan(tgl_lahir, String.valueOf(jawaban));
+                }
 
 
             }
@@ -114,7 +114,7 @@ public class menu_pertanyaan extends AppCompatActivity implements rekomendasi_vi
     }
 
     private void initView() {
-       // swifeRefresh = findViewById(R.id.swifeRefresh);
+        // swifeRefresh = findViewById(R.id.swifeRefresh);
         rvAku = findViewById(R.id.rv_aku);
         progressBar2 = findViewById(R.id.progressBar2);
         txtDataAnak = findViewById(R.id.txt_data_anak);
@@ -138,15 +138,15 @@ public class menu_pertanyaan extends AppCompatActivity implements rekomendasi_vi
     @Override
     protected void onResume() {
         super.onResume();
-     //  jawaban.clear();
-     //  pertanyaan.get_pertanyan(tgl_lahir);
+        //  jawaban.clear();
+        //  pertanyaan.get_pertanyan(tgl_lahir);
     }
 
     @Override
     public void pertanyaan(List<DataItem_pertanyaan> pertanyaan) {
         try {
             jawaban.clear();
-           // mList=pertanyaan;
+            // mList=pertanyaan;
             String s1 ='"'+"kosong"+'"';
             String s2 ='"'+"judul"+'"';
             for (int i = 0; i < pertanyaan.size(); i++) {
@@ -174,7 +174,7 @@ public class menu_pertanyaan extends AppCompatActivity implements rekomendasi_vi
             rvAku.setAdapter(adapter_pertanyaan);
 
 
-           // swifeRefresh.setRefreshing(false);
+            // swifeRefresh.setRefreshing(false);
             if (pertanyaan.size() == 0) {
                 progressBar2.setVisibility(View.VISIBLE);
                 //  cardEvent.setVisibility(View.GONE);
