@@ -23,16 +23,20 @@
     <application
         android:allowBackup="true"
         android:hardwareAccelerated="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/logo"
         android:label="@string/app_name"
         android:requestLegacyExternalStorage="true"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat"
         android:usesCleartextTraffic="true">
-        <activity android:name=".menu.menu_riset_password"
+        <activity android:name=".menu.menu_rekap"
+            android:label="Rekap Penilaiaan"
+            android:theme="@style/Theme.AppCompat.Light"></activity>
+        <activity
+            android:name=".menu.menu_riset_password"
             android:theme="@style/Theme.AppCompat.Light"
-            android:windowSoftInputMode="stateVisible|adjustResize"></activity>
+            android:windowSoftInputMode="stateVisible|adjustResize" />
         <activity
             android:name=".menu.menu_detail_history"
             android:label="Detail History"
@@ -47,7 +51,6 @@
             android:theme="@style/Theme.AppCompat.Light" />
         <activity
             android:name=".menu.menu_materi_pertumbuhan"
-            android:label="Materi Pertumbuhan"
             android:theme="@style/Theme.AppCompat.Light" />
         <activity
             android:name=".menu.menu_hasil_rekomendasi_pertumbuhan"
@@ -86,7 +89,6 @@
         <activity
             android:name=".menu.menu_utama"
             android:theme="@style/AppTheme.NoActionBar" />
-
         <activity
             android:name=".menu.menu_materi"
             android:label="Materi"

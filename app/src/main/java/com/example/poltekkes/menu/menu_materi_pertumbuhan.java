@@ -49,6 +49,7 @@ public class menu_materi_pertumbuhan extends AppCompatActivity implements materi
         materi.get_materi("");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
+
         try {
             // Google Play will install latest OpenSSL
             ProviderInstaller.installIfNeeded(this);
@@ -64,8 +65,10 @@ public class menu_materi_pertumbuhan extends AppCompatActivity implements materi
         web.setWebViewClient(new menu_materi_pertumbuhan.myWebclient());
         web.getSettings().setJavaScriptEnabled(true);
         if (JENIS.equals("pertumbuhan")){
+            getSupportActionBar().setTitle("Materi Pertumbuhan");
             web.loadUrl( "https://lmproject.my.id/storage/viewpdf/web/viewer.html?url=https://lmproject.my.id/storage/materi/materi_pertumbuhan.pdf");
         }else {
+            getSupportActionBar().setTitle("Materi Perkembangan");
             web.loadUrl("https://lmproject.my.id/storage/viewpdf/web/viewer.html?url=https://lmproject.my.id/storage/materi/materi_perkembangan.pdf");
 
         }

@@ -6,6 +6,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -38,6 +39,8 @@ public class menu_history extends AppCompatActivity implements history_view, ada
     com.example.poltekkes.presenter.history history;
     private ProgressBar progressBar4;
     String username;
+    private ImageView imgData;
+    private TextView txtData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +63,14 @@ public class menu_history extends AppCompatActivity implements history_view, ada
         username = Guru.getString("username", "false");
         history = new history(this, menu_history.this);
         history.get_history(username);
+
+        swifeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                history.get_history(username);
+
+            }
+        });
     }
 
 //    @Override
@@ -93,7 +104,7 @@ public class menu_history extends AppCompatActivity implements history_view, ada
         try {
             Log.i("data_history", "history: " + history.size());
 
-            adapter_history = new adapter_history(menu_history.this, history, 1,this::onImageClick);
+            adapter_history = new adapter_history(menu_history.this, history, 1, this::onImageClick);
             rvAku.setLayoutManager(new LinearLayoutManager(menu_history.this, LinearLayoutManager.VERTICAL, false));
             rvAku.setHasFixedSize(true);
             adapter_history.notifyDataSetChanged();
@@ -101,14 +112,18 @@ public class menu_history extends AppCompatActivity implements history_view, ada
             swifeRefresh.setRefreshing(false);
             if (history.size() == 0) {
                 progressBar4.setVisibility(View.VISIBLE);
+                imgData.setVisibility(View.VISIBLE);
+                txtData.setVisibility(View.VISIBLE);
                 //  cardEvent.setVisibility(View.GONE);
             } else {
                 progressBar4.setVisibility(View.GONE);
+                imgData.setVisibility(View.GONE);
+                txtData.setVisibility(View.GONE);
                 // cardEvent.setVisibility(View.VISIBLE);
 
             }
         } catch (Exception e) {
-            Log.i("cek_data_history", "history: "+e.getMessage());
+            Log.i("cek_data_history", "history: " + e.getMessage());
 
         }
     }
@@ -117,6 +132,8 @@ public class menu_history extends AppCompatActivity implements history_view, ada
         swifeRefresh = findViewById(R.id.swifeRefresh);
         rvAku = findViewById(R.id.rv_aku);
         progressBar4 = findViewById(R.id.progressBar4);
+        imgData = findViewById(R.id.img_data);
+        txtData = findViewById(R.id.txt_data);
     }
 
 
@@ -129,9 +146,10 @@ public class menu_history extends AppCompatActivity implements history_view, ada
     public void lihat_gambar(int id, String gambar, ImageView foto) {
 
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case android.R.id.home:
                 onBackPressed();
                 break;

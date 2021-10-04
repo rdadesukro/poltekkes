@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">poltekkes</string>
+    <string name="app_name">GuVi_Tools</string>
     <string name="password"><u>Lupa Password ???</u></string>
     <string name="daftar"><u> Tidak punya akun ? Klik disni</u></string>
     <string name="tentang2"><b> Materi tentang pertumbuhan dan perkembangan balita</b></string>
@@ -8,9 +8,9 @@
     <string name="isi"><u><b>maka perlu dikonfirmasi oleh petugas kesehatan yang berkompeten untuk dilakukan:  penilaian status gizi berdasarkan indeks BB/U, PB/U atau TB/U, BB/PB dan atau BB/TB, IMT/U </b></u></string>
 
 
-        <string name="welcome_messages">Hello, %1$s! You have &lt;b>%2$d new messages&lt;/b>.</string>
+    <string name="welcome_messages">Hello, %1$s! You have &lt;b>%2$d new messages&lt;/b>.</string>
 
-     <string name="data_table"><table style="width: 502px;">
+    <string name="data_table"><table style="width: 502px;">
 <tbody>
 <tr>
 <td style="width: 38.2188px;">Nama</td>

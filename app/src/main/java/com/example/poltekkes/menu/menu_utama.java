@@ -45,7 +45,7 @@ import maes.tech.intentanim.CustomIntent;
 
 public class menu_utama extends AppCompatActivity implements slider_view {
 
-    @BindView(R.id.card_petujuk)
+    @BindView(R.id.card_rekap)
     CardView cardPetujuk;
     @BindView(R.id.card_history)
     CardView cardHistory;
@@ -85,15 +85,18 @@ public class menu_utama extends AppCompatActivity implements slider_view {
         txtNis.setText("NIM : " + nim);
     }
 
-    @OnClick({R.id.card_petujuk, R.id.card_history, R.id.card_materi, R.id.card_keluar, R.id.card_spk, R.id.card_laporan})
+    @OnClick({R.id.card_rekap, R.id.card_history, R.id.card_materi, R.id.card_keluar, R.id.card_spk, R.id.card_laporan})
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.card_petujuk:
+            case R.id.card_rekap:
+                CustomIntent.customType(this, "fadein-to-fadeout");
+                Intent intent = new Intent((Activity) this, menu_rekap.class);
+                startActivity(intent);
                 break;
             case R.id.card_spk:
 
                 CustomIntent.customType(this, "fadein-to-fadeout");
-                Intent intent = new Intent((Activity) this, menu_input_data.class);
+                 intent = new Intent((Activity) this, menu_input_data.class);
                 startActivity(intent);
                 break;
             case R.id.card_history:
