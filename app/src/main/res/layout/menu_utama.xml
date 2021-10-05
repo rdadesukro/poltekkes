@@ -225,19 +225,20 @@
 
                     <TextView
                         android:id="@+id/textView2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
                         android:layout_marginTop="2dp"
                         android:layout_marginBottom="8dp"
                         android:fontFamily="@font/opensansregular"
                         android:text="Rekap Penilaiaan"
                         android:textColor="@color/blue_grey_800"
-                        android:textSize="13dp"
+                        android:textSize="@dimen/_10sdp"
+                        android:gravity="center"
 
-                        android:textStyle="bold"
+
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="@+id/imageView2"
-                        app:layout_constraintStart_toStartOf="@+id/imageView2"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
                     <ImageView

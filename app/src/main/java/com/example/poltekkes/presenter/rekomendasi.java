@@ -33,7 +33,7 @@ public class rekomendasi {
         }
     }
 
-    public void get_rekomendasi(String berat,String jk,String usia) {
+    public void get_rekomendasi(double berat,String jk,String usia) {
         ProgressDialog pDialog = new ProgressDialog(ctx);
         pDialog.setTitle("Mohon Tunggu!!!");
         pDialog.setMessage("Simpan Data...");
@@ -44,6 +44,7 @@ public class rekomendasi {
         ApiRequest api = Retroserver_server_AUTH.getClient().create(ApiRequest.class);
         Log.i("isi_server", "isi_server: "+Retroserver_server_AUTH.getClient().baseUrl());
         Call<Response_rekomendasi> call = api.get_rekomendasi(berat,jk,usia);
+        Log.i("isi_berat", "get_rekomendasi: "+berat);
 
         call.enqueue(new Callback<Response_rekomendasi>() {
             @Override
@@ -63,9 +64,12 @@ public class rekomendasi {
                                     response.body().getData().getPertumbuhan_kode(),
                                     response.body().getData().getRekomendasi_kode());
 
+                    }else {
+                        pDialog.dismiss();
+                        Toast.makeText(ctx, ""+response.message(), Toast.LENGTH_SHORT).show();
                     }
-                } catch (Exception e) {
-                    Log.i("onResponse", "There is an error" + e.getMessage());
+                } catch (Throwable e) {
+                    Log.i("cek_simpan_berat", "There is an error" + e.getMessage());
                     e.printStackTrace();
                 }
 

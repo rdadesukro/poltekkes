@@ -55,7 +55,7 @@
                     android:layout_centerVertical="true"
                     android:ems="10"
                     android:hint="Berat Badan (Kg)"
-                    android:inputType="numberDecimal"
+                    android:inputType="text"
                     android:textSize="@dimen/_12sdp" />
 
             </com.google.android.material.textfield.TextInputLayout>

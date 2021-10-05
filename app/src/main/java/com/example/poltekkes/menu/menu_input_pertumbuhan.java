@@ -90,10 +90,10 @@ public class menu_input_pertumbuhan extends AppCompatActivity implements Validat
 
     @Override
     public void onValidationSucceeded() {
-        String berat = editBerat.getText().toString().trim();
+        String berat = String.valueOf(editBerat.getText());
         String pajang = edit_panjang.getText().toString().trim();
 
-        rekomendasi.get_rekomendasi(berat,jk,umur);
+        rekomendasi.get_rekomendasi(Double.parseDouble(berat),jk,umur);
 
 
     }
@@ -167,6 +167,7 @@ public class menu_input_pertumbuhan extends AppCompatActivity implements Validat
 
             bottom_dialog.show();
         }else {
+            Toast.makeText(this, "eror", Toast.LENGTH_SHORT).show();
 
         }
     }

@@ -31,7 +31,7 @@ public class tindakan {
         }
     }
 
-    public void get_rekomendasi(String berat,String jk,String usia) {
+    public void get_rekomendasi(double berat,String jk,String usia) {
         ProgressDialog pDialog = new ProgressDialog(ctx);
         pDialog.setTitle("Mohon Tunggu!!!");
         pDialog.setMessage("Simpan Data...");

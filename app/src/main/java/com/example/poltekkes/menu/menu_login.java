@@ -124,15 +124,7 @@ public class menu_login extends AppCompatActivity implements Validator.Validatio
             }
         }
     }
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if (keyCode == KeyEvent.KEYCODE_BACK) {
 
-            CustomIntent.customType(this, "fadein-to-fadeout");
-            Intent intent = new Intent((Activity) this, menu_utama.class);
-            startActivity(intent);
-        }
-        return super.onKeyDown(keyCode, event);
-    }
 
 
     @Override
@@ -141,6 +133,7 @@ public class menu_login extends AppCompatActivity implements Validator.Validatio
     }
     @Override
     public void onBackPressed() {
+
         finishAffinity();
     }
 }
