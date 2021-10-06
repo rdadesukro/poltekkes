@@ -31,7 +31,7 @@ public class tindakan {
         }
     }
 
-    public void get_rekomendasi(double berat,String jk,String usia) {
+    public void get_rekomendasi(String berat,String jk,String usia) {
         ProgressDialog pDialog = new ProgressDialog(ctx);
         pDialog.setTitle("Mohon Tunggu!!!");
         pDialog.setMessage("Simpan Data...");
@@ -41,7 +41,7 @@ public class tindakan {
         ProgressDialog finalPDialog = pDialog;
         ApiRequest api = Retroserver_server_AUTH.getClient().create(ApiRequest.class);
         Log.i("isi_server", "isi_server: "+Retroserver_server_AUTH.getClient().baseUrl());
-        Call<Response_rekomendasi> call = api.get_rekomendasi(berat,jk,usia);
+        Call<Response_rekomendasi> call = api.get_rekomendasi("2.2",jk,usia);
 
         call.enqueue(new Callback<Response_rekomendasi>() {
             @Override

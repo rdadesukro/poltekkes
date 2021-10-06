@@ -23,21 +23,33 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
+            <ImageView
+                android:id="@+id/imageView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="16dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/txt_nama"
+                app:layout_constraintTop_toBottomOf="@+id/txt_nama"
+                app:srcCompat="@drawable/ic_baseline_date_range_24" />
+
             <TextView
                 android:id="@+id/tgl_periksa"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
+
+
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="24dp"
                 android:fontFamily="@font/opensansregular"
-
-
                 android:text="Tanggal Pemeriksaan :12 September 2021"
-                android:textAlignment="center"
                 android:textColor="@color/grey_1000"
                 android:textSize="@dimen/_12sdp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/txt_nama"
-                app:layout_constraintTop_toBottomOf="@+id/txt_tgl_lahir" />
+                app:layout_constraintBottom_toBottomOf="@+id/imageView4"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/imageView4"
+                app:layout_constraintTop_toTopOf="@+id/imageView4" />
 
             <TextView
                 android:id="@+id/txt_tgl_lahir"
@@ -56,10 +68,11 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="16dp"
-                android:layout_marginEnd="16dp"
+                android:layout_marginEnd="24dp"
                 android:capitalize="words"
+                android:singleLine="true"
                 android:fontFamily="@font/opensansbold"
-                android:text="TextView"
+                android:text="dddsadsadasdsadsadsadsadadsadsadsasadasdsa"
                 android:textAllCaps="true"
                 android:textColor="@color/grey_1000"
                 android:textSize="@dimen/_14sdp"

@@ -90,10 +90,12 @@ public class menu_input_pertumbuhan extends AppCompatActivity implements Validat
 
     @Override
     public void onValidationSucceeded() {
-        String berat = String.valueOf(editBerat.getText());
-        String pajang = edit_panjang.getText().toString().trim();
-
-        rekomendasi.get_rekomendasi(Double.parseDouble(berat),jk,umur);
+//        String berat = String.valueOf((Integer.valueOf(String.valueOf(editBerat.getText()))));
+//        String value= editBerat.getText().toString();
+//        Integer finalValue=Integer.parseInt(value);
+//        String pajang = edit_panjang.getText().toString().trim();
+        String number = editBerat.getText().toString().trim();
+        rekomendasi.get_rekomendasi(number,jk,umur);
 
 
     }

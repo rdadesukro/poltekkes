@@ -133,7 +133,7 @@ public interface ApiRequest {
     @FormUrlEncoded
     @POST("balita/pertumbuhan")
     Call<Response_rekomendasi> get_rekomendasi(
-            @Field("berat_badan") double berat_badan,
+            @Field("berat_badan") String berat_badan,
             @Field("jenis_kelamin") String jenis_kelamin,
             @Field("usia_dalam_bulan") String usia_dalam_bulan);
 

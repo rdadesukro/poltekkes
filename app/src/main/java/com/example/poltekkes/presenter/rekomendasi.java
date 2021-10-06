@@ -33,12 +33,13 @@ public class rekomendasi {
         }
     }
 
-    public void get_rekomendasi(double berat,String jk,String usia) {
+    public void get_rekomendasi(String berat,String jk,String usia) {
         ProgressDialog pDialog = new ProgressDialog(ctx);
         pDialog.setTitle("Mohon Tunggu!!!");
         pDialog.setMessage("Simpan Data...");
         pDialog.setCancelable(false);
         pDialog.setCanceledOnTouchOutside(false);
+
         pDialog.show();
         ProgressDialog finalPDialog = pDialog;
         ApiRequest api = Retroserver_server_AUTH.getClient().create(ApiRequest.class);
@@ -81,13 +82,14 @@ public class rekomendasi {
                 Log.i("cek_error", "onFailure: " + t);
                 if (t instanceof IOException) {
 
-                    Log.i("cek_error", "onFailure: " + t);
+                    Log.i("cek_error1", "onFailure: " + t);
                 } else {
 
-                    Log.i("cek_error", "onFailure: " + t);
+                    Log.i("cek_error2", "onFailure: " + t);
                 }
             }
         });
+        pDialog.setCancelable(true);
     }
     public void get_tindakan(String tgl_lahir,String jawaban) {
         ProgressDialog pDialog = new ProgressDialog(ctx);

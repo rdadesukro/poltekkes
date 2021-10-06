@@ -8,7 +8,7 @@ public class Data_rekomendasi {
 	private String statusPertumbuhan;
 
 	@SerializedName("berat_badan")
-	private int beratBadan;
+	private float beratBadan;
 
 	@SerializedName("usia_dalam_bulan")
 	private int usiaDalamBulan;
@@ -56,7 +56,7 @@ public class Data_rekomendasi {
 		this.beratBadan = beratBadan;
 	}
 
-	public int getBeratBadan(){
+	public float getBeratBadan(){
 		return beratBadan;
 	}
 

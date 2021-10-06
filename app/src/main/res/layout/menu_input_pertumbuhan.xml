@@ -9,6 +9,10 @@
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
         android:fillViewport="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -17,7 +21,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" >
+            android:layout_height="wrap_content">
 
             <Button
                 android:id="@+id/btn_simpan"
@@ -50,12 +54,12 @@
                     android:id="@+id/edit_berat"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:textColorHint="@color/grey_1000"
                     android:layout_centerHorizontal="true"
                     android:layout_centerVertical="true"
                     android:ems="10"
                     android:hint="Berat Badan (Kg)"
-                    android:inputType="text"
+                    android:inputType="numberDecimal"
+                    android:textColorHint="@color/grey_1000"
                     android:textSize="@dimen/_12sdp" />
 
             </com.google.android.material.textfield.TextInputLayout>

@@ -2,6 +2,8 @@ package com.example.poltekkes.server;
 
 
 import com.github.squti.guru.Guru;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
@@ -33,7 +35,6 @@ public class Retroserver_server_AUTH {
                     }
 
                 }).build();
-
         Retrofit retrofit = new Retrofit.Builder()
                 .client(client)
                 .baseUrl(base_url)
