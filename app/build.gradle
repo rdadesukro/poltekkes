@@ -179,6 +179,9 @@ dependencies {
     //kurmi permision
     implementation 'com.karumi:dexter:6.2.2'
 
+    //youtub
+    implementation 'com.pierfrancescosoffritti.androidyoutubeplayer:core:10.0.5'
+
     //compres image
     implementation 'id.zelory:compressor:2.1.1'
 }

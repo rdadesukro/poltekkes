@@ -1,6 +1,5 @@
 package com.example.poltekkes.menu;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -19,6 +18,7 @@ public class menu_materi extends AppCompatActivity {
 
     private CardView cardPertumbuhan;
     private CardView cardPerkembangan;
+    private CardView cardVidio;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +31,7 @@ public class menu_materi extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 CustomIntent.customType(menu_materi.this, "fadein-to-fadeout");
-                Guru.putString("jenis","pertumbuhan");
+                Guru.putString("jenis", "pertumbuhan");
                 Intent intent = new Intent(menu_materi.this, menu_materi_pertumbuhan.class);
                 startActivity(intent);
             }
@@ -40,8 +40,16 @@ public class menu_materi extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 CustomIntent.customType(menu_materi.this, "fadein-to-fadeout");
-                Guru.putString("jenis","perkembangan");
+                Guru.putString("jenis", "perkembangan");
                 Intent intent = new Intent(menu_materi.this, menu_materi_pertumbuhan.class);
+                startActivity(intent);
+            }
+        });
+        cardVidio.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                CustomIntent.customType(menu_materi.this, "fadein-to-fadeout");
+                Intent intent = new Intent(menu_materi.this, menu_youtube.class);
                 startActivity(intent);
             }
         });
@@ -50,10 +58,12 @@ public class menu_materi extends AppCompatActivity {
     private void initView() {
         cardPertumbuhan = (CardView) findViewById(R.id.card_pertumbuhan);
         cardPerkembangan = (CardView) findViewById(R.id.card_perkembangan);
+        cardVidio = findViewById(R.id.card_vidio);
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case android.R.id.home:
                 onBackPressed();
                 break;

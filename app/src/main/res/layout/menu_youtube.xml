@@ -23,7 +23,7 @@
             android:orientation="vertical" >
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/card_pertumbuhan"
+                android:id="@+id/card_digital"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/orange_700"
@@ -42,7 +42,7 @@
                         android:layout_marginEnd="8dp"
                         android:layout_marginBottom="24dp"
                         android:fontFamily="@font/opensansregular"
-                        android:text="Materi Pertumbuhan"
+                        android:text="Menimbang BB Anak dengan Digital"
                         android:textColor="@color/putih"
                         android:textSize="@dimen/_14sdp"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -53,7 +53,7 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/card_perkembangan"
+                android:id="@+id/card_dacin"
                 android:layout_width="match_parent"
                 android:layout_marginTop="@dimen/_14sdp"
                 android:layout_height="wrap_content"
@@ -73,7 +73,7 @@
                         android:layout_marginEnd="8dp"
                         android:layout_marginBottom="24dp"
                         android:fontFamily="@font/opensansregular"
-                        android:text="Materi Perkembangan"
+                        android:text="Menimbang BB dengan Dacin"
                         android:textColor="@color/putih"
                         android:textSize="@dimen/_14sdp"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -84,7 +84,7 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/card_vidio"
+                android:id="@+id/card_tinggi"
                 android:layout_width="match_parent"
                 android:layout_marginTop="@dimen/_14sdp"
                 android:layout_height="wrap_content"
@@ -104,7 +104,37 @@
                         android:layout_marginEnd="8dp"
                         android:layout_marginBottom="24dp"
                         android:fontFamily="@font/opensansregular"
-                        android:text="Vidio Pembelajaran"
+                        android:text="Mengukur Tinggi Badan Anak Usia 2 Tahun ke Atas"
+                        android:textColor="@color/putih"
+                        android:textSize="@dimen/_14sdp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_baby"
+                android:layout_width="match_parent"
+                android:layout_marginTop="@dimen/_14sdp"
+                android:layout_height="wrap_content"
+                android:elevation="8dp"
+                android:backgroundTint="@color/orange_700"
+                app:cardCornerRadius="10dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="24dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginBottom="24dp"
+                        android:fontFamily="@font/opensansregular"
+                        android:text="Menimbang BB dengan BabyScale"
                         android:textColor="@color/putih"
                         android:textSize="@dimen/_14sdp"
                         app:layout_constraintBottom_toBottomOf="parent"

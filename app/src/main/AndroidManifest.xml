@@ -30,9 +30,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat"
         android:usesCleartextTraffic="true">
-        <activity android:name=".menu.menu_rekap"
-            android:label="Rekap Penilaiaan"
+        <activity android:name=".menu.menu_vidio"
+            android:label="Vidio Pembelajaran"
             android:theme="@style/Theme.AppCompat.Light"></activity>
+        <activity android:name=".menu.menu_youtube"
+            android:label="Vidio Pembelajaran"
+            android:theme="@style/Theme.AppCompat.Light"/>
+        <activity
+            android:name=".menu.menu_rekap"
+            android:label="Rekap Penilaiaan"
+            android:theme="@style/Theme.AppCompat.Light" />
         <activity
             android:name=".menu.menu_riset_password"
             android:theme="@style/Theme.AppCompat.Light"
