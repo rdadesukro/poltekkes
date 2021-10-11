@@ -31,10 +31,10 @@
         android:theme="@style/Theme.AppCompat"
         android:usesCleartextTraffic="true">
         <activity android:name=".menu.menu_vidio"
-            android:label="Vidio Pembelajaran"
+            android:label="Video Pembelajaran"
             android:theme="@style/Theme.AppCompat.Light"></activity>
         <activity android:name=".menu.menu_youtube"
-            android:label="Vidio Pembelajaran"
+            android:label="Video Pembelajaran"
             android:theme="@style/Theme.AppCompat.Light"/>
         <activity
             android:name=".menu.menu_rekap"
@@ -95,7 +95,7 @@
             android:windowSoftInputMode="stateVisible|adjustResize" />
         <activity
             android:name=".menu.menu_utama"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme"/>
         <activity
             android:name=".menu.menu_materi"
             android:label="Materi"

@@ -19,6 +19,7 @@ public class menu_youtube extends AppCompatActivity {
     private CardView cardDacin;
     private CardView cardTinggi;
     private CardView cardBaby;
+    private CardView cardPanjang;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +28,18 @@ public class menu_youtube extends AppCompatActivity {
         initView();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+        cardPanjang.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                CustomIntent.customType(menu_youtube.this, "fadein-to-fadeout");
+                Guru.putString("jenis", "HWhQ6H0rgi4");
+                Guru.putString("link", " https://youtu.be/HWhQ6H0rgi4");
+                Intent intent = new Intent(menu_youtube.this, menu_vidio.class);
+                startActivity(intent);
+
+            }
+        });
         cardDigital.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -74,7 +87,9 @@ public class menu_youtube extends AppCompatActivity {
         cardDacin = findViewById(R.id.card_dacin);
         cardTinggi = findViewById(R.id.card_tinggi);
         cardBaby = findViewById(R.id.card_baby);
+        cardPanjang = findViewById(R.id.card_panjang);
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {

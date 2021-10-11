@@ -24,8 +24,8 @@
     </style>
     <style name="AppTheme" parent="Theme.MaterialComponents.Light.DarkActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/grey_1000</item>
-        <item name="colorPrimaryDark">@color/yellow_700</item>
+        <item name="colorPrimary">@color/orange_700</item>
+        <item name="colorPrimaryDark">@color/orange_700</item>
         <item name="colorAccent">@color/bg_screen3</item>
         <item name="android:actionModeBackground">@color/yellow_700</item>
 

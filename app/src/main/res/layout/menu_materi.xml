@@ -104,7 +104,7 @@
                         android:layout_marginEnd="8dp"
                         android:layout_marginBottom="24dp"
                         android:fontFamily="@font/opensansregular"
-                        android:text="Vidio Pembelajaran"
+                        android:text="Video Pembelajaran"
                         android:textColor="@color/putih"
                         android:textSize="@dimen/_14sdp"
                         app:layout_constraintBottom_toBottomOf="parent"

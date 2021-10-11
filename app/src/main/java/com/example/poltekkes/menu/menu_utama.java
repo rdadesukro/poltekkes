@@ -72,12 +72,17 @@ public class menu_utama extends AppCompatActivity implements slider_view {
         ButterKnife.bind(this);
         initView();
 
-        setSupportActionBar(toolbar2);
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().setTitle("Main Page");
-        }
+//        setSupportActionBar(toolbar2);
+//        if (getSupportActionBar() != null) {
+//            getSupportActionBar().setTitle("Main Page");
+//        }
+
+
         nama = Guru.getString("nama_user", "false");
         username =Guru.getString("username", "false");
+
+        getSupportActionBar().setTitle("Selamat Datang,");
+        getSupportActionBar().setSubtitle( nama);
         nim = Guru.getString("nim", "false");
         slider = new slider(menu_utama.this, menu_utama.this);
         slider.get_slider();
